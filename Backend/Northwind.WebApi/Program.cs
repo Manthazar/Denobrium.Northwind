@@ -1,8 +1,13 @@
+using Northwind.Modules;
+
 var builder = WebApplication.CreateBuilder(args);
+var sqlConnectionString = builder.Configuration["Northwind:SqlConnectionString"];
 
 // Add services to the container.
-
 builder.Services.AddControllers();
+builder.Services.AddRepositories(sqlConnectionString);
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

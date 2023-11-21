@@ -19,4 +19,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Northwind.Api.Data\Northwind.Api.Data.csproj" />
+    <ProjectReference Include="..\Northwind.Core.Models\Northwind.Core.Models.csproj" />
+    <ProjectReference Include="..\Northwind.Core.Repositories\Northwind.Core.Repositories.csproj" />
+  </ItemGroup>
+
 </Project>
