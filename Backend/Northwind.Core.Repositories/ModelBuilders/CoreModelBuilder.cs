@@ -1,4 +1,4 @@
-﻿using Northwind.Sql.Migrations.Models;
+﻿using Northwind.Core.Models;
 
 namespace Northwind.Core.Repositories.ModelBuilders
 {

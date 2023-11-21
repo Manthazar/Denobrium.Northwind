@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Northwind.Sql.Migrations.Models
+namespace Northwind.Core.Models
 {
     public partial class Product
     {

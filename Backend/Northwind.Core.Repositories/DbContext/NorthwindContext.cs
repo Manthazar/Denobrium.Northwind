@@ -1,6 +1,7 @@
-﻿using Northwind.Core.Repositories.ModelBuilders;
+﻿using Northwind.Core.Models;
+using Northwind.Core.Repositories.ModelBuilders;
 
-namespace Northwind.Sql.Migrations.Models
+namespace Northwind.Core.Repositories
 {
     public partial class NorthwindContext : DbContext
     {

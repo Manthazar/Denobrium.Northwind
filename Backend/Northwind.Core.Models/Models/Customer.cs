@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-
-namespace Northwind.Sql.Migrations.Models
+﻿namespace Northwind.Core.Models
 {
     public partial class Customer
     {

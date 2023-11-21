@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace Northwind.Core.Repositories.ModelBuilders
+﻿namespace Northwind.Core.Repositories.ModelBuilders
 {
     internal static class ReportingModelBuilder
     {
