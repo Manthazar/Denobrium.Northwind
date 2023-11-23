@@ -14,7 +14,8 @@ namespace Northwind.Modules
             Guard.IsNotNullOrEmpty(sqlConnectionString, nameof(sqlConnectionString));
 
             services.AddScoped<ISqlRepository<Category>, SqlRepository<Category>>();
-
+            services.AddScoped<ISqlRepository<Customer>, SqlRepository<Customer>>();
+            services.AddScoped<ISqlRepository<Employee>, SqlRepository<Employee>>();
 
             services.AddDbContext<NorthwindContext>(options =>
             {

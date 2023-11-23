@@ -6,6 +6,9 @@ namespace Northwind.Core
     /// <summary>
     /// A (static) helper class that includes various parameter checking routines.
     /// </summary>
+    /// <remarks>
+    /// This class is a phenomenon itself. Used almost since 15 years, there seems to be no other easy and fast way to verify input arguments.
+    /// </remarks>
     public class Guard
     {
         /// <summary>
@@ -16,7 +19,18 @@ namespace Northwind.Core
         /// <param name="argumentValue">Argument value to test.</param>
         /// <param name="argumentName">Name of the argument being tested.</param>
         [DebuggerStepThrough]
-        public static void ArgumentBigger(int min, int argumentValue, string argumentName)
+        public static void IsId(int argumentValue, string argumentName)
+            => IsBigger(0, argumentValue, argumentName);
+
+        /// <summary>
+        /// Throws <see cref="ArgumentNullException"/> if the given argument is null.
+        /// </summary>
+        /// <exception cref="ArgumentNullException"> if tested value if null.</exception>
+        /// <param name="min">The minimum of the int to throw (valid is +1).</param>
+        /// <param name="argumentValue">Argument value to test.</param>
+        /// <param name="argumentName">Name of the argument being tested.</param>
+        [DebuggerStepThrough]
+        public static void IsBigger(int min, int argumentValue, string argumentName)
         {
             if (argumentValue <= min) throw new ArgumentOutOfRangeException(argumentName);
         }
@@ -24,7 +38,7 @@ namespace Northwind.Core
         /// <summary>
         /// Throws <see cref="ArgumentNullException"/> if the given argument is null.
         /// </summary>
-        public static void ArgumentBigger(double min, double argumentValue, string argumentName)
+        public static void IsBigger(double min, double argumentValue, string argumentName)
         {
             if (argumentValue <= min) throw new ArgumentOutOfRangeException(argumentName);
         }
@@ -66,7 +80,7 @@ namespace Northwind.Core
         /// <param name="detailedMessage">The exception message when argumentValue is null.</param>
         /// <exception cref="ArgumentNullException">When argumentValue is null.</exception>
         [DebuggerStepThrough]
-        public static void ArgumentNotNull(object argumentValue, string argumentName, string detailedMessage)
+        public static void IsNotNull(object argumentValue, string argumentName, string detailedMessage)
         {
             if (argumentValue == null) throw new ArgumentNullException(argumentName, detailedMessage);
         }
@@ -81,7 +95,7 @@ namespace Northwind.Core
         /// <exception cref="ArgumentNullException">When argumentValue is null.</exception>
         /// <exception cref="ArgumentException">When argumentValue is empty.</exception>
         [DebuggerStepThrough]
-        public static void ArgumentNotEmpty(ref Guid argumentValue,
+        public static void IsNotEmpty(ref Guid argumentValue,
                                             string argumentName)
         {
             if (argumentValue == null) throw new ArgumentNullException(argumentName);
@@ -116,7 +130,7 @@ namespace Northwind.Core
         /// <exception cref="ArgumentNullException">When argumentValue is null.</exception>
         /// <exception cref="ArgumentException">When argumentValue is empty.</exception>
         [DebuggerStepThrough]
-        public static void ArgumentNotNullOrEmpty(string argumentValue,
+        public static void IsNotNullOrEmpty(string argumentValue,
                                                   string argumentName,
                                                   string detailedMessage)
         {
@@ -134,9 +148,9 @@ namespace Northwind.Core
         /// <exception cref="ArgumentNullException">When assignmentTargetType or assignmentValueType is null.</exception>
         /// <exception cref="ArgumentException">When target type is not assignable.</exception>
         [DebuggerStepThrough]
-        public static void TypeIsAssignable(Type assignmentTargetType, Type assignmentValueType, string argumentName)
+        public static void IsTypeAssignable(Type assignmentTargetType, Type assignmentValueType, string argumentName)
         {
-            TypeIsAssignable(assignmentTargetType, assignmentValueType, argumentName,
+            IsTypeAssignable(assignmentTargetType, assignmentValueType, argumentName,
                 string.Format(
                     CultureInfo.CurrentCulture,
                     "Types are not assignable",
@@ -155,7 +169,7 @@ namespace Northwind.Core
         /// <exception cref="ArgumentNullException">When assignmentTargetType or assignmentValueType is null.</exception>
         /// <exception cref="ArgumentException">When target type is not assignable.</exception>
         [DebuggerStepThrough]
-        public static void TypeIsAssignable(Type assignmentTargetType, Type assignmentValueType, string argumentName, string detailedMessage)
+        public static void IsTypeAssignable(Type assignmentTargetType, Type assignmentValueType, string argumentName, string detailedMessage)
         {
             if (assignmentTargetType == null) throw new ArgumentNullException("assignmentTargetType");
             if (assignmentValueType == null) throw new ArgumentNullException("assignmentValueType");
@@ -176,7 +190,7 @@ namespace Northwind.Core
         /// <exception cref="ArgumentNullException">When assignmentTargetType or assignmentValueType is null.</exception>
         /// <exception cref="ArgumentException">When target type is not assignable.</exception>
         [DebuggerStepThrough]
-        public static void TypeEquals(Type assignmentTargetType, Type assignmentValueType, string argumentName, string detailedMessage)
+        public static void IsTypeEqual(Type assignmentTargetType, Type assignmentValueType, string argumentName, string detailedMessage)
         {
             if (assignmentTargetType == null) throw new ArgumentNullException("assignmentTargetType");
             if (assignmentValueType == null) throw new ArgumentNullException("argumentName");
@@ -194,7 +208,7 @@ namespace Northwind.Core
         /// <param name="assignementValue"></param>
         /// <param name="argumentName"></param>
         /// <exception cref="ArgumentException">Arguments are equal.</exception>
-        public static void ArgumentNotEqual(object assignementTarget, object assignementValue, string argumentName)
+        public static void IsNotEqual(object assignementTarget, object assignementValue, string argumentName)
         {
             if (assignementTarget == null && assignementValue == null) { throw new ArgumentException("Arguments cannot be equal"); }
             if (Object.Equals(assignementTarget, assignementValue)) { throw new ArgumentException("Arguments cannot be equal"); }

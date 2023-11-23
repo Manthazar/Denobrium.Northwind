@@ -3,6 +3,11 @@
     public interface ISqlRepository<T>
     {
         /// <summary>
+        /// Returns a query able collection of the items.
+        /// </summary>
+        internal IQueryable<T> Query { get; }
+
+        /// <summary>
         /// Returns all items of the underlying collection.
         /// </summary>
         /// <returns></returns>
