@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Northwind.Core.Models
 {
+    /// <remarks>
+    /// The invoice item within Northwind strats off as a database view which appears strange since it cannot have any status or workflows attached to it... <see cref="https://github.com/Manthazar/Denobrium.Northwind/issues/8"/>
+    /// </remarks>
     public partial class Invoice
     {
         public string? ShipName { get; set; }

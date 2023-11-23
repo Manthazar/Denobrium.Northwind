@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Northwind.Core.Models
+﻿namespace Northwind.Core.Models
 {
-    public partial class Employee
+    public partial class Employee : IWithId
     {
         public Employee()
         {
@@ -12,7 +9,7 @@ namespace Northwind.Core.Models
             Territories = new HashSet<Territory>();
         }
 
-        public int EmployeeId { get; set; }
+        public int Id { get; set; }
         public string LastName { get; set; } = null!;
         public string FirstName { get; set; } = null!;
         public string? Title { get; set; }

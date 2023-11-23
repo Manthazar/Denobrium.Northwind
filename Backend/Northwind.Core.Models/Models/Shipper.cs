@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace Northwind.Core.Models
 {
-    public partial class Shipper
+    public partial class Shipper : IWithId
     {
         public Shipper()
         {
             Orders = new HashSet<Order>();
         }
 
-        public int ShipperId { get; set; }
+        public int Id { get; set; }
         public string CompanyName { get; set; } = null!;
         public string? Phone { get; set; }
 

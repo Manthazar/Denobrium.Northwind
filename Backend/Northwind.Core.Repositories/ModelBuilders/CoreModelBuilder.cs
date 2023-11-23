@@ -15,26 +15,19 @@ namespace Northwind.Core.Repositories.ModelBuilders
         {
             modelBuilder.Entity<Category>(entity =>
             {
-                entity.HasIndex(e => e.CategoryName, "CategoryName");
-
-                entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
+                entity.Property(e => e.Id).HasColumnName("CategoryID");
                 entity.Property(e => e.CategoryName).HasMaxLength(15);
                 entity.Property(e => e.Description).HasColumnType("ntext");
                 entity.Property(e => e.Picture).HasColumnType("image");
+
+                entity.HasIndex(e => e.CategoryName, "CategoryName");
             });
 
             modelBuilder.Entity<Customer>(entity =>
             {
-                entity.HasIndex(e => e.City, "City");
-                entity.HasIndex(e => e.CompanyName, "CompanyName");
-                entity.HasIndex(e => e.PostalCode, "PostalCode");
-                entity.HasIndex(e => e.Region, "Region");
-
-                entity.Property(e => e.CustomerId)
-                    .HasMaxLength(5)
-                    .HasColumnName("CustomerID")
-                    .IsFixedLength();
-
+                // TODO: This should be renamed to customer code
+                entity.Property(e => e.CustomerId).HasMaxLength(5).HasColumnName("CustomerID").IsFixedLength();
+                
                 entity.Property(e => e.Address).HasMaxLength(60);
                 entity.Property(e => e.City).HasMaxLength(15);
                 entity.Property(e => e.CompanyName).HasMaxLength(40);
@@ -45,6 +38,11 @@ namespace Northwind.Core.Repositories.ModelBuilders
                 entity.Property(e => e.Phone).HasMaxLength(24);
                 entity.Property(e => e.PostalCode).HasMaxLength(10);
                 entity.Property(e => e.Region).HasMaxLength(15);
+
+                entity.HasIndex(e => e.City, "City");
+                entity.HasIndex(e => e.CompanyName, "CompanyName");
+                entity.HasIndex(e => e.PostalCode, "PostalCode");
+                entity.HasIndex(e => e.Region, "Region");
 
                 //entity.HasMany(d => d.CustomerTypes)
                 //    .WithMany(p => p.Customers)
@@ -66,10 +64,8 @@ namespace Northwind.Core.Repositories.ModelBuilders
 
             modelBuilder.Entity<Employee>(entity =>
             {
-                entity.HasIndex(e => e.LastName, "LastName");
-                entity.HasIndex(e => e.PostalCode, "PostalCode");
+                entity.Property(e => e.Id).HasColumnName("EmployeeID");
 
-                entity.Property(e => e.EmployeeId).HasColumnName("EmployeeID");
                 entity.Property(e => e.Address).HasMaxLength(60);
                 entity.Property(e => e.BirthDate).HasColumnType("datetime");
                 entity.Property(e => e.City).HasMaxLength(15);
@@ -86,6 +82,9 @@ namespace Northwind.Core.Repositories.ModelBuilders
                 entity.Property(e => e.Region).HasMaxLength(15);
                 entity.Property(e => e.Title).HasMaxLength(30);
                 entity.Property(e => e.TitleOfCourtesy).HasMaxLength(25);
+
+                entity.HasIndex(e => e.LastName, "LastName");
+                entity.HasIndex(e => e.PostalCode, "PostalCode");
 
                 entity.HasOne(d => d.ReportsToNavigation)
                     .WithMany(p => p.InverseReportsToNavigation)
@@ -148,16 +147,7 @@ namespace Northwind.Core.Repositories.ModelBuilders
 
             modelBuilder.Entity<Order>(entity =>
             {
-                entity.HasIndex(e => e.CustomerId, "CustomerID");
-                entity.HasIndex(e => e.CustomerId, "CustomersOrders");
-                entity.HasIndex(e => e.EmployeeId, "EmployeeID");
-                entity.HasIndex(e => e.EmployeeId, "EmployeesOrders");
-                entity.HasIndex(e => e.OrderDate, "OrderDate");
-                entity.HasIndex(e => e.ShipPostalCode, "ShipPostalCode");
-                entity.HasIndex(e => e.ShippedDate, "ShippedDate");
-                entity.HasIndex(e => e.ShipVia, "ShippersOrders");
-
-                entity.Property(e => e.OrderId).HasColumnName("OrderID");
+                entity.Property(e => e.Id).HasColumnName("OrderID");
                 entity.Property(e => e.CustomerId)
                     .HasMaxLength(5)
                     .HasColumnName("CustomerID")
@@ -178,6 +168,15 @@ namespace Northwind.Core.Repositories.ModelBuilders
                 entity.Property(e => e.ShipPostalCode).HasMaxLength(10);
                 entity.Property(e => e.ShipRegion).HasMaxLength(15);
                 entity.Property(e => e.ShippedDate).HasColumnType("datetime");
+
+                entity.HasIndex(e => e.CustomerId, "CustomerID");
+                entity.HasIndex(e => e.CustomerId, "CustomersOrders");
+                entity.HasIndex(e => e.EmployeeId, "EmployeeID");
+                entity.HasIndex(e => e.EmployeeId, "EmployeesOrders");
+                entity.HasIndex(e => e.OrderDate, "OrderDate");
+                entity.HasIndex(e => e.ShipPostalCode, "ShipPostalCode");
+                entity.HasIndex(e => e.ShippedDate, "ShippedDate");
+                entity.HasIndex(e => e.ShipVia, "ShippersOrders");
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Orders)
@@ -228,17 +227,18 @@ namespace Northwind.Core.Repositories.ModelBuilders
 
             modelBuilder.Entity<Product>(entity =>
             {
-                entity.HasIndex(e => e.CategoryId, "CategoriesProducts");
-                entity.HasIndex(e => e.CategoryId, "CategoryID");
-                entity.HasIndex(e => e.ProductName, "ProductName");
-                entity.HasIndex(e => e.SupplierId, "SupplierID");
-                entity.HasIndex(e => e.SupplierId, "SuppliersProducts");
-                entity.Property(e => e.ProductId).HasColumnName("ProductID");
+                entity.Property(e => e.Id).HasColumnName("ProductID");
                 entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
                 entity.Property(e => e.ProductName).HasMaxLength(40);
                 entity.Property(e => e.QuantityPerUnit).HasMaxLength(20);
                 entity.Property(e => e.ReorderLevel).HasDefaultValueSql("((0))");
                 entity.Property(e => e.SupplierId).HasColumnName("SupplierID");
+
+                entity.HasIndex(e => e.CategoryId, "CategoriesProducts");
+                entity.HasIndex(e => e.CategoryId, "CategoryID");
+                entity.HasIndex(e => e.ProductName, "ProductName");
+                entity.HasIndex(e => e.SupplierId, "SupplierID");
+                entity.HasIndex(e => e.SupplierId, "SuppliersProducts");
 
                 entity.Property(e => e.UnitPrice)
                     .HasColumnType("money")
@@ -262,12 +262,12 @@ namespace Northwind.Core.Repositories.ModelBuilders
 
             modelBuilder.Entity<Region>(entity =>
             {
-                entity.HasKey(e => e.RegionId)
+                entity.HasKey(e => e.Id)
                     .IsClustered(false);
 
                 entity.ToTable("Region");
 
-                entity.Property(e => e.RegionId)
+                entity.Property(e => e.Id)
                     .ValueGeneratedNever()
                     .HasColumnName("RegionID");
 
@@ -276,21 +276,16 @@ namespace Northwind.Core.Repositories.ModelBuilders
                     .IsFixedLength();
             });
 
-
-
             modelBuilder.Entity<Shipper>(entity =>
             {
-                entity.Property(e => e.ShipperId).HasColumnName("ShipperID");
+                entity.Property(e => e.Id).HasColumnName("ShipperID");
                 entity.Property(e => e.CompanyName).HasMaxLength(40);
                 entity.Property(e => e.Phone).HasMaxLength(24);
             });
 
             modelBuilder.Entity<Supplier>(entity =>
             {
-                entity.HasIndex(e => e.CompanyName, "CompanyName");
-                entity.HasIndex(e => e.PostalCode, "PostalCode");
-
-                entity.Property(e => e.SupplierId).HasColumnName("SupplierID");
+                entity.Property(e => e.Id).HasColumnName("SupplierID");
                 entity.Property(e => e.Address).HasMaxLength(60);
                 entity.Property(e => e.City).HasMaxLength(15);
                 entity.Property(e => e.CompanyName).HasMaxLength(40);
@@ -302,6 +297,9 @@ namespace Northwind.Core.Repositories.ModelBuilders
                 entity.Property(e => e.Phone).HasMaxLength(24);
                 entity.Property(e => e.PostalCode).HasMaxLength(10);
                 entity.Property(e => e.Region).HasMaxLength(15);
+
+                entity.HasIndex(e => e.CompanyName, "CompanyName");
+                entity.HasIndex(e => e.PostalCode, "PostalCode");
             });
 
             modelBuilder.Entity<Territory>(entity =>

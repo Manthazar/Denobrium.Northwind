@@ -5,6 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AssemblyName>Northwind.Core.Models</AssemblyName>
+    <RootNamespace>Northwind.Core</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

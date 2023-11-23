@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Northwind.Core.Models
+﻿namespace Northwind.Core.Models
 {
-    public partial class Product
+    public partial class Product : IWithId
     {
         public Product()
         {
             OrderDetails = new HashSet<OrderDetail>();
         }
 
-        public int ProductId { get; set; }
+        public int Id { get; set; }
         public string ProductName { get; set; } = null!;
         public int? SupplierId { get; set; }
         public int? CategoryId { get; set; }

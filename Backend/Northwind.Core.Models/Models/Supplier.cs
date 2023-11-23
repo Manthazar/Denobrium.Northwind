@@ -1,13 +1,13 @@
 ﻿namespace Northwind.Core.Models
 {
-    public partial class Supplier
+    public partial class Supplier : IWithId
     {
         public Supplier()
         {
             Products = new HashSet<Product>();
         }
 
-        public int SupplierId { get; set; }
+        public int Id { get; set; }
         public string CompanyName { get; set; } = null!;
         public string? ContactName { get; set; }
         public string? ContactTitle { get; set; }
