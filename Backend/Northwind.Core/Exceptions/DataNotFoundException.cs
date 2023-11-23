@@ -11,5 +11,8 @@
 
         public static DataNotFoundException NewForId<T>(int id)
             => new DataNotFoundException($"The object '{nameof(T)}' was not found by the provided id={id}");
+
+        public static DataNotFoundException NewForCode<T>(string code)
+            => new DataNotFoundException($"The object '{nameof(T)}' was not found by the provided code='{code}'");
     }
 }

@@ -5,7 +5,7 @@
         /// <summary>
         /// Returns a query able collection of the items.
         /// </summary>
-        internal IQueryable<T> Query { get; }
+        internal IQueryable<T> Items { get; }
 
         /// <summary>
         /// Returns all items of the underlying collection.

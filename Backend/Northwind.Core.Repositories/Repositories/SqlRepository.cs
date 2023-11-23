@@ -9,7 +9,7 @@
             this.dbContext = dbContext;
         }
 
-        IQueryable<T> ISqlRepository<T>.Query => dbContext.Set<T>();
+        IQueryable<T> ISqlRepository<T>.Items => dbContext.Set<T>();
 
         public async Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken)
         {

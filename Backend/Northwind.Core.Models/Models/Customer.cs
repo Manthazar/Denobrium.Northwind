@@ -1,6 +1,6 @@
 ﻿namespace Northwind.Core.Models
 {
-    public partial class Customer
+    public partial class Customer : IWithCode
     {
         public Customer()
         {
@@ -8,7 +8,7 @@
             //CustomerTypes = new HashSet<CustomerDemographic>();
         }
 
-        public string CustomerId { get; set; } = null!;
+        public string Code { get; set; } = null!;
         public string CompanyName { get; set; } = null!;
         public string? ContactName { get; set; }
         public string? ContactTitle { get; set; }
