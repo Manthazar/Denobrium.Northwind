@@ -6,7 +6,7 @@ namespace Northwind.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HeartbeatController : ControllerBase
+    public class HeartbeatController : NorthwindController
     {
         private readonly IServiceProvider serviceProvider;
 

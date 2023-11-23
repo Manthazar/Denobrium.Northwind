@@ -8,7 +8,7 @@ namespace Northwind.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomersController : ControllerBase
+    public class CustomersController : NorthwindController
     {
         private readonly IServiceProvider serviceProvider;
 
