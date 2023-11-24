@@ -27,7 +27,7 @@ namespace Northwind.Core.Repositories.ModelBuilders
             {
                 entity.HasKey(e => e.Code);
 
-                entity.Property(e => e.Code).HasMaxLength(5).HasColumnName("CustomerID").IsFixedLength();
+                entity.Property(e => e.Code).HasMaxLength(5).HasColumnName("CustomerCode").IsFixedLength();
                 
                 entity.Property(e => e.Address).HasMaxLength(60);
                 entity.Property(e => e.City).HasMaxLength(15);
