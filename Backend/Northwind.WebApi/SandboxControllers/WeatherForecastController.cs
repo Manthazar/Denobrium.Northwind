@@ -4,7 +4,7 @@ namespace Northwind.WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class WeatherForecastController : NorthwindController
     {
         private static readonly string[] Summaries = new[]
         {
