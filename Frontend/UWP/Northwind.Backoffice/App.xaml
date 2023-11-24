@@ -1,0 +1,48 @@
+﻿<Application
+    x:Class="Northwind.Backoffice.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Northwind.Backoffice"
+    xmlns:telerik="using:Telerik.UI.Xaml.Controls"
+    RequestedTheme="Light">
+
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <!--  Color Resources  -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Theme/Themes.xaml" />
+                <ResourceDictionary Source="ms-appx:///Theme/Generic.xaml" />
+
+                <!--  WinUI  -->
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
+    </Application.Resources>
+    
+    <!--<ResourceDictionary>-->
+            
+            
+            <!--<telerik:UserThemeResources x:Key="ThemeResource" LightResourcesPath="ms-appx:///Theme/Light.xaml" DarkResourcesPath="ms-appx:///Theme/Dark.xaml"/>
+            
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="ms-appx:///Telerik.UI.Xaml.Chart.UWP/Themes/ThemeResourcesLight.xaml"/>
+                        <ResourceDictionary Source="ms-appx:///Common/CustomPaletteResources.xaml"/>
+                        <ResourceDictionary Source="ms-appx:///Common/ConverterResources.xaml"/>
+                        <ResourceDictionary Source="ms-appx:///Theme/CustomResources.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="ms-appx:///Telerik.UI.Xaml.Chart.UWP/Themes/ThemeResourcesDark.xaml"/>
+                        <ResourceDictionary Source="ms-appx:///Telerik.UI.Xaml.Input.UWP/Themes/ThemeResourcesDark.xaml"/>
+                        <ResourceDictionary Source="ms-appx:///Theme/CustomResources.xaml"/>
+                        <ResourceDictionary Source="ms-appx:///Common/ConverterResources.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>-->
+        <!--</ResourceDictionary>-->
+</Application>

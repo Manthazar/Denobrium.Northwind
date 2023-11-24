@@ -1,0 +1,83 @@
+﻿<Page
+    x:Class="Northwind.Backoffice.Shell"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+    xmlns:local="using:Northwind.Backoffice"
+    xmlns:tp="using:Telerik.UI.Xaml.Controls.Primitives"
+    xmlns:ui="using:Microsoft.Toolkit.Uwp.UI"
+    xmlns:winui="using:Microsoft.UI.Xaml.Controls"
+    
+    ui:TitleBarExtensions.BackgroundColor="{StaticResource Brand-Color}"
+    ui:TitleBarExtensions.ButtonBackgroundColor="{StaticResource Brand-Color}"
+    ui:TitleBarExtensions.ButtonForegroundColor="{StaticResource Titlebar-Foreground}"
+    ui:TitleBarExtensions.ForegroundColor="{StaticResource Titlebar-Foreground}"
+    
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <!--<DataTemplate x:Key="CategoryTemplate"
+                      x:DataType="local:SampleCategory">
+            <Grid>
+                <TextBlock VerticalAlignment="Center"
+                           FontFamily="Segoe UI"
+                           FontSize="15px"
+                           FontWeight="Normal"
+                           Text="{x:Bind Name}" />
+            </Grid>
+        </DataTemplate>-->
+    </Page.Resources>
+
+    <Grid>
+        <winui:NavigationView x:Name="NavView"
+                              IsSettingsVisible="False"
+                              ItemInvoked="NavView_ItemInvoked"
+                              
+                              PaneDisplayMode="Top"
+                              SelectionFollowsFocus="Disabled">
+
+            <!--MenuItemTemplate="{StaticResource CategoryTemplate}"-->
+        </winui:NavigationView>
+    </Grid>
+
+    <!--<tp:RadSideDrawer DrawerLocation="Left"
+                      DrawerButtonHorizontalAlignment="Left"
+                      DrawerButtonVerticalAlignment="Top"
+                      DrawerManipulationMode="Button"
+                      DrawerTransition="SlideInOnTop">
+        <tp:RadSideDrawer.MainContent>
+            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                <TextBlock Text="Main Content" />
+            </Grid>
+        </tp:RadSideDrawer.MainContent>
+        
+        <tp:RadSideDrawer.DrawerContent>
+            <Grid Width="300" Background="#4b4b4b">
+
+                <StackPanel Orientation="Vertical">
+
+                    <Grid>
+                        
+                        <Image Source="/Assets/northwind-vision.png"/>
+                        <TextBlock Text="NORTHWIND TRADING" FontWeight="Bold" Foreground="White"
+                                   HorizontalAlignment="Center" HorizontalTextAlignment="Left"
+                                   Margin="10 5 0 0" FontSize="16"/>
+                        
+                    </Grid>
+                    <TextBlock Text="john.doe@northwind-trading.com" Foreground="White"
+                               Margin="10 5 0 0"/>
+
+                    <Button Content="Customers" />
+                    
+                </StackPanel>
+                
+                
+            </Grid>
+        </tp:RadSideDrawer.DrawerContent>
+        
+        
+    </tp:RadSideDrawer>-->
+</Page>
