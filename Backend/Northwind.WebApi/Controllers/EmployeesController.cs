@@ -12,7 +12,7 @@ namespace Northwind.WebApi.Controllers
     {
         private readonly IServiceProvider serviceProvider;
 
-        public EmployeesController(IServiceProvider serviceProvider)
+        public EmployeesController(IServiceProvider serviceProvider) : base (serviceProvider)
         {
             this.serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
         }

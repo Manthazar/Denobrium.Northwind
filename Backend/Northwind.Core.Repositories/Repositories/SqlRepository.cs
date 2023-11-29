@@ -18,10 +18,5 @@
 
             return result;
         }
-
-        Task<IEnumerable<T>> ISqlRepository<T>.GetAllAsync(CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

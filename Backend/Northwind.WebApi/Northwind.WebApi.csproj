@@ -23,7 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Northwind.Api.Data\Northwind.Api.Data.csproj" />
     <ProjectReference Include="..\Northwind.Core.Models\Northwind.Core.Models.csproj" />
-    <ProjectReference Include="..\Northwind.Core.Repositories\Northwind.Core.Repositories.csproj" />
+    <ProjectReference Include="..\Northwind.Core.Repositories\Northwind.Sql.Repositories.csproj" />
   </ItemGroup>
 
 </Project>

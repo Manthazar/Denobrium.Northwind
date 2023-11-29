@@ -1,20 +1,25 @@
+using Northwind.Api.Data;
+using Northwind.Core;
 using Northwind.Modules;
 using Northwind.WebApi.ExceptionFilters;
 
 var builder = WebApplication.CreateBuilder(args);
 var sqlConnectionString = builder.Configuration["Northwind:SqlConnectionString"];
 
-// Add services to the container.
-builder.Services.AddControllers(options =>
+var services = builder.Services;
+
+services.AddControllers(options =>
 {
     options.Filters.Add<ParameterExceptionFilter>();
 });
-builder.Services.AddRepositories(sqlConnectionString);
 
+services.AddRepositories(sqlConnectionString);
+services.AddDataModuleComponents();
+services.AddSingletonMapper();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+services.AddEndpointsApiExplorer();
+services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -29,9 +34,8 @@ else
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
+
+

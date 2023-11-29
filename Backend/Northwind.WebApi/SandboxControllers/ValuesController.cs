@@ -6,7 +6,7 @@ namespace Northwind.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : NorthwindController
+    public class ValuesController 
     {
         // GET: api/<ValuesController>
         [HttpGet]

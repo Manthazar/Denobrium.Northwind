@@ -9,11 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Api.Data", "North
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Core.Models", "Northwind.Core.Models\Northwind.Core.Models.csproj", "{C1D928A2-995F-4288-8C4B-0885E9481D99}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Core.Repositories", "Northwind.Core.Repositories\Northwind.Core.Repositories.csproj", "{47C3CB97-FF8E-4A85-B72C-D000C0D0A4DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Sql.Repositories", "Northwind.Core.Repositories\Northwind.Sql.Repositories.csproj", "{47C3CB97-FF8E-4A85-B72C-D000C0D0A4DE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Sql.Migrations", "Northwind.Sql.Migrations\Northwind.Sql.Migrations.csproj", "{10ADDA7E-153A-4011-8527-11A748E5DDB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Core", "Northwind.Core\Northwind.Core.csproj", "{03BDA0DE-A868-4C46-A701-4E5A8EF2134A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Core", "Northwind.Core\Northwind.Core.csproj", "{03BDA0DE-A868-4C46-A701-4E5A8EF2134A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

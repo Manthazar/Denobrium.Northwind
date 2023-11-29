@@ -10,7 +10,7 @@ namespace Northwind.WebApi.Controllers
     {
         private readonly IServiceProvider serviceProvider;
 
-        public HeartbeatController (IServiceProvider serviceProvider)
+        public HeartbeatController (IServiceProvider serviceProvider) : base (serviceProvider)
         {
             this.serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof (serviceProvider));
         }
