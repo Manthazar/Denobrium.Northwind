@@ -94,7 +94,7 @@ namespace Northwind.Core.Repositories.ModelBuilders
 
                 entity.HasMany(d => d.Territories)
                     .WithMany(p => p.Employees)
-                    .UsingEntity<Dictionary<string, object>>(
+                    .UsingEntity<EmployeeTerritory>(
                         "EmployeeTerritory",
                         l => l.HasOne<Territory>().WithMany().HasForeignKey("TerritoryId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_EmployeeTerritories_Territories"),
                         r => r.HasOne<Employee>().WithMany().HasForeignKey("EmployeeId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_EmployeeTerritories_Employees"),
@@ -104,9 +104,10 @@ namespace Northwind.Core.Repositories.ModelBuilders
 
                             j.ToTable("EmployeeTerritories");
 
-                            j.IndexerProperty<int>("EmployeeId").HasColumnName("EmployeeID");
+                            j.Property(e => e.TerritoryID).HasMaxLength(20);
 
-                            j.IndexerProperty<string>("TerritoryId").HasMaxLength(20).HasColumnName("TerritoryID");
+                            j.HasIndex(e => e.EmployeeID);
+                            j.HasIndex(e => e.TerritoryID);
                         });
             });
 
