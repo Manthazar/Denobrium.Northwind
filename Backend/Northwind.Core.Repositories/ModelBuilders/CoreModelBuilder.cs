@@ -63,13 +63,14 @@ namespace Northwind.Core.Repositories.ModelBuilders
                 //        });
             });
 
-            //modelBuilder.Entity<CustomerDemographic>(entity =>
-            //{
-            //    entity.HasKey(e => e.CustomerTypeId).IsClustered(false);
+            modelBuilder.Entity<CustomerType>(entity =>
+            {
+                entity.ToTable("CustomerTypes");
+                entity.HasKey(e => e.CustomerTypeCode).IsClustered(false);
 
-            //    entity.Property(e => e.CustomerTypeId).HasMaxLength(10).HasColumnName("CustomerTypeID").IsFixedLength();
-            //    entity.Property(e => e.CustomerDesc).HasColumnType("ntext");
-            //});
+                entity.Property(e => e.CustomerTypeCode).HasMaxLength(10).HasColumnName("CustomerTypeCode").IsFixedLength();
+                entity.Property(e => e.Description).HasColumnType("ntext");
+            });
 
             modelBuilder.Entity<Employee>(entity =>
             {
