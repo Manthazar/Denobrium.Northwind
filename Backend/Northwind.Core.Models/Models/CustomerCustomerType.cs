@@ -2,12 +2,12 @@
 {
     public partial class CustomerCustomerType
     {
-        public string CustomerId { get; set; } = null!;
+        public string CustomerCode { get; set; } = null!;
 
-        public string CustomerTypeId { get; set; } = null!;
+        public string CustomerTypeCode { get; set; } = null!;
 
         //public virtual ICollection<Customer>? Customers { get; set; }
 
-        //public virtual ICollection<CustomerDemographic>? CustomerTypes { get; set; }
+        //public virtual ICollection<CustomerType>? CustomerTypes { get; set; }
     }
 }

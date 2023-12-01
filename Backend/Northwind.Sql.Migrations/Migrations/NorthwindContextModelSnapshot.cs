@@ -48,7 +48,7 @@ namespace Northwind.Sql.Migrations.Migrations
 
                     b.HasIndex("TerritoryId");
 
-                    b.ToTable("EmployeeTerritories", (string)null);
+                    b.ToTable("EmployeeTerritories");
                 });
 
             modelBuilder.Entity("Northwind.Core.Models.Category", b =>
@@ -75,7 +75,7 @@ namespace Northwind.Sql.Migrations.Migrations
 
                     b.HasIndex(new[] { "CategoryName" }, "CategoryName");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Northwind.Core.Models.Customer", b =>
@@ -86,7 +86,6 @@ namespace Northwind.Sql.Migrations.Migrations
                         .HasColumnName("CustomerCode")
                         .IsFixedLength();
 
-                    b.Property<string>("Address")
                     b.Property<string>("Address")
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
@@ -138,7 +137,7 @@ namespace Northwind.Sql.Migrations.Migrations
 
                     b.HasIndex(new[] { "Region" }, "Region");
 
-                    b.ToTable("Customers", (string)null);
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("Northwind.Core.Models.CustomerType", b =>
@@ -156,7 +155,7 @@ namespace Northwind.Sql.Migrations.Migrations
 
                     SqlServerKeyBuilderExtensions.IsClustered(b.HasKey("CustomerTypeCode"), false);
 
-                    b.ToTable("CustomerTypes", (string)null);
+                    b.ToTable("CustomerTypes");
                 });
 
             modelBuilder.Entity("Northwind.Core.Models.Employee", b =>
@@ -242,7 +241,7 @@ namespace Northwind.Sql.Migrations.Migrations
                     b.HasIndex(new[] { "PostalCode" }, "PostalCode")
                         .HasDatabaseName("PostalCode1");
 
-                    b.ToTable("Employees", (string)null);
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("Northwind.Core.Models.Invoice", b =>
@@ -430,7 +429,7 @@ namespace Northwind.Sql.Migrations.Migrations
 
                     b.HasIndex(new[] { "ShipVia" }, "ShippersOrders");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Northwind.Core.Models.OrderDetail", b =>
@@ -465,7 +464,7 @@ namespace Northwind.Sql.Migrations.Migrations
 
                     b.HasIndex(new[] { "ProductId" }, "ProductsOrder_Details");
 
-                    b.ToTable("Order Details", (string)null);
+                    b.ToTable("Order Details");
                 });
 
             modelBuilder.Entity("Northwind.Core.Models.Product", b =>
@@ -529,7 +528,7 @@ namespace Northwind.Sql.Migrations.Migrations
 
                     b.HasIndex(new[] { "SupplierId" }, "SuppliersProducts");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Northwind.Core.Models.Region", b =>
@@ -548,7 +547,7 @@ namespace Northwind.Sql.Migrations.Migrations
 
                     SqlServerKeyBuilderExtensions.IsClustered(b.HasKey("Id"), false);
 
-                    b.ToTable("Region", (string)null);
+                    b.ToTable("Region");
                 });
 
             modelBuilder.Entity("Northwind.Core.Models.Shipper", b =>
@@ -571,7 +570,7 @@ namespace Northwind.Sql.Migrations.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Shippers", (string)null);
+                    b.ToTable("Shippers");
                 });
 
             modelBuilder.Entity("Northwind.Core.Models.Supplier", b =>
@@ -635,7 +634,7 @@ namespace Northwind.Sql.Migrations.Migrations
                     b.HasIndex(new[] { "PostalCode" }, "PostalCode")
                         .HasDatabaseName("PostalCode2");
 
-                    b.ToTable("Suppliers", (string)null);
+                    b.ToTable("Suppliers");
                 });
 
             modelBuilder.Entity("Northwind.Core.Models.Territory", b =>
@@ -661,7 +660,7 @@ namespace Northwind.Sql.Migrations.Migrations
 
                     b.HasIndex("RegionId");
 
-                    b.ToTable("Territories", (string)null);
+                    b.ToTable("Territories");
                 });
 
             modelBuilder.Entity("EmployeeTerritory", b =>

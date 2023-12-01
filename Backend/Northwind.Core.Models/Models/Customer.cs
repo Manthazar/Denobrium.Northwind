@@ -17,11 +17,16 @@
         public virtual ICollection<Order>? Orders { get; set; }
 
         /// <summary>
-        /// Gets the customer types.
+        /// Gets the customer types of this customer.
         /// </summary>
         /// <remarks>
         /// In sql, this is represented through a link table. 
         /// </remarks>
-        //public virtual ICollection<CustomerDemographic>? CustomerTypes { get; set; }
+        public virtual ICollection<CustomerType>? CustomerTypes { get; set; }
+
+        /// <summary>
+        /// Internal link table navigation so that model builder can maintain potential migrations of it.
+        /// </summary>
+        //internal virtual ICollection<CustomerCustomerType>? CustomerTypeLinks { get; set; }
     }
 }

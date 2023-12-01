@@ -5,7 +5,10 @@ It is sort-of a great thing that this database comes not only with data, but som
 
 Identifier changes:
 _A single id type enables a single generic access mechanism allows for less thinking. Alternative ids, such as human readable codes can remain, but the 'Code' suffix convention. The primary code is just called 'Code' _
-
 More rationale is provided into the migration themselves.
+
+Schema changes:
+- There is some mess around 'CustomerDemographic' and accompaning link table where standard conventions are not followed. Moreover, 'CustomerDemographic' seems actually to be a simple type table.
+
 
 

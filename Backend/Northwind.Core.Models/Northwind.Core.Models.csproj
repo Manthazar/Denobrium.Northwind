@@ -1,28 +1,32 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <AssemblyName>Northwind.Core.Models</AssemblyName>
-    <RootNamespace>Northwind.Core</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<AssemblyName>Northwind.Core.Models</AssemblyName>
+		<RootNamespace>Northwind.Core</RootNamespace>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Models\Reporting\AlphabeticalListOfProduct.cs" />
-    <Compile Remove="Models\Reporting\CurrentProductList.cs" />
-    <Compile Remove="Models\Reporting\CustomerAndSuppliersByCity.cs" />
-    <Compile Remove="Models\Reporting\CustomerDemographic.cs" />
-    <Compile Remove="Models\Reporting\OrderDetailsExtended.cs" />
-    <Compile Remove="Models\Reporting\OrdersQry.cs" />
-    <Compile Remove="Models\Reporting\OrderSubtotal.cs" />
-    <Compile Remove="Models\Reporting\ProductsAboveAveragePrice.cs" />
-    <Compile Remove="Models\Reporting\ProductsByCategory.cs" />
-    <Compile Remove="Models\Reporting\QuarterlyOrder.cs" />
-    <Compile Remove="Models\Reporting\SalesByCategory.cs" />
-    <Compile Remove="Models\Reporting\SalesTotalsByAmount.cs" />
-    <Compile Remove="Models\Reporting\SummaryOfSalesByQuarter.cs" />
-    <Compile Remove="Models\Reporting\SummaryOfSalesByYear.cs" />
-  </ItemGroup>
+	<ItemGroup>
+		<InternalsVisibleTo Include="Northwind.Sql.Repositories" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Remove="Models\Reporting\AlphabeticalListOfProduct.cs" />
+		<Compile Remove="Models\Reporting\CurrentProductList.cs" />
+		<Compile Remove="Models\Reporting\CustomerAndSuppliersByCity.cs" />
+		<Compile Remove="Models\Reporting\CustomerDemographic.cs" />
+		<Compile Remove="Models\Reporting\OrderDetailsExtended.cs" />
+		<Compile Remove="Models\Reporting\OrdersQry.cs" />
+		<Compile Remove="Models\Reporting\OrderSubtotal.cs" />
+		<Compile Remove="Models\Reporting\ProductsAboveAveragePrice.cs" />
+		<Compile Remove="Models\Reporting\ProductsByCategory.cs" />
+		<Compile Remove="Models\Reporting\QuarterlyOrder.cs" />
+		<Compile Remove="Models\Reporting\SalesByCategory.cs" />
+		<Compile Remove="Models\Reporting\SalesTotalsByAmount.cs" />
+		<Compile Remove="Models\Reporting\SummaryOfSalesByQuarter.cs" />
+		<Compile Remove="Models\Reporting\SummaryOfSalesByYear.cs" />
+	</ItemGroup>
 
 </Project>
