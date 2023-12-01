@@ -142,6 +142,27 @@ namespace Northwind.Sql.Migrations.Migrations
                     b.ToTable("Customers");
                 });
 
+            modelBuilder.Entity("Northwind.Core.Models.CustomerCustomerType", b =>
+            {
+                b.Property<string>("CustomerCode")
+                    .HasMaxLength(5)
+                    .HasColumnType("nchar(5)")
+                    .HasColumnName("CustomerCode")
+                    .IsFixedLength();
+
+                b.Property<string>("CustomerTypeCode")
+                    .HasMaxLength(10)
+                    .HasColumnType("nchar(10)")
+                    .HasColumnName("CustomerTypeCode")
+                    .IsFixedLength();
+
+                b.HasKey("CustomerCode", "CustomerTypeCode");
+
+                SqlServerKeyBuilderExtensions.IsClustered(b.HasKey("CustomerCode", "CustomerTypeCode"), false);
+
+                b.ToTable("CustomerCustomerDemo");
+            });
+
             modelBuilder.Entity("Northwind.Core.Models.CustomerType", b =>
                 {
                     b.Property<string>("CustomerTypeCode")
@@ -679,6 +700,21 @@ namespace Northwind.Sql.Migrations.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_EmployeeTerritories_Territories");
                 });
+
+            modelBuilder.Entity("Northwind.Core.Models.CustomerCustomerType", b =>
+            {
+                b.HasOne("Northwind.Core.Models.Customer", null)
+                    .WithMany()
+                    .HasForeignKey("CustomerCode")
+                    .IsRequired()
+                    .HasConstraintName("FK_CustomerCustomerDemo_Customers");
+
+                b.HasOne("Northwind.Core.Models.CustomerType", null)
+                    .WithMany()
+                    .HasForeignKey("CustomerTypeCode")
+                    .IsRequired()
+                    .HasConstraintName("FK_CustomerCustomerDemo");
+            });
 
             modelBuilder.Entity("Northwind.Core.Models.Employee", b =>
                 {
