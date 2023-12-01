@@ -142,7 +142,7 @@ namespace Northwind.Sql.Migrations.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("Northwind.Core.Models.CustomerDemographic", b =>
+            modelBuilder.Entity("Northwind.Core.Models.CustomerType", b =>
                 {
                     b.Property<string>("CustomerTypeCode")
                         .HasMaxLength(10)
