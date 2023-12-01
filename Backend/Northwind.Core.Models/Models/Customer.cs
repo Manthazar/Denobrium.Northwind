@@ -2,12 +2,6 @@
 {
     public partial class Customer : IWithCode
     {
-        public Customer()
-        {
-            Orders = new HashSet<Order>();
-            //CustomerTypes = new HashSet<CustomerDemographic>();
-        }
-
         public string Code { get; set; } = null!;
         public string CompanyName { get; set; } = null!;
         public string? ContactName { get; set; }
@@ -20,8 +14,14 @@
         public string? Phone { get; set; }
         public string? Fax { get; set; }
 
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Order>? Orders { get; set; }
 
-        //public virtual ICollection<CustomerDemographic> CustomerTypes { get; set; }
+        /// <summary>
+        /// Gets the customer types.
+        /// </summary>
+        /// <remarks>
+        /// In sql, this is represented through a link table. 
+        /// </remarks>
+        //public virtual ICollection<CustomerDemographic>? CustomerTypes { get; set; }
     }
 }

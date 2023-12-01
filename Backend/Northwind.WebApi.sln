@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Sql.Migrations", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Core", "Northwind.Core\Northwind.Core.csproj", "{03BDA0DE-A868-4C46-A701-4E5A8EF2134A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Tier", "Data Tier", "{6BE7D419-37AA-42B3-8011-1DE8BF393C76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +50,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{47C3CB97-FF8E-4A85-B72C-D000C0D0A4DE} = {6BE7D419-37AA-42B3-8011-1DE8BF393C76}
+		{10ADDA7E-153A-4011-8527-11A748E5DDB4} = {6BE7D419-37AA-42B3-8011-1DE8BF393C76}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9E41CEA6-850D-44EB-AEAA-18CC823B64D3}

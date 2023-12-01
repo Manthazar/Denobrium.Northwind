@@ -28,7 +28,7 @@ namespace Northwind.Core.Repositories.ModelBuilders
                 entity.HasKey(e => e.Code);
 
                 entity.Property(e => e.Code).HasMaxLength(5).HasColumnName("CustomerCode").IsFixedLength();
-                
+
                 entity.Property(e => e.Address).HasMaxLength(60);
                 entity.Property(e => e.City).HasMaxLength(15);
                 entity.Property(e => e.CompanyName).HasMaxLength(40);
@@ -63,6 +63,14 @@ namespace Northwind.Core.Repositories.ModelBuilders
                 //        });
             });
 
+            //modelBuilder.Entity<CustomerDemographic>(entity =>
+            //{
+            //    entity.HasKey(e => e.CustomerTypeId).IsClustered(false);
+
+            //    entity.Property(e => e.CustomerTypeId).HasMaxLength(10).HasColumnName("CustomerTypeID").IsFixedLength();
+            //    entity.Property(e => e.CustomerDesc).HasColumnType("ntext");
+            //});
+
             modelBuilder.Entity<Employee>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("EmployeeID");
@@ -92,23 +100,22 @@ namespace Northwind.Core.Repositories.ModelBuilders
                     .HasForeignKey(d => d.ReportsTo)
                     .HasConstraintName("FK_Employees_Employees");
 
-                entity.HasMany(d => d.Territories)
-                    .WithMany(p => p.Employees)
-                    .UsingEntity<EmployeeTerritory>(
-                        "EmployeeTerritory",
-                        l => l.HasOne<Territory>().WithMany().HasForeignKey("TerritoryId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_EmployeeTerritories_Territories"),
-                        r => r.HasOne<Employee>().WithMany().HasForeignKey("EmployeeId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_EmployeeTerritories_Employees"),
-                        j =>
-                        {
-                            j.HasKey("EmployeeId", "TerritoryId").IsClustered(false);
+                entity.HasMany(d => d.Territories).WithMany(p => p.Employees)
+                            .UsingEntity<EmployeeTerritory>(
+                                "EmployeeTerritory",
+                                l => l.HasOne<Territory>().WithMany().HasForeignKey("TerritoryId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_EmployeeTerritories_Territories"),
+                                r => r.HasOne<Employee>().WithMany().HasForeignKey("EmployeeId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_EmployeeTerritories_Employees"),
+                                j =>
+                                {
+                                    j.HasKey("EmployeeId", "TerritoryId").IsClustered(false);
 
-                            j.ToTable("EmployeeTerritories");
+                                    j.ToTable("EmployeeTerritories");
 
-                            j.Property(e => e.TerritoryID).HasMaxLength(20);
+                                    j.Property(e => e.TerritoryID).HasMaxLength(20);
 
-                            j.HasIndex(e => e.EmployeeID);
-                            j.HasIndex(e => e.TerritoryID);
-                        });
+                                    j.HasIndex(e => e.EmployeeID);
+                                    j.HasIndex(e => e.TerritoryID);
+                                });
             });
 
             modelBuilder.Entity<Invoice>(entity =>
