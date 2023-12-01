@@ -13,7 +13,7 @@ namespace Northwind.Sql.Migrations.Migrations
 {
     [DbContext(typeof(NorthwindContext))]
     [Migration("20231124081456_9_RenameCustomerId")]
-    partial class _9_RenameCustomerId
+    partial class Mig_9_RenameCustomerId
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

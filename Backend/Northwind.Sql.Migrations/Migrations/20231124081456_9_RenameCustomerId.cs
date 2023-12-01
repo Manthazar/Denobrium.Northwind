@@ -4,7 +4,10 @@
 
 namespace Northwind.Sql.Migrations.Migrations
 {
-    public partial class _9_RenameCustomerId : Migration
+    /// <summary>
+    /// Renames the customer id column to customerCode as a test for EF migrations.
+    /// </summary>
+    public partial class Mig_9_RenameCustomerId : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

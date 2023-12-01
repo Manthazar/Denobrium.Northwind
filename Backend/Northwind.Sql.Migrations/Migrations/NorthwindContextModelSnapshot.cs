@@ -75,7 +75,7 @@ namespace Northwind.Sql.Migrations.Migrations
 
                     b.HasIndex(new[] { "CategoryName" }, "CategoryName");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("Northwind.Core.Models.Customer", b =>
@@ -137,7 +137,7 @@ namespace Northwind.Sql.Migrations.Migrations
 
                     b.HasIndex(new[] { "Region" }, "Region");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("Northwind.Core.Models.Employee", b =>
@@ -223,7 +223,7 @@ namespace Northwind.Sql.Migrations.Migrations
                     b.HasIndex(new[] { "PostalCode" }, "PostalCode")
                         .HasDatabaseName("PostalCode1");
 
-                    b.ToTable("Employees");
+                    b.ToTable("Employees", (string)null);
                 });
 
             modelBuilder.Entity("Northwind.Core.Models.Invoice", b =>
@@ -411,7 +411,7 @@ namespace Northwind.Sql.Migrations.Migrations
 
                     b.HasIndex(new[] { "ShipVia" }, "ShippersOrders");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("Northwind.Core.Models.OrderDetail", b =>
@@ -510,7 +510,7 @@ namespace Northwind.Sql.Migrations.Migrations
 
                     b.HasIndex(new[] { "SupplierId" }, "SuppliersProducts");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("Northwind.Core.Models.Region", b =>
@@ -552,7 +552,7 @@ namespace Northwind.Sql.Migrations.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Shippers");
+                    b.ToTable("Shippers", (string)null);
                 });
 
             modelBuilder.Entity("Northwind.Core.Models.Supplier", b =>
@@ -616,7 +616,7 @@ namespace Northwind.Sql.Migrations.Migrations
                     b.HasIndex(new[] { "PostalCode" }, "PostalCode")
                         .HasDatabaseName("PostalCode2");
 
-                    b.ToTable("Suppliers");
+                    b.ToTable("Suppliers", (string)null);
                 });
 
             modelBuilder.Entity("Northwind.Core.Models.Territory", b =>
@@ -642,7 +642,7 @@ namespace Northwind.Sql.Migrations.Migrations
 
                     b.HasIndex("RegionId");
 
-                    b.ToTable("Territories");
+                    b.ToTable("Territories", (string)null);
                 });
 
             modelBuilder.Entity("EmployeeTerritory", b =>
