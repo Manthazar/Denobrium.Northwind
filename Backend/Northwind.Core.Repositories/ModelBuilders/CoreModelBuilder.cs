@@ -63,11 +63,11 @@ namespace Northwind.Core.Repositories.ModelBuilders
                 entity.HasMany(d => d.CustomerTypes)
                     .WithMany(p => p.Customers)
                     .UsingEntity<CustomerCustomerType>(
-                        l => l.HasOne<CustomerType>().WithMany().HasForeignKey(l=> l.CustomerTypeCode).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_CustomerCustomerDemo"),
-                        r => r.HasOne<Customer>().WithMany().HasForeignKey(r=> r.CustomerCode).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_CustomerCustomerDemo_Customers"),
+                        l => l.HasOne<CustomerType>().WithMany().HasForeignKey(l=> l.CustomerTypeCode).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_CustomerCustomerType_CustomerTypes"),
+                        r => r.HasOne<Customer>().WithMany().HasForeignKey(r=> r.CustomerCode).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_CustomerCustomerType_Customers"),
                         e =>
                         {
-                            e.ToTable("CustomerCustomerDemo");
+                            e.ToTable("CustomerCustomerTypes");
                             e.HasKey("CustomerCode", "CustomerTypeCode").IsClustered(false);
 
                             e.Property(e=> e.CustomerCode).HasMaxLength(5).HasColumnName("CustomerCode").IsFixedLength();
