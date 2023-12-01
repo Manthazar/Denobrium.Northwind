@@ -4,7 +4,7 @@
 
 namespace Northwind.Sql.Migrations.Migrations
 {
-    public partial class _6_AlignCustomerTypeConventions : Migration
+    public partial class Mig_6_AlignCustomerTypeConventions : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

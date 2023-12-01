@@ -13,7 +13,7 @@ namespace Northwind.Sql.Migrations.Migrations
 {
     [DbContext(typeof(NorthwindContext))]
     [Migration("20231201154855_6_AlignCustomerTypeConventions")]
-    partial class _6_AlignCustomerTypeConventions
+    partial class Mig_6_AlignCustomerTypeConventions
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
