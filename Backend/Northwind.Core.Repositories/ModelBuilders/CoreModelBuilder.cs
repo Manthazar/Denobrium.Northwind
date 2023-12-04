@@ -48,21 +48,6 @@ namespace Northwind.Core.Repositories.ModelBuilders
 
                 entity.HasAlternateKey(e => e.Code);
 
-                //entity.HasMany(d => d.CustomerTypes)
-                //    .WithMany(p => p.Customers)
-                //    .UsingEntity<Dictionary<string, object>>(
-                //        "CustomerCustomerDemo",
-                //        l => l.HasOne<CustomerType>().WithMany().HasForeignKey("CustomerTypeCode").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_CustomerType_Code"),
-                //        r => r.HasOne<Customer>().WithMany().HasForeignKey("CustomerId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_CustomerCustomerType_CustomerCode"),
-                //        j =>
-                //        {
-                //            j.HasKey("CustomerId", "CustomerTypeCode").IsClustered(false);
-                //            j.ToTable("CustomerCustomerDemo");
-
-                //            j.IndexerProperty<string>("CustomerId").HasMaxLength(5).HasColumnName("CustomerID").IsFixedLength();
-                //            j.IndexerProperty<string>("CustomerTypeId").HasMaxLength(10).HasColumnName("CustomerTypeID").IsFixedLength();
-                //        });
-
                 entity.HasMany(d => d.CustomerTypes)
                     .WithMany(p => p.Customers)
                     .UsingEntity<CustomerCustomerType>(
@@ -75,13 +60,7 @@ namespace Northwind.Core.Repositories.ModelBuilders
 
                             e.Property(e=> e.CustomerCode).HasMaxLength(5).HasColumnName("CustomerCode").IsFixedLength();
                             e.Property(e=> e.CustomerTypeCode).HasMaxLength(10).HasColumnName("CustomerTypeCode").IsFixedLength();
-
-                            //e.HasMany(e => e.Customers).WithMany(e=> e.CustomerTypeLinks);
-                            //e.HasMany(e => e.CustomerTypes).WithMany(e => e.CustomerTypeLinks);
-
-                            //e.HasIndex(e => e.CustomerCode);
-                            //e.HasIndex(e => e.CustomerTypeCode);
-                        });
+                    });
             });
 
             modelBuilder.Entity<CustomerType>(entity =>
@@ -213,7 +192,7 @@ namespace Northwind.Core.Repositories.ModelBuilders
                 // These navigations must then be included into the query.
                 entity.HasOne(o => o.Customer)
                     .WithMany(c => c.Orders)
-                    .HasPrincipalKey(c => c.Code)
+                    .HasForeignKey(c => c.CustomerCode)
                     .HasConstraintName("FK_Orders_Customers");
 
                 entity.HasOne(d => d.Employee)

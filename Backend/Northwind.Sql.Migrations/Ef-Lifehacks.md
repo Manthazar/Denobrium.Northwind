@@ -11,7 +11,41 @@ The latest: `database update`
 
 
 ## Rollback a migration
-`add-migration "tbd"`
+You need to select the migration -1 and ensure that the database is in the state prior the migration you want to remove.
+`update-database "MIG_2"`
+
+The migrations after the selected one (in this example MIG_2) can be removed one by one.
+`remove-migration`
+
+# Relations
+
+## Create foreign key relation between a property and a primary key
+
+Example: An order has a customer and a customer has many orders
+`public void Build(ModelBuilder builder)
+{
+       builder.Entity<Order>(entity =>
+            {
+            entity.HasOne(o => o.Customer)
+                    .WithMany(c => c.Orders)
+                    .HasForeignKey(c => c.Id)
+                    .HasConstraintName("FK_Orders_Customers");
+            }
+}
+
+## Create foreign key relation between a property and a primary key
+
+Example: An order has a customer with a certain code (alternate key) and a customer has many orders
+`public void Build(ModelBuilder builder)
+{
+       builder.Entity<Order>(entity =>
+            {
+            entity.HasOne(o => o.Customer)
+                    .WithMany(c => c.Orders)
+                    .HasPrincipalKey(c => c.CustomerCode)  // <-- need to use 'principal key here'
+                    .HasConstraintName("FK_Orders_Customers");
+            }
+}
 
 
 # Initialization
