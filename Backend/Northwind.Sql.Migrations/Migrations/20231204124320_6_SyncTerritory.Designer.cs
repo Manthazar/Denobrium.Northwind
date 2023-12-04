@@ -13,7 +13,7 @@ namespace Northwind.Sql.Migrations.Migrations
 {
     [DbContext(typeof(NorthwindContext))]
     [Migration("20231204124320_6_SyncTerritory")]
-    partial class _6_SyncTerritory
+    partial class Mig_6_SyncTerritory
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
