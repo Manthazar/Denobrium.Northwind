@@ -9,6 +9,7 @@ More rationale is provided into the migration themselves.
 
 Schema changes:
 - There is some mess around 'CustomerDemographic' and accompaning link table where standard conventions are not followed. Moreover, 'CustomerDemographic' seems actually to be a simple type table.
+- Abbreviations are avoided, i.e. TypeDesc --> Description
 
 
 

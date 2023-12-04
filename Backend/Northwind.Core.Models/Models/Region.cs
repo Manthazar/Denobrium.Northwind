@@ -8,7 +8,7 @@
         }
 
         public int Id { get; set; }
-        public string RegionDescription { get; set; } = null!;
+        public string Description { get; set; } = null!;
 
         public virtual ICollection<Territory> Territories { get; set; }
     }

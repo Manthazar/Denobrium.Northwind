@@ -25,8 +25,9 @@ namespace Northwind.Core.Repositories.ModelBuilders
 
             modelBuilder.Entity<Customer>(entity =>
             {
-                entity.HasKey(e => e.Code);
+                entity.HasKey(e => e.Id);
 
+                entity.Property(e => e.Id).HasColumnName("CustomerID");
                 entity.Property(e => e.Code).HasMaxLength(5).HasColumnName("CustomerCode").IsFixedLength();
 
                 entity.Property(e => e.Address).HasMaxLength(60);
@@ -44,6 +45,8 @@ namespace Northwind.Core.Repositories.ModelBuilders
                 entity.HasIndex(e => e.CompanyName, "CompanyName");
                 entity.HasIndex(e => e.PostalCode, "PostalCode");
                 entity.HasIndex(e => e.Region, "Region");
+
+                entity.HasAlternateKey(e => e.Code);
 
                 //entity.HasMany(d => d.CustomerTypes)
                 //    .WithMany(p => p.Customers)
@@ -64,7 +67,7 @@ namespace Northwind.Core.Repositories.ModelBuilders
                     .WithMany(p => p.Customers)
                     .UsingEntity<CustomerCustomerType>(
                         l => l.HasOne<CustomerType>().WithMany().HasForeignKey(l=> l.CustomerTypeCode).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_CustomerCustomerType_CustomerTypes"),
-                        r => r.HasOne<Customer>().WithMany().HasForeignKey(r=> r.CustomerCode).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_CustomerCustomerType_Customers"),
+                        r => r.HasOne<Customer>().WithMany().HasPrincipalKey(r=> r.Code).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_CustomerCustomerType_Customers"),
                         e =>
                         {
                             e.ToTable("CustomerCustomerTypes");
@@ -119,22 +122,21 @@ namespace Northwind.Core.Repositories.ModelBuilders
                     .HasForeignKey(d => d.ReportsTo)
                     .HasConstraintName("FK_Employees_Employees");
 
-                entity.HasMany(d => d.Territories).WithMany(p => p.Employees)
-                            .UsingEntity<EmployeeTerritory>(
-                                "EmployeeTerritory",
-                                l => l.HasOne<Territory>().WithMany().HasForeignKey("TerritoryId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_EmployeeTerritories_Territories"),
-                                r => r.HasOne<Employee>().WithMany().HasForeignKey("EmployeeId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_EmployeeTerritories_Employees"),
-                                j =>
-                                {
-                                    j.HasKey("EmployeeId", "TerritoryId").IsClustered(false);
+                entity.HasMany(d => d.Territories)
+                    .WithMany(p => p.Employees)
+                    .UsingEntity<EmployeeTerritory>(
+                        l => l.HasOne<Territory>().WithMany().HasPrincipalKey(e=> e.Code).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_EmployeeTerritories_Territories"),
+                        r => r.HasOne<Employee>().WithMany().HasForeignKey(e=> e.EmployeeID).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_EmployeeTerritories_Employees"),
+                        e =>
+                        {
+                            e.ToTable("EmployeeTerritories");
+                            e.HasKey("EmployeeID", "TerritoryCode").IsClustered(false);
 
-                                    j.ToTable("EmployeeTerritories");
+                            e.Property(e => e.TerritoryCode).HasMaxLength(20);
 
-                                    j.Property(e => e.TerritoryID).HasMaxLength(20);
-
-                                    j.HasIndex(e => e.EmployeeID);
-                                    j.HasIndex(e => e.TerritoryID);
-                                });
+                            e.HasIndex(e => e.EmployeeID);
+                            e.HasIndex(e => e.TerritoryCode);
+                        });
             });
 
             modelBuilder.Entity<Invoice>(entity =>
@@ -176,9 +178,9 @@ namespace Northwind.Core.Repositories.ModelBuilders
             modelBuilder.Entity<Order>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("OrderID");
-                entity.Property(e => e.CustomerId)
+                entity.Property(e => e.CustomerCode)
                     .HasMaxLength(5)
-                    .HasColumnName("CustomerID")
+                    .HasColumnName("CustomerCode")
                     .IsFixedLength();
 
                 entity.Property(e => e.EmployeeId).HasColumnName("EmployeeID");
@@ -197,8 +199,8 @@ namespace Northwind.Core.Repositories.ModelBuilders
                 entity.Property(e => e.ShipRegion).HasMaxLength(15);
                 entity.Property(e => e.ShippedDate).HasColumnType("datetime");
 
-                entity.HasIndex(e => e.CustomerId, "CustomerID");
-                entity.HasIndex(e => e.CustomerId, "CustomersOrders");
+                entity.HasIndex(e => e.CustomerCode, "CustomerCode");
+                entity.HasIndex(e => e.CustomerCode, "CustomersOrders");
                 entity.HasIndex(e => e.EmployeeId, "EmployeeID");
                 entity.HasIndex(e => e.EmployeeId, "EmployeesOrders");
                 entity.HasIndex(e => e.OrderDate, "OrderDate");
@@ -206,9 +208,12 @@ namespace Northwind.Core.Repositories.ModelBuilders
                 entity.HasIndex(e => e.ShippedDate, "ShippedDate");
                 entity.HasIndex(e => e.ShipVia, "ShippersOrders");
 
-                entity.HasOne(d => d.Customer)
-                    .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.CustomerId)
+                // Example of a navigation property  which uses a principal key instead of the primary key.
+                // Note that the principle key must still remain unique, i.e. one to many relations on principal keys are not supported.
+                // These navigations must then be included into the query.
+                entity.HasOne(o => o.Customer)
+                    .WithMany(c => c.Orders)
+                    .HasPrincipalKey(c => c.Code)
                     .HasConstraintName("FK_Orders_Customers");
 
                 entity.HasOne(d => d.Employee)
@@ -224,8 +229,7 @@ namespace Northwind.Core.Repositories.ModelBuilders
 
             modelBuilder.Entity<OrderDetail>(entity =>
             {
-                entity.HasKey(e => new { e.OrderId, e.ProductId })
-                    .HasName("PK_Order_Details");
+                entity.HasKey(e => new { e.OrderId, e.ProductId }).HasName("PK_Order_Details");
 
                 entity.ToTable("Order Details");
 
@@ -299,7 +303,7 @@ namespace Northwind.Core.Repositories.ModelBuilders
                     .ValueGeneratedNever()
                     .HasColumnName("RegionID");
 
-                entity.Property(e => e.RegionDescription)
+                entity.Property(e => e.Description)
                     .HasMaxLength(50)
                     .IsFixedLength();
             });
@@ -332,18 +336,14 @@ namespace Northwind.Core.Repositories.ModelBuilders
 
             modelBuilder.Entity<Territory>(entity =>
             {
-                entity.HasKey(e => e.TerritoryId)
-                    .IsClustered(false);
+                entity.HasKey(e => e.Id);
 
-                entity.Property(e => e.TerritoryId)
-                    .HasMaxLength(20)
-                    .HasColumnName("TerritoryID");
-
+                entity.Property(e => e.Id).HasColumnName("TerritoryID");
+                entity.Property(e => e.Code).HasMaxLength(20).HasColumnName("TerritoryCode");
                 entity.Property(e => e.RegionId).HasColumnName("RegionID");
+                entity.Property(e => e.TerritoryDescription).HasMaxLength(50).IsFixedLength();
 
-                entity.Property(e => e.TerritoryDescription)
-                    .HasMaxLength(50)
-                    .IsFixedLength();
+                entity.HasIndex(e => e.Code).IsClustered(false);
 
                 entity.HasOne(d => d.Region)
                     .WithMany(p => p.Territories)
@@ -351,6 +351,7 @@ namespace Northwind.Core.Repositories.ModelBuilders
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Territories_Region");
             });
+         
         }
     }
 }

@@ -4,6 +4,6 @@
     {
         public int EmployeeID { get; set; }
 
-        public string TerritoryID { get; set; } = null!;
+        public string TerritoryCode { get; set; } = null!;
     }
 }

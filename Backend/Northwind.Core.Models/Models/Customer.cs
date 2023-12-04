@@ -1,7 +1,8 @@
 ﻿namespace Northwind.Core.Models
 {
-    public partial class Customer : IWithCode
+    public partial class Customer : IWithCode, IWithId
     {
+        public int Id { get; set; }
         public string Code { get; set; } = null!;
         public string CompanyName { get; set; } = null!;
         public string? ContactName { get; set; }
