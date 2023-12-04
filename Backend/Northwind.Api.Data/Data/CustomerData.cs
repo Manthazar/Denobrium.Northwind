@@ -1,8 +1,11 @@
 ﻿namespace Northwind.Api.Data.Data
 {
+    /// <summary>
+    /// The data object is primarily a (full) detail object of customer.
+    /// </summary>
     internal class CustomerData
     {
-        public string CustomerId { get; set; } = null!;
+        public string Id { get; set; } = null!;
         public string CompanyName { get; set; } = null!;
         public string? ContactName { get; set; }
         public string? ContactTitle { get; set; }

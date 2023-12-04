@@ -8,8 +8,11 @@ namespace Northwind.Api.Data.Mapping
     {
         public CustomerProfile()
         {
-            CreateMap<Customer, CustomerData>();
-            CreateMap<Customer, CustomerInfo>();
+            CreateMap<Customer, CustomerData>()
+                .ForMember(c => c.Id, opts => opts.MapFrom(s => s.Id));
+
+            CreateMap<Customer, CustomerInfo>()
+                .ForMember(c => c.CustomerId, opts => opts.MapFrom(s => s.Id));
         }
     }
 }

@@ -1,5 +1,8 @@
 ﻿namespace Northwind.Api.Data.Data
 {
+    /// <summary>
+    /// The info data object is a blended data object for a particular use cases having the root Customer (there may be several info type objects for several use cases).
+    /// </summary>
     public class CustomerInfo
     {
         public string CustomerId { get; set; } = null!;

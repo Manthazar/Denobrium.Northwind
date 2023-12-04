@@ -170,7 +170,7 @@ namespace Northwind.Sql.ModelBuilders
                 // These navigations must then be included into the query.
                 entity.HasOne(o => o.Customer)
                     .WithMany(c => c.Orders)
-                    .HasForeignKey(c => c.CustomerCode)
+                    .HasPrincipalKey(c => c.Code)
                     .HasConstraintName("FK_Orders_Customers");
 
                 entity.HasOne(d => d.Employee)
