@@ -1,6 +1,6 @@
 ﻿using Northwind.Core.Models;
 
-namespace Northwind.Core.Repositories.ModelBuilders
+namespace Northwind.Sql.ModelBuilders
 {
     /// <summary>
     /// This builder builds the EF model for the core tables/ entities. 
@@ -13,19 +13,12 @@ namespace Northwind.Core.Repositories.ModelBuilders
         /// <param name="builder"></param>
         internal static void BuildInto(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Category>(entity =>
-            {
-                entity.Property(e => e.Id).HasColumnName("CategoryID");
-                entity.Property(e => e.CategoryName).HasMaxLength(15);
-                entity.Property(e => e.Description).HasColumnType("ntext");
-                entity.Property(e => e.Picture).HasColumnType("image");
-
-                entity.HasIndex(e => e.CategoryName, "CategoryName");
-            });
-
             modelBuilder.Entity<Customer>(entity =>
             {
+                entity.ToTable("Customers");
+
                 entity.HasKey(e => e.Id);
+                entity.HasAlternateKey(e => e.Code);
 
                 entity.Property(e => e.Id).HasColumnName("CustomerID");
                 entity.Property(e => e.Code).HasMaxLength(5).HasColumnName("CustomerCode").IsFixedLength();
@@ -46,8 +39,7 @@ namespace Northwind.Core.Repositories.ModelBuilders
                 entity.HasIndex(e => e.PostalCode, "PostalCode");
                 entity.HasIndex(e => e.Region, "Region");
 
-                entity.HasAlternateKey(e => e.Code);
-
+                // The below is demonstrating the direct loading of one to  many relations while skipping the link table (CustomerCustomerType)
                 entity.HasMany(d => d.CustomerTypes)
                     .WithMany(p => p.Customers)
                     .UsingEntity<CustomerCustomerType>(
@@ -63,17 +55,10 @@ namespace Northwind.Core.Repositories.ModelBuilders
                     });
             });
 
-            modelBuilder.Entity<CustomerType>(entity =>
-            {
-                entity.ToTable("CustomerTypes");
-                entity.HasKey(e => e.CustomerTypeCode).IsClustered(false);
-
-                entity.Property(e => e.CustomerTypeCode).HasMaxLength(10).HasColumnName("CustomerTypeCode").IsFixedLength();
-                entity.Property(e => e.Description).HasColumnType("ntext");
-            });
-
             modelBuilder.Entity<Employee>(entity =>
             {
+                entity.ToTable("Employees");
+
                 entity.Property(e => e.Id).HasColumnName("EmployeeID");
 
                 entity.Property(e => e.Address).HasMaxLength(60);
@@ -101,6 +86,7 @@ namespace Northwind.Core.Repositories.ModelBuilders
                     .HasForeignKey(d => d.ReportsTo)
                     .HasConstraintName("FK_Employees_Employees");
 
+                // The below is demonstrating the direct loading of one to  many relations while skipping the link table (EmployeeTerritory)
                 entity.HasMany(d => d.Territories)
                     .WithMany(p => p.Employees)
                     .UsingEntity<EmployeeTerritory>(
@@ -120,17 +106,14 @@ namespace Northwind.Core.Repositories.ModelBuilders
 
             modelBuilder.Entity<Invoice>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToView("Invoices");
+
+                entity.HasNoKey();
 
                 entity.Property(e => e.Address).HasMaxLength(60);
                 entity.Property(e => e.City).HasMaxLength(15);
                 entity.Property(e => e.Country).HasMaxLength(15);
-                entity.Property(e => e.CustomerId)
-                    .HasMaxLength(5)
-                    .HasColumnName("CustomerID")
-                    .IsFixedLength();
+                entity.Property(e => e.CustomerId).HasMaxLength(5).HasColumnName("CustomerID").IsFixedLength();
 
                 entity.Property(e => e.CustomerName).HasMaxLength(40);
                 entity.Property(e => e.ExtendedPrice).HasColumnType("money");
@@ -156,17 +139,12 @@ namespace Northwind.Core.Repositories.ModelBuilders
 
             modelBuilder.Entity<Order>(entity =>
             {
+                entity.ToTable("Orders");
+
                 entity.Property(e => e.Id).HasColumnName("OrderID");
-                entity.Property(e => e.CustomerCode)
-                    .HasMaxLength(5)
-                    .HasColumnName("CustomerCode")
-                    .IsFixedLength();
-
+                entity.Property(e => e.CustomerCode).HasMaxLength(5).HasColumnName("CustomerCode").IsFixedLength();
                 entity.Property(e => e.EmployeeId).HasColumnName("EmployeeID");
-
-                entity.Property(e => e.Freight)
-                    .HasColumnType("money")
-                    .HasDefaultValueSql("((0))");
+                entity.Property(e => e.Freight).HasColumnType("money").HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.OrderDate).HasColumnType("datetime");
                 entity.Property(e => e.RequiredDate).HasColumnType("datetime");
@@ -208,19 +186,19 @@ namespace Northwind.Core.Repositories.ModelBuilders
 
             modelBuilder.Entity<OrderDetail>(entity =>
             {
-                entity.HasKey(e => new { e.OrderId, e.ProductId }).HasName("PK_Order_Details");
-
                 entity.ToTable("Order Details");
 
-                entity.HasIndex(e => e.OrderId, "OrderID");
-                entity.HasIndex(e => e.OrderId, "OrdersOrder_Details");
-                entity.HasIndex(e => e.ProductId, "ProductID");
-                entity.HasIndex(e => e.ProductId, "ProductsOrder_Details");
+                entity.HasKey(e => new { e.OrderId, e.ProductId }).HasName("PK_Order_Details");
 
                 entity.Property(e => e.OrderId).HasColumnName("OrderID");
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
                 entity.Property(e => e.Quantity).HasDefaultValueSql("((1))");
                 entity.Property(e => e.UnitPrice).HasColumnType("money");
+
+                entity.HasIndex(e => e.OrderId, "OrderID");
+                entity.HasIndex(e => e.OrderId, "OrdersOrder_Details");
+                entity.HasIndex(e => e.ProductId, "ProductID");
+                entity.HasIndex(e => e.ProductId, "ProductsOrder_Details");
 
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.OrderDetails)
@@ -238,6 +216,8 @@ namespace Northwind.Core.Repositories.ModelBuilders
 
             modelBuilder.Entity<Product>(entity =>
             {
+                entity.ToTable("Products");
+
                 entity.Property(e => e.Id).HasColumnName("ProductID");
                 entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
                 entity.Property(e => e.ProductName).HasMaxLength(40);
@@ -268,27 +248,11 @@ namespace Northwind.Core.Repositories.ModelBuilders
                     .HasForeignKey(d => d.SupplierId)
                     .HasConstraintName("FK_Products_Suppliers");
             });
-
-
-
-            modelBuilder.Entity<Region>(entity =>
-            {
-                entity.HasKey(e => e.Id)
-                    .IsClustered(false);
-
-                entity.ToTable("Region");
-
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("RegionID");
-
-                entity.Property(e => e.Description)
-                    .HasMaxLength(50)
-                    .IsFixedLength();
-            });
-
+         
             modelBuilder.Entity<Shipper>(entity =>
             {
+                entity.ToTable("Shippers");
+
                 entity.Property(e => e.Id).HasColumnName("ShipperID");
                 entity.Property(e => e.CompanyName).HasMaxLength(40);
                 entity.Property(e => e.Phone).HasMaxLength(24);
@@ -296,6 +260,8 @@ namespace Northwind.Core.Repositories.ModelBuilders
 
             modelBuilder.Entity<Supplier>(entity =>
             {
+                entity.ToTable("Suppliers");
+
                 entity.Property(e => e.Id).HasColumnName("SupplierID");
                 entity.Property(e => e.Address).HasMaxLength(60);
                 entity.Property(e => e.City).HasMaxLength(15);
@@ -312,25 +278,6 @@ namespace Northwind.Core.Repositories.ModelBuilders
                 entity.HasIndex(e => e.CompanyName, "CompanyName");
                 entity.HasIndex(e => e.PostalCode, "PostalCode");
             });
-
-            modelBuilder.Entity<Territory>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-
-                entity.Property(e => e.Id).HasColumnName("TerritoryID");
-                entity.Property(e => e.Code).HasMaxLength(20).HasColumnName("TerritoryCode");
-                entity.Property(e => e.RegionId).HasColumnName("RegionID");
-                entity.Property(e => e.TerritoryDescription).HasMaxLength(50).IsFixedLength();
-
-                entity.HasIndex(e => e.Code).IsClustered(false);
-
-                entity.HasOne(d => d.Region)
-                    .WithMany(p => p.Territories)
-                    .HasForeignKey(d => d.RegionId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Territories_Region");
-            });
-         
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Northwind.Core.Repositories.ModelBuilders
+﻿namespace Northwind.Sql.ModelBuilders
 {
     internal static class ReportingModelBuilder
     {

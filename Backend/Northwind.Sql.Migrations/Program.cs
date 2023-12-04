@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Northwind.Core.Repositories;
+using Northwind.Sql.Repositories;
 
 namespace Northwind.Sql.Migrations
 {
@@ -16,7 +16,7 @@ namespace Northwind.Sql.Migrations
             Host.CreateDefaultBuilder(args)
             .ConfigureServices(services =>
             {
-                services.AddDbContext<NorthwindContext>(
+                services.AddDbContext<NorthwindDbContext>(
                                 options => options.UseSqlServer("Server=localhost;Database=Northwind;Trusted_Connection=True;",
                                             sqlServerOptions => sqlServerOptions.MigrationsAssembly(typeof(Program).Assembly.GetName().ToString())));
             });        

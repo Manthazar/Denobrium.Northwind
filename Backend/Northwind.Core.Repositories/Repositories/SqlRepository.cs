@@ -1,10 +1,12 @@
-﻿namespace Northwind.Core.Repositories.Repositories
+﻿using Northwind.Sql.Repositories;
+
+namespace Northwind.Core.Repositories.Repositories
 {
     internal class SqlRepository<T> : ISqlRepository<T> where T : class
     {
-        private readonly NorthwindContext dbContext;
+        private readonly NorthwindDbContext dbContext;
 
-        public SqlRepository (NorthwindContext dbContext)
+        public SqlRepository (NorthwindDbContext dbContext)
         {
             this.dbContext = dbContext;
         }

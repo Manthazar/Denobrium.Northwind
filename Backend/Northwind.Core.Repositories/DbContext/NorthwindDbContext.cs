@@ -1,15 +1,15 @@
 ﻿using Northwind.Core.Models;
-using Northwind.Core.Repositories.ModelBuilders;
+using Northwind.Sql.ModelBuilders;
 
-namespace Northwind.Core.Repositories
+namespace Northwind.Sql.Repositories
 {
-    public partial class NorthwindContext : DbContext
+    public partial class NorthwindDbContext : DbContext
     {
-        public NorthwindContext()
+        public NorthwindDbContext()
         {
         }
 
-        public NorthwindContext(DbContextOptions<NorthwindContext> options)
+        public NorthwindDbContext(DbContextOptions<NorthwindDbContext> options)
             : base(options)
         {
         }
@@ -50,6 +50,7 @@ namespace Northwind.Core.Repositories
         /// </remarks>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            ReferenceDataModelBuilder.BuildInto(modelBuilder);
             CoreModelBuilder.BuildInto(modelBuilder);
 
             OnModelCreatingPartial(modelBuilder);

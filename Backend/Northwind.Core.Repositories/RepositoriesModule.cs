@@ -3,6 +3,7 @@ using Northwind.Core;
 using Northwind.Core.Models;
 using Northwind.Core.Repositories;
 using Northwind.Core.Repositories.Repositories;
+using Northwind.Sql.Repositories;
 
 namespace Northwind.Modules
 {
@@ -17,7 +18,7 @@ namespace Northwind.Modules
             services.AddScoped<ISqlRepository<Customer>, SqlRepository<Customer>>();
             services.AddScoped<ISqlRepository<Employee>, SqlRepository<Employee>>();
 
-            services.AddDbContext<NorthwindContext>(options =>
+            services.AddDbContext<NorthwindDbContext>(options =>
             {
                 options.UseSqlServer(sqlConnectionString);
 
