@@ -103,7 +103,7 @@
                 <Grid>
                     <Border x:Name="ContentShadow"
                             Background="{ThemeResource BackingTint}"
-                            Visibility="{Binding Visibility, ElementName=SamplePickerGrid}">
+                            Visibility="{Binding Visibility, ElementName=contentFrame}">
                         <media:UIElementExtensions.VisualFactory>
                             <media:PipelineVisualFactory Source="{media:BackdropSource}">
                                 <media:BlurEffect Amount="8" />
@@ -121,119 +121,11 @@
                         </animations:Implicit.HideAnimations>
                     </Border>
 
-                    <Grid x:Name="SamplePickerGrid"
-                          VerticalAlignment="Top"
-                          x:DeferLoadStrategy="Lazy"
-                          Visibility="Collapsed">
-                        <controls:DropShadowPanel Margin="0,0,0,-3"
-                                                  VerticalAlignment="Bottom"
-                                                  HorizontalContentAlignment="Stretch"
-                                                  VerticalContentAlignment="Stretch"
-                                                  BlurRadius="10"
-                                                  ShadowOpacity="0.7"
-                                                  Color="Black">
-                            <Border Height="1" />
-                        </controls:DropShadowPanel>
-
-                        <Border Background="{ThemeResource Menu-DropDown-Background}" />
-
-                        <GridView x:Name="SamplePickerGridView"
-                                  animations:ItemsReorderAnimation.Duration="0:0:0.200"
-                                  
-                                  IsItemClickEnabled="True"
-                                  
-                                  ItemContainerTransitions="{x:Null}"
-                                  
-                                  SelectionMode="Single"
-                                  Transitions="{x:Null}">
-
-                            <!--
-                            ChoosingItemContainer="SamplePickerGridView_ChoosingItemContainer"
-                            ItemClick="SamplePickerGridView_ItemClick"
-                            ItemContainer
-                            Style="{StaticResource SamplePickerItemStyle}"
-                            ItemTemplate="{StaticResource SampleTemplate}"
-                            -->
-
-
-                            <GridView.GroupStyle>
-                                <GroupStyle>
-                                    <GroupStyle.HeaderTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Key}" />
-                                        </DataTemplate>
-                                    </GroupStyle.HeaderTemplate>
-                                </GroupStyle>
-                            </GridView.GroupStyle>
-                            <animations:Implicit.ShowAnimations>
-                                <animations:OpacityAnimation Delay="0:0:0.2"
-                                                             From="0"
-                                                             To="1"
-                                                             Duration="0:0:0.3" />
-                            </animations:Implicit.ShowAnimations>
-                        </GridView>
-                        <animations:Implicit.ShowAnimations>
-                            <animations:OpacityAnimation From="0"
-                                                         To="1"
-                                                         Duration="0:0:0.3" />
-                            <animations:TranslationAnimation From="0, -1000, 0"
-                                                             To="0"
-                                                             Duration="0:0:0.3" />
-                        </animations:Implicit.ShowAnimations>
-                        <animations:Implicit.HideAnimations>
-                            <animations:OpacityAnimation From="1"
-                                                         To="0"
-                                                         Duration="0:0:0.5" />
-                            <animations:TranslationAnimation From="0"
-                                                             To="0, -1000, 0"
-                                                             Duration="0:0:0.5" />
-                        </animations:Implicit.HideAnimations>
-                    </Grid>
+                    <Frame x:Name="contentFrame" />
 
                 </Grid>
-
-
             </Grid>
-
 
         </winui:NavigationView>
     </Grid>
-
-    <!--<tp:RadSideDrawer DrawerLocation="Left"
-                      DrawerButtonHorizontalAlignment="Left"
-                      DrawerButtonVerticalAlignment="Top"
-                      DrawerManipulationMode="Button"
-                      DrawerTransition="SlideInOnTop">
-        <tp:RadSideDrawer.MainContent>
-            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-                <TextBlock Text="Main Content" />
-            </Grid>
-        </tp:RadSideDrawer.MainContent>
-        
-        <tp:RadSideDrawer.DrawerContent>
-            <Grid Width="300" Background="#4b4b4b">
-
-                <StackPanel Orientation="Vertical">
-
-                    <Grid>
-                        
-                        <Image Source="/Assets/northwind-vision.png"/>
-                        <TextBlock Text="NORTHWIND TRADING" FontWeight="Bold" Foreground="White"
-                                   HorizontalAlignment="Center" HorizontalTextAlignment="Left"
-                                   Margin="10 5 0 0" FontSize="16"/>
-                        
-                    </Grid>
-                    <TextBlock Text="john.doe@northwind-trading.com" Foreground="White"
-                               Margin="10 5 0 0"/>
-
-                    <Button Content="Customers" />
-                    
-                </StackPanel>
-                
-                
-            </Grid>
-        </tp:RadSideDrawer.DrawerContent>
-        
-        
-    </tp:RadSideDrawer>-->
 </Page>
