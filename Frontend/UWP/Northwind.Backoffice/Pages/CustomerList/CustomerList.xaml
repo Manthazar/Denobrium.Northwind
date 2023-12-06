@@ -5,9 +5,9 @@
     xmlns:local="using:Northwind.Backoffice.Pages.CustomerList"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:tp="using:Telerik.UI.Xaml.Controls.Primitives"
-    xmlns:telerikGrid="using:Telerik.UI.Xaml.Controls.Grid"
+    xmlns:tGrid="using:Telerik.UI.Xaml.Controls.Grid"
+    xmlns:tGridPrimitives="using:Telerik.UI.Xaml.Controls.Grid.Primitives"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance local:CustomerListViewModel, IsDesignTimeCreatable=True}"
     d:DesignHeight="300"
@@ -15,16 +15,39 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+        <Grid.Resources>
+        </Grid.Resources>
+
         <tp:RadBusyIndicator AnimationStyle="AnimationStyle7" Height="100" Width="100" IsActive="{Binding IsBusy}" Content="{x:Null}"/>
 
-        <telerikGrid:RadDataGrid UserGroupMode="Disabled" AutoGenerateColumns="False" ItemsSource="{Binding Items}" Visibility="{Binding Items, Converter={StaticResource visibilityConverter}}">
-            <telerikGrid:RadDataGrid.Columns>
-                <telerikGrid:DataGridTextColumn PropertyName="CustomerCode"  Header="Code" CanUserReorder="False" CanUserSort="True" CanUserEdit="False" SizeMode="Fixed" />
-                <telerikGrid:DataGridTextColumn PropertyName="CompanyName" Header="Company Name"  CanUserEdit="False" CanUserSort="True" />
-                <telerikGrid:DataGridTextColumn PropertyName="ContactName" Header="Contact Name"  CanUserEdit="False" CanUserSort="True" />
-                <telerikGrid:DataGridTextColumn PropertyName="Region" Header="Region"  CanUserEdit="False" CanUserSort="True" />
-                <telerikGrid:DataGridTextColumn PropertyName="Country" Header="Country"  CanUserEdit="False" CanUserSort="True" />
-            </telerikGrid:RadDataGrid.Columns>
-        </telerikGrid:RadDataGrid>
+        <tGrid:RadDataGrid UserGroupMode="Disabled" AutoGenerateColumns="False" ItemsSource="{Binding Items}" Visibility="{Binding Items, Converter={StaticResource visibilityConverter}}"
+                                 GridLinesVisibility="None" AlternateRowBackground="#FFF0F0F0" RowBackground="White" AlternationStep="2"
+                                 >
+
+            <tGrid:RadDataGrid.Resources>
+                <Style TargetType="tGridPrimitives:DataGridHoverControl">
+                    <Setter Property="Background" Value="Orange"/>
+                    <Setter Property="Opacity" Value="0.5"/>
+                </Style>
+
+                <Style TargetType="tGridPrimitives:SelectionRegionBackgroundControl">
+                    <Setter Property="Background" Value="Yellow"/>
+                    <Setter Property="BorderBrush" Value="Green"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                </Style>
+
+                <Style TargetType="tGridPrimitives:SelectionRegionBorderControl">
+                    <Setter Property="BorderBrush" Value="Blue"/>
+                </Style>
+            </tGrid:RadDataGrid.Resources>
+
+            <tGrid:RadDataGrid.Columns>
+                <tGrid:DataGridTextColumn PropertyName="CustomerCode"  Header="Code" CanUserReorder="False" CanUserSort="True" CanUserEdit="False" SizeMode="Fixed"/>
+                <tGrid:DataGridTextColumn PropertyName="CompanyName" Header="Company Name"  CanUserEdit="False" CanUserSort="True" />
+                <tGrid:DataGridTextColumn PropertyName="ContactName" Header="Contact Name"  CanUserEdit="False" CanUserSort="True" />
+                <tGrid:DataGridTextColumn PropertyName="Region" Header="Region"  CanUserEdit="False" CanUserSort="True" />
+                <tGrid:DataGridTextColumn PropertyName="Country" Header="Country"  CanUserEdit="False" CanUserSort="True" />
+            </tGrid:RadDataGrid.Columns>
+        </tGrid:RadDataGrid>
     </Grid>
 </UserControl>
