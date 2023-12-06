@@ -13,16 +13,18 @@
     d:DesignWidth="400">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
         <tp:RadBusyIndicator AnimationStyle="AnimationStyle7" Height="100" Width="100" IsActive="{Binding IsBusy}" Content="{x:Null}"/>
 
         <controls:DataGrid ItemsSource="{Binding Items}" AutoGenerateColumns="False" Visibility="{Binding Items, Converter={StaticResource visibilityConverter}}"
-                               VerticalScrollBarVisibility="Visible">
+                           x:Name="CustomersGrid"
+                           Sorting="CustomersGrid_Sorting">
             <controls:DataGrid.Columns>
-                <controls:DataGridTextColumn Binding="{Binding CustomerCode}"  CanUserReorder="False" Header="Code" IsReadOnly="True"/>
-                <controls:DataGridTextColumn Binding="{Binding CompanyName}" Header="Company Name"  IsReadOnly="True"/>
-                <controls:DataGridTextColumn Binding="{Binding ContactName}" Header="Contact Name"  IsReadOnly="True"/>
-                <controls:DataGridTextColumn Binding="{Binding Region}" Header="Region"  IsReadOnly="True"/>
-                <controls:DataGridTextColumn Binding="{Binding Country}" Header="Country"  IsReadOnly="True"/>
+                <controls:DataGridTextColumn Binding="{Binding CustomerCode}"  CanUserReorder="False" Header="Code" IsReadOnly="True" CanUserSort="True" Tag="CustomerCode"/>
+                <controls:DataGridTextColumn Binding="{Binding CompanyName}" Header="Company Name"  IsReadOnly="True" CanUserSort="True" Tag="CompanyName"/>
+                <controls:DataGridTextColumn Binding="{Binding ContactName}" Header="Contact Name"  IsReadOnly="True" CanUserSort="True" Tag="ContactName"/>
+                <controls:DataGridTextColumn Binding="{Binding Region}" Header="Region"  IsReadOnly="True" CanUserSort="True" Tag="Region"/>
+                <controls:DataGridTextColumn Binding="{Binding Country}" Header="Country"  IsReadOnly="True" CanUserSort="True" Tag="Country"/>
             </controls:DataGrid.Columns>
         </controls:DataGrid>
     </Grid>
