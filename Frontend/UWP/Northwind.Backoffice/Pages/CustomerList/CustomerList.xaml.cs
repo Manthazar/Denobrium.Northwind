@@ -1,5 +1,6 @@
 ﻿using Microsoft.Toolkit.Uwp.UI.Controls;
 using Northwind.BackOffice.Data;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -27,7 +28,6 @@ namespace Northwind.Backoffice.Pages.CustomerList
         {
             var dg = (DataGrid)sender;
             var sortTag = e.Column.Tag.ToString();
-            var items = (IEnumerable<CustomerInfo>)dg.ItemsSource;
 
             var sortDirection = DataGridSortDirection.Ascending;
 
@@ -40,33 +40,11 @@ namespace Northwind.Backoffice.Pages.CustomerList
             //Use the Tag property to pass the bound column name for the sorting implementation
             if (sortTag == "CustomerCode")
             {
-                if (sortDirection == DataGridSortDirection.Ascending)
-                {
-                    var sorted = items.OrderBy(ci => ci.CustomerCode);
-                    dg.ItemsSource = new ObservableCollection<CustomerInfo>(sorted);
-                }
-                else
-                {
-                    var sorted = items.OrderByDescending(ci => ci.CustomerCode);
-                    dg.ItemsSource = new ObservableCollection<CustomerInfo>(sorted);
-                }
-
-                e.Column.SortDirection = sortDirection;
+                Sort((c) => c.CustomerCode, sortDirection, dg, e);
             }
             else if (sortTag == "CompanyName")
             {
-                if (sortDirection == DataGridSortDirection.Ascending)
-                {
-                    var sorted = items.OrderBy(ci => ci.CompanyName);
-                    dg.ItemsSource = new ObservableCollection<CustomerInfo>(sorted);
-                }
-                else
-                {
-                    var sorted = items.OrderByDescending(ci => ci.CompanyName);
-                    dg.ItemsSource = new ObservableCollection<CustomerInfo>(sorted);
-                }
-
-                e.Column.SortDirection = sortDirection;
+                Sort((c) => c.CompanyName, sortDirection, dg, e);
             }
 
             foreach (var column in dg.Columns)
@@ -76,6 +54,24 @@ namespace Northwind.Backoffice.Pages.CustomerList
                     column.SortDirection = null;
                 }
             }
+        }
+
+        private static void Sort(Func<CustomerInfo, string> keySelector, DataGridSortDirection sortDirection, DataGrid dg, DataGridColumnEventArgs e)
+        {
+            var items = (IEnumerable<CustomerInfo>)dg.ItemsSource;
+
+            if (sortDirection == DataGridSortDirection.Ascending)
+            {
+                var sorted = items.OrderBy(keySelector);
+                dg.ItemsSource = new ObservableCollection<CustomerInfo>(sorted);
+            }
+            else
+            {
+                var sorted = items.OrderByDescending(keySelector);
+                dg.ItemsSource = new ObservableCollection<CustomerInfo>(sorted);
+            }
+
+            e.Column.SortDirection = sortDirection;
         }
     }
 }
