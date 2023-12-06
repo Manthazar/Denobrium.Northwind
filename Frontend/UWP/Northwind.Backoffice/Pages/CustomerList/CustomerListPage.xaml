@@ -8,13 +8,18 @@
     mc:Ignorable="d"
     Margin="20">
 
-    <StackPanel Orientation="Vertical">
+    <Grid>
 
-        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Opacity="0.8" Height="80">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Opacity="0.8" Height="80" Grid.Row="0">
             <TextBlock Text="Customers" HorizontalAlignment="Center" FontSize="50" FontWeight="ExtraBold"/>
         </Grid>
 
-        <local:CustomerList />
+        <local:CustomerList Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Grid.Row="1"/>
 
-    </StackPanel>
+    </Grid>
 </Page>

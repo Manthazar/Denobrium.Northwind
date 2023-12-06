@@ -14,8 +14,6 @@ namespace Northwind.Backoffice
     /// </summary>
     sealed partial class App : Application
     {
-        private static HttpClient apiClient;
-
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -108,27 +106,6 @@ namespace Northwind.Backoffice
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
-        }
-
-        /// <summary>
-        /// The HttpClient is recommended to be a single (by server). 
-        /// </summary>
-        /// <remarks>
-        /// TODO: Implement some sort of dependency injection/ bootstrapping to streamline such initializations
-        /// </remarks>
-        /// <returns></returns>
-        internal static HttpClient GetApiClient()
-        {
-            if (apiClient == null)
-            {
-                apiClient = new HttpClient()
-                {
-                    // TODO: make this configurable.
-                    BaseAddress = new Uri("https://localhost:7185/api"),
-                };
-            }
-
-            return apiClient;
         }
     }
 }

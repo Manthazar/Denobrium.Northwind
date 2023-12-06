@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D9BDCD12-DE71-4B87-A382-1A26708DEF32}</ProjectGuid>
+    <ProjectGuid>{63B5741D-3B4B-4071-B356-D550C2937D45}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Northwind.Backofficce.ApiClient</RootNamespace>
-    <AssemblyName>Northwind.Backofficce.ApiClient</AssemblyName>
+    <RootNamespace>Northwind.Backoffice</RootNamespace>
+    <AssemblyName>Northwind.Backoffice.Core</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
@@ -120,29 +120,14 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DataStores\CustomerDataStore.cs" />
-    <Compile Include="DataStores\RestDataStore.cs" />
-    <Compile Include="Data\CustomerInfo.cs" />
-    <Compile Include="NorthwindApiClientModule.cs" />
+    <Compile Include="Core\Guard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Properties\Northwind.Backofficce.ApiClient.rd.xml" />
+    <EmbeddedResource Include="Properties\Northwind.Backoffice.Core.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.14</Version>
     </PackageReference>
-    <PackageReference Include="System.Net.Http.Json">
-      <Version>8.0.0</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="readme.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Northwind.Backoffice.Core\Northwind.Backoffice.Core.csproj">
-      <Project>{63b5741d-3b4b-4071-b356-d550c2937d45}</Project>
-      <Name>Northwind.Backoffice.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

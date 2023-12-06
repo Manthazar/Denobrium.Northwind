@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Northwind.Backoffice"
     xmlns:telerik="using:Telerik.UI.Xaml.Controls"
+    xmlns:converters="using:Northwind.BackOffice.Converters"
     RequestedTheme="Light">
 
     <Application.Resources>
@@ -13,6 +14,10 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ms-appx:///Theme/Themes.xaml" />
                 <ResourceDictionary Source="ms-appx:///Theme/Generic.xaml" />
+
+                <ResourceDictionary>
+                    <converters:VisibilityConverter x:Key="visibilityConverter"/>
+                </ResourceDictionary>
 
                 <!--  WinUI  -->
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />

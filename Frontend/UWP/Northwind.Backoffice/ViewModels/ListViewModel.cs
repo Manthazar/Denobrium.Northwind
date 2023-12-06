@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using Northwind.Backoffice.Commands;
 using System.Collections.ObjectModel;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -46,6 +47,8 @@ namespace Northwind.Backoffice.ViewModels
         protected virtual bool OnItemTapped_CanExecute(T item) => true;
 
         #endregion
+
+        protected CancellationTokenSource CancellationTokenSource {get;set;}
 
         public ObservableCollection<T> Items
         {

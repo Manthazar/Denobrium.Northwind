@@ -29,13 +29,13 @@ namespace Northwind.WebApi.Controllers
         }
 
         [HttpGet("{code}")]
-        public async Task<CustomerInfo> GetByCode(string code, CancellationToken cancellationToken)
+        public async Task<CustomerDetail> GetByCode(string code, CancellationToken cancellationToken)
         {
             Guard.IsCode(code, nameof(code));
 
             var repository = serviceProvider.GetService<ISqlRepository<Customer>>();
             var customer = await repository!.GetByCodeAsync(code, cancellationToken);
-            var result = customer.To<CustomerInfo>();
+            var result = customer.To<CustomerDetail>();
 
             return result;
         }
