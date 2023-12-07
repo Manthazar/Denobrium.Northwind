@@ -1,4 +1,4 @@
-﻿namespace Northwind.Core.Contracts
+﻿namespace Northwind.Core.Repositories
 {
     /// <summary>
     /// Marker interface which marks reference data entities.

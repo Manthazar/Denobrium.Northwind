@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Northwind.Core;
+using Northwind.Core.Contracts;
 using Northwind.Core.Models;
-using Northwind.Sql.Repositories;
+using Northwind.Core.Repositories;
 
 namespace Northwind.WebApi.Controllers
 {
@@ -9,17 +10,14 @@ namespace Northwind.WebApi.Controllers
     [ApiController]
     public class EmployeesController : NorthwindController
     {
-        private readonly IServiceProvider serviceProvider;
-
         public EmployeesController(IServiceProvider serviceProvider) : base (serviceProvider)
         {
-            this.serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
         }
 
         [HttpGet()]
         public async Task<IEnumerable<Employee>> GetAll(CancellationToken cancellationToken)
         {
-            var repository = serviceProvider.GetService<ISqlRepository<Employee>>();
+            var repository = Services.GetService<IRepository<Employee>>();
             var items = await repository!.GetAllAsync(cancellationToken);
 
             return items;
@@ -30,7 +28,7 @@ namespace Northwind.WebApi.Controllers
         {
             Guard.IsId(id, nameof(id));
             
-            var repository = serviceProvider.GetService<ISqlRepository<Employee>>();
+            var repository = Services.GetService<IRepository<Employee>>();
             var customer = await repository!.GetByIdAsync(id, cancellationToken);
 
             return customer;

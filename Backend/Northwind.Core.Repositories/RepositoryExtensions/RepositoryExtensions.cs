@@ -1,10 +1,9 @@
-﻿using Northwind.Core;
-using Northwind.Core.Contracts;
+﻿using Northwind.Core.Contracts;
 using Northwind.Core.Exceptions;
 
-namespace Northwind.Sql.Repositories
+namespace Northwind.Core.Repositories
 {
-    public static class SqlRepositoryExtensions
+    public static class RepositoryExtensions
     {
         /// <summary>
         /// Returns all items of the collection. Be careful -esspecially with entity set which can become big over time. 
@@ -17,8 +16,8 @@ namespace Northwind.Sql.Repositories
         /// <param name="repository"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public static async Task<IEnumerable<T>> GetAllAsync<T>(this ISqlRepository<T> repository, CancellationToken cancellationToken)
-            where T : ICacheable
+        public static async Task<IEnumerable<T>> GetAllAsync<T>(this IRepository<T> repository, CancellationToken cancellationToken)
+            where T : class, ICacheable
         {
             var set = repository.Queryable;
             var result = await set.ToListAsync(cancellationToken);
@@ -31,7 +30,7 @@ namespace Northwind.Sql.Repositories
         /// </summary>
         /// <param name="code">The code to be used as the identifier. Note that no leading or trailing spaces should/ will result in errors (trivial common trouble)</param>
         /// <exception cref="DataNotFoundException"/>
-        public static T GetByCode<T>(this ISqlRepository<T> repository, string code) where T : IWithCode
+        public static T GetByCode<T>(this IRepository<T> repository, string code) where T : class, IWithCode
         {
             Guard.IsNotNull(repository, nameof(repository));
             Guard.IsCode(code, nameof(code));
@@ -53,7 +52,7 @@ namespace Northwind.Sql.Repositories
         /// </summary>
         /// <param name="code">The code to be used as the identifier. Note that no leading or trailing spaces should/ will result in errors (trivial common trouble)</param>
         /// <exception cref="DataNotFoundException"/>
-        public static async Task<T> GetByCodeAsync<T>(this ISqlRepository<T> repository, string code, CancellationToken cancellationToken) where T : IWithCode
+        public static async Task<T> GetByCodeAsync<T>(this IRepository<T> repository, string code, CancellationToken cancellationToken) where T : class, IWithCode
         {
             Guard.IsNotNull(repository, nameof(repository));
             Guard.IsCode(code, nameof(code));
@@ -74,7 +73,7 @@ namespace Northwind.Sql.Repositories
         /// Returns the item by its id.
         /// </summary>
         /// <exception cref="DataNotFoundException"/>
-        public static T GetById<T> (this ISqlRepository<T> repository, int id) where T : IWithId
+        public static T GetById<T> (this IRepository<T> repository, int id) where T : class, IWithId
         {
             Guard.IsNotNull(repository, nameof(repository));
             Guard.IsId(id, nameof(id));
@@ -95,7 +94,7 @@ namespace Northwind.Sql.Repositories
         /// Returns the item by its id.
         /// </summary>
         /// <exception cref="DataNotFoundException"/>
-        public static Task<T> GetByIdAsync<T>(this ISqlRepository<T> repository, int id, CancellationToken cancellationToken) where T : IWithId
+        public static Task<T> GetByIdAsync<T>(this IRepository<T> repository, int id, CancellationToken cancellationToken) where T : class, IWithId
         {
             Guard.IsNotNull(repository, nameof(repository));
             Guard.IsId(id, nameof(id));

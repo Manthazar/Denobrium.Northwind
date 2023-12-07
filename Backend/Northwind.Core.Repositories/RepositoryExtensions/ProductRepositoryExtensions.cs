@@ -1,15 +1,14 @@
-﻿using Northwind.Core;
-using Northwind.Core.Models;
+﻿using Northwind.Core.Models;
 
-namespace Northwind.Sql.Repositories
+namespace Northwind.Core.Repositories
 {
-    public static class ProductRepository
+    public static class ProductRepositoryExtensions
     {
         /// <summary>
         /// Returns all products.
         /// </summary>
         /// <returns></returns>
-        public static async Task<IEnumerable<Product>> GetAllAsync(this ISqlRepository<Product> repository, CancellationToken cancellationToken)
+        public static async Task<IEnumerable<Product>> GetAllAsync(this IRepository<Product> repository, CancellationToken cancellationToken)
         {
             Guard.IsNotNull(repository, nameof(repository));
 

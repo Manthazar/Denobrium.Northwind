@@ -1,4 +1,5 @@
 ﻿using Northwind.Core.Contracts;
+using Northwind.Core.Repositories;
 
 namespace Northwind.Core.Models
 {

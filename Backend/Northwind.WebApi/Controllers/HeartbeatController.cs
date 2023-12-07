@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Northwind.Core.Models;
-using Northwind.Sql.Repositories;
+using Northwind.Core.Repositories;
 
 namespace Northwind.WebApi.Controllers
 {
@@ -24,8 +24,8 @@ namespace Northwind.WebApi.Controllers
         [HttpGet("siblings/ping")]
         public async Task<string> SegmentPing(CancellationToken cancellationToken)
         {
-            var repository = serviceProvider.GetService<ISqlRepository<Category>>();
-            var items = await repository!.GetAllAsync(cancellationToken);
+            var repository = serviceProvider.GetRequiredService<IRepository<Category>>();
+            var items = await repository.GetAllAsync(cancellationToken);
 
             return items.Any() ? "Pong" : "Zonk";
         }

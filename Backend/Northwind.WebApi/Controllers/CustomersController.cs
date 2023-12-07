@@ -2,7 +2,7 @@
 using Northwind.Api.Data;
 using Northwind.Core;
 using Northwind.Core.Models;
-using Northwind.Sql.Repositories;
+using Northwind.Core.Repositories;
 
 namespace Northwind.WebApi.Controllers
 {
@@ -10,17 +10,14 @@ namespace Northwind.WebApi.Controllers
     [ApiController]
     public class CustomersController : NorthwindController
     {
-        private readonly IServiceProvider serviceProvider;
-
         public CustomersController(IServiceProvider serviceProvider) : base(serviceProvider)
         {
-            this.serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
         }
 
         [HttpGet()]
         public async Task<IEnumerable<CustomerInfo>> GetAll(CancellationToken cancellationToken)
         {
-            var repository = serviceProvider.GetRequiredService<ISqlRepository<Customer>>();
+            var repository = Services.GetRequiredService<IRepository<Customer>>();
             var items = await repository.GetAllAsync(cancellationToken);
             var result = items.ToSetOf<CustomerInfo>();
 
@@ -32,7 +29,7 @@ namespace Northwind.WebApi.Controllers
         {
             Guard.IsCode(code, nameof(code));
 
-            var repository = serviceProvider.GetRequiredService<ISqlRepository<Customer>>();
+            var repository = Services.GetRequiredService<IRepository<Customer>>();
             var customer = await repository.GetByCodeAsync(code, cancellationToken);
             var result = customer.To<CustomerDetail>();
 

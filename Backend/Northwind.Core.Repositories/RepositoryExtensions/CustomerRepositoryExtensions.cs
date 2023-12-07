@@ -1,10 +1,8 @@
-﻿using Northwind.Core;
-using Northwind.Core.Models;
-using Northwind.Sql.Repositories;
+﻿using Northwind.Core.Models;
 
-namespace Northwind.Sql.Repositories
+namespace Northwind.Core.Repositories
 {
-    public static class CustomerRepository
+    public static class CustomerRepositoryExtensions
     {
         /// <summary>
         /// Returns all customers
@@ -12,7 +10,7 @@ namespace Northwind.Sql.Repositories
         /// <param name="repository"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public static async Task<IEnumerable<Customer>> GetAllAsync(this ISqlRepository<Customer> repository, CancellationToken cancellationToken)
+        public static async Task<IEnumerable<Customer>> GetAllAsync(this IRepository<Customer> repository, CancellationToken cancellationToken)
         {
             Guard.IsNotNull(repository, nameof(repository));
 

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Northwind.WebApi.Controllers
 {
@@ -7,8 +8,8 @@ namespace Northwind.WebApi.Controllers
     {
         public NorthwindController (IServiceProvider services)
         {
+            Services = services ?? throw new ArgumentNullException(nameof(services));
             Mapper = services.GetRequiredService<IMapper>();
-            Services = services;
         }
 
         protected IMapper Mapper { get; }

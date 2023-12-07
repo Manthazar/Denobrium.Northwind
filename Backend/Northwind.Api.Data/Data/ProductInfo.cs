@@ -5,7 +5,7 @@
     /// </summary>
     public record ProductInfo
     {
-        public string Id { get; set; } = null!
+        public string Id { get; set; } = null!;
 
         public string Name { get; set; } = null!;
 

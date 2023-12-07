@@ -22,8 +22,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Northwind.Api.Data\Northwind.Api.Data.csproj" />
+    <ProjectReference Include="..\Northwind.Api.Services\Northwind.Api.Services.csproj" />
+    <ProjectReference Include="..\Northwind.Core.Domain\Northwind.Core.Domain.csproj" />
     <ProjectReference Include="..\Northwind.Core.Models\Northwind.Core.Models.csproj" />
     <ProjectReference Include="..\Northwind.Core.Repositories\Northwind.Sql.Repositories.csproj" />
+    <ProjectReference Include="..\Northwind.Core\Northwind.Core.csproj" />
   </ItemGroup>
 
 </Project>

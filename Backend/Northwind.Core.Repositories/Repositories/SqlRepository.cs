@@ -1,4 +1,4 @@
-﻿using Northwind.Sql.Repositories;
+﻿using Northwind.Core;
 
 namespace Northwind.Sql.Repositories
 {
@@ -8,9 +8,13 @@ namespace Northwind.Sql.Repositories
 
         public SqlRepository (NorthwindDbContext dbContext)
         {
+            Guard.IsNotNull(dbContext, nameof (dbContext));
+
             this.dbContext = dbContext;
         }
 
-        IQueryable<T> ISqlRepository<T>.Queryable => dbContext.Set<T>();
+        public DbContext Context => dbContext;
+
+        public IQueryable<T> Queryable => dbContext.Set<T>();
     }
 }

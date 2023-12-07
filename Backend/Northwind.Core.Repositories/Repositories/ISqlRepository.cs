@@ -1,10 +1,13 @@
-﻿namespace Northwind.Sql.Repositories
+﻿using Northwind.Core.Repositories;
+
+namespace Northwind.Sql.Repositories
 {
-    public interface ISqlRepository<T>
+    /// <summary>
+    /// Represents an sql based repository.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public interface ISqlRepository<T> : IRepository<T> where T : class
     {
-        /// <summary>
-        /// Returns a query able collection of the items.
-        /// </summary>
-        internal IQueryable<T> Queryable { get; }
+        DbContext Context { get; }
     }
 }
