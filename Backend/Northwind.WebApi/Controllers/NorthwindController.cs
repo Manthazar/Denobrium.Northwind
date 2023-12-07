@@ -8,9 +8,12 @@ namespace Northwind.WebApi.Controllers
         public NorthwindController (IServiceProvider services)
         {
             Mapper = services.GetRequiredService<IMapper>();
+            Services = services;
         }
 
         protected IMapper Mapper { get; }
+
+        protected IServiceProvider Services { get; }
 
     }
 }

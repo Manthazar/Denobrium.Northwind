@@ -15,6 +15,7 @@ namespace Northwind.Modules
             services.AddScoped<ISqlRepository<Category>, SqlRepository<Category>>();
             services.AddScoped<ISqlRepository<Customer>, SqlRepository<Customer>>();
             services.AddScoped<ISqlRepository<Employee>, SqlRepository<Employee>>();
+            services.AddScoped<ISqlRepository<Product>, SqlRepository<Product>>();
 
             services.AddDbContext<NorthwindDbContext>(options =>
             {

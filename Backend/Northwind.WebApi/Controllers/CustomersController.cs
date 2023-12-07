@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Northwind.Api.Data.Data;
+using Northwind.Api.Data;
 using Northwind.Core;
 using Northwind.Core.Models;
 using Northwind.Sql.Repositories;
@@ -20,8 +20,8 @@ namespace Northwind.WebApi.Controllers
         [HttpGet()]
         public async Task<IEnumerable<CustomerInfo>> GetAll(CancellationToken cancellationToken)
         {
-            var repository = serviceProvider.GetService<ISqlRepository<Customer>>();
-            var items = await repository!.GetAllAsync(cancellationToken);
+            var repository = serviceProvider.GetRequiredService<ISqlRepository<Customer>>();
+            var items = await repository.GetAllAsync(cancellationToken);
             var result = items.ToSetOf<CustomerInfo>();
 
             return result;
@@ -32,8 +32,8 @@ namespace Northwind.WebApi.Controllers
         {
             Guard.IsCode(code, nameof(code));
 
-            var repository = serviceProvider.GetService<ISqlRepository<Customer>>();
-            var customer = await repository!.GetByCodeAsync(code, cancellationToken);
+            var repository = serviceProvider.GetRequiredService<ISqlRepository<Customer>>();
+            var customer = await repository.GetByCodeAsync(code, cancellationToken);
             var result = customer.To<CustomerDetail>();
 
             return result;

@@ -1,4 +1,5 @@
-﻿using Northwind.Core.Models;
+﻿using Northwind.Core;
+using Northwind.Core.Models;
 using Northwind.Sql.Repositories;
 
 namespace Northwind.Sql.Repositories
@@ -13,6 +14,8 @@ namespace Northwind.Sql.Repositories
         /// <returns></returns>
         public static async Task<IEnumerable<Customer>> GetAllAsync(this ISqlRepository<Customer> repository, CancellationToken cancellationToken)
         {
+            Guard.IsNotNull(repository, nameof(repository));
+
             var set = repository.Queryable;
             var result = await set.ToListAsync(cancellationToken);
 

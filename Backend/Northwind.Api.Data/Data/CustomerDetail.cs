@@ -3,7 +3,7 @@
     /// <summary>
     /// The data object is primarily a (full) detail object of customer.
     /// </summary>
-    public class CustomerDetail
+    public record CustomerDetail
     {
         /// <remarks>
         /// It makes little sense to expose a numeric identifier as a numeric identifier on API level because you cannot do anything with it you can normally do with numerics (add/ multiple/ divide/ sum etc).

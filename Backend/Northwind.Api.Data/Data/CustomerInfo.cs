@@ -3,7 +3,7 @@
     /// <summary>
     /// The info data object is a blended data object for a particular use cases having the root Customer (there may be several info type objects for several use cases).
     /// </summary>
-    public class CustomerInfo
+    public record CustomerInfo
     {
         /// <remarks>
         /// It makes little sense to expose a numeric identifier as a numeric identifier on API level because you cannot do anything with it you can normally do with numerics (add/ multiple/ divide/ sum etc).

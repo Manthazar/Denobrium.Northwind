@@ -192,7 +192,7 @@ namespace Northwind.Sql.ModelBuilders
 
                 entity.Property(e => e.OrderId).HasColumnName("OrderID");
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
-                entity.Property(e => e.Quantity).HasDefaultValueSql("((1))");
+                entity.Property(e => e.NumberOfUnits).HasColumnName("Quantity").HasDefaultValueSql("((1))");
                 entity.Property(e => e.UnitPrice).HasColumnType("money");
 
                 entity.HasIndex(e => e.OrderId, "OrderID");
@@ -224,6 +224,7 @@ namespace Northwind.Sql.ModelBuilders
                 entity.Property(e => e.QuantityPerUnit).HasMaxLength(20);
                 entity.Property(e => e.ReorderLevel).HasDefaultValueSql("((0))");
                 entity.Property(e => e.SupplierId).HasColumnName("SupplierID");
+                entity.Property(e => e.IsDiscontinued).HasColumnName("Discontinued");
 
                 entity.HasIndex(e => e.CategoryId, "CategoriesProducts");
                 entity.HasIndex(e => e.CategoryId, "CategoryID");
