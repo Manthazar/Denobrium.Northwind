@@ -1,14 +1,18 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
 using Northwind.Backoffice.DataStores;
+using Northwind.Backoffice.Models;
 using Northwind.Backoffice.ViewModels;
 using Northwind.BackOffice.Data;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Northwind.Backoffice.Pages.CustomerList
 {
-    internal class CustomerListViewModel : ListViewModel<CustomerInfo>
+    internal class CustomerListViewModel : ListViewModel<CustomerInfoModel>
     {
         public CustomerListViewModel()
         {
@@ -29,11 +33,18 @@ namespace Northwind.Backoffice.Pages.CustomerList
             IsBusy = true;
 
             var store = new CustomerDataStore();
-            var items = await store.GetAllAsync(CancellationTokenSource.Token);
+            var data = await store.GetAllAsync(CancellationTokenSource.Token);
+            var items = await AdaptAsync(data);
 
-            Items = new ObservableCollection<CustomerInfo>(items);
+            Items = items;
 
             IsBusy = false;
+        }
+
+        private Task<ObservableCollection<CustomerInfoModel>> AdaptAsync(IEnumerable<CustomerInfo> data)
+        {
+            var collection = new ObservableCollection<CustomerInfoModel>(data.Select(d => new CustomerInfoModel(d)));
+            return Task.FromResult(collection);
         }
     }
 }

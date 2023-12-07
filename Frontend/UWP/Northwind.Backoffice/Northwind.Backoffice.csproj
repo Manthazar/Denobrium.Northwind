@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
+    <Compile Include="Models\CustomerInfoModel.cs" />
     <Compile Include="Pages\CustomerList\CustomerList.xaml.cs">
       <DependentUpon>CustomerList.xaml</DependentUpon>
     </Compile>

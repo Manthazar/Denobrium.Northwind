@@ -14,8 +14,8 @@
   <mp:PhoneIdentity PhoneProductId="f3edd506-e91e-4f52-8d14-0b4a341df8d9" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>Northwind.Backoffice</DisplayName>
-    <PublisherDisplayName>Aron</PublisherDisplayName>
+    <DisplayName>Northwind.Backoffice.UWP</DisplayName>
+    <PublisherDisplayName>Aron Kovacs Lamberti</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -32,7 +32,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="Northwind.Backoffice.App">
       <uap:VisualElements
-        DisplayName="Northwind.Backoffice"
+        DisplayName="Northwind Backoffice (UWP)"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="Northwind.Backoffice"

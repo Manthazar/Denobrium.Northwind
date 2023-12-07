@@ -37,7 +37,7 @@
                 </Style>
 
                 <Style TargetType="tGridPrimitives:SelectionRegionBorderControl">
-                    <Setter Property="BorderBrush" Value="Blue"/>
+                    <Setter Property="BorderBrush" Value="Orange"/>
                 </Style>
             </tGrid:RadDataGrid.Resources>
 

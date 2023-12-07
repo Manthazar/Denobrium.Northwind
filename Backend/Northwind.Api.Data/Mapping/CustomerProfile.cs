@@ -13,7 +13,8 @@ namespace Northwind.Api.Data.Mapping
                 .ForMember(c => c.Code, opts => opts.MapFrom(s => s.Code));
 
             CreateMap<Customer, CustomerInfo>()
-                .ForMember(c => c.CustomerId, opts => opts.MapFrom(s => s.Id));
+                .ForMember(c => c.CustomerId, opts => opts.MapFrom(s => s.Id))
+                .ForMember(c => c.CustomerCode, opts => opts.MapFrom(s => s.Code));
         }
     }
 }
