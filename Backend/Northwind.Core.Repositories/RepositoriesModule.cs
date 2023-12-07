@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Northwind.Core;
 using Northwind.Core.Models;
+using Northwind.Core.Repositories;
 using Northwind.Sql.Repositories;
 
 namespace Northwind.Modules
@@ -12,16 +13,23 @@ namespace Northwind.Modules
             Guard.IsNotNull(services, nameof(services));
             Guard.IsNotNullOrEmpty(sqlConnectionString, nameof(sqlConnectionString));
 
-            services.AddScoped<ISqlRepository<Category>, SqlRepository<Category>>();
-            services.AddScoped<ISqlRepository<Customer>, SqlRepository<Customer>>();
-            services.AddScoped<ISqlRepository<Employee>, SqlRepository<Employee>>();
-            services.AddScoped<ISqlRepository<Product>, SqlRepository<Product>>();
+            services.AddRepository<Category>();
+            services.AddRepository<Customer>();
+            services.AddRepository<Employee>();
+            services.AddRepository<Product>();
+            services.AddRepository<Supplier>();
 
             services.AddDbContext<NorthwindDbContext>(options =>
             {
                 options.UseSqlServer(sqlConnectionString);
 
             }, contextLifetime: ServiceLifetime.Scoped, optionsLifetime: ServiceLifetime.Singleton);
+        }
+
+        private static void AddRepository<T> (this IServiceCollection services) where T : class
+        {
+            services.AddScoped<IRepository<T>, SqlRepository<T>>();
+            services.AddScoped<ISqlRepository<T>, SqlRepository<T>>();
         }
     }
 }
