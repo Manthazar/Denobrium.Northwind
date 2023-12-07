@@ -8,6 +8,11 @@ namespace Northwind.Modules
 {
     public static class RepositoriesModule
     {
+        /// <summary>
+        /// Adds the entity repositories in their default configurations.
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="sqlConnectionString"></param>
         public static void AddRepositories(this IServiceCollection services, string sqlConnectionString)
         {
             Guard.IsNotNull(services, nameof(services));
@@ -18,6 +23,7 @@ namespace Northwind.Modules
             services.AddRepository<Employee>();
             services.AddRepository<Product>();
             services.AddRepository<Supplier>();
+            services.AddRepository<Order>();
 
             services.AddDbContext<NorthwindDbContext>(options =>
             {

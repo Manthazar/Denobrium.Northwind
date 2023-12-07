@@ -1,3 +1,4 @@
+using Northwind.Api;
 using Northwind.Api.Data;
 using Northwind.Core;
 using Northwind.Modules;
@@ -13,7 +14,9 @@ services.AddControllers(options =>
     options.Filters.Add<ParameterExceptionFilter>();
 });
 
+services.AddNorthwindStoreConfiguration();
 services.AddRepositories(sqlConnectionString);
+services.AddApiServices();
 services.AddDataModuleComponents();
 services.AddSingletonMapper();
 

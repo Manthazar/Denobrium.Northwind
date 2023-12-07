@@ -7,6 +7,11 @@ namespace Northwind.Core
     {
         public static IMapper Mapper { get; private set; } = null!;
 
+        /// <summary>
+        /// Automatically adds the automap profiles for the determined configuration.
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
         public static IServiceCollection AddSingletonMapper(this IServiceCollection services)
         {
             Guard.IsNotNull(services, nameof(services));
