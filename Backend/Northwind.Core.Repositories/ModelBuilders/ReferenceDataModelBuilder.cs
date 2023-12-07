@@ -35,9 +35,9 @@ namespace Northwind.Sql.ModelBuilders
             modelBuilder.Entity<CustomerType>(entity =>
             {
                 entity.ToTable("CustomerTypes");
-                entity.HasKey(e => e.CustomerTypeCode).IsClustered(false);
+                entity.HasKey(e => e.Code).IsClustered(false);
 
-                entity.Property(e => e.CustomerTypeCode).HasMaxLength(10).HasColumnName("CustomerTypeCode").IsFixedLength();
+                entity.Property(e => e.Code).HasMaxLength(10).HasColumnName("CustomerTypeCode").IsFixedLength();
                 entity.Property(e => e.Description).HasColumnType("ntext");
             });
 

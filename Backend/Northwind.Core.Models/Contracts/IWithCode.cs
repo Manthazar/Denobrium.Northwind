@@ -1,4 +1,4 @@
-﻿namespace Northwind.Core.Models
+﻿namespace Northwind.Core.Contracts
 {
     public interface IWithCode
     {

@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using Northwind.Core.Contracts;
 
 namespace Northwind.Core.Models
 {
-    public partial class CustomerType
+    public partial class CustomerType : IReferenceData, IWithCode
     {
-        public string CustomerTypeCode { get; set; } = null!;
+        public string Code { get; set; } = null!;
         public string? Description { get; set; }
 
         /// <summary>

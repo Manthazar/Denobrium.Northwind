@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Northwind.Core.Contracts;
 
 namespace Northwind.Core.Models
 {

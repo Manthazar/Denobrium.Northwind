@@ -1,4 +1,6 @@
-﻿namespace Northwind.Core.Models
+﻿using Northwind.Core.Contracts;
+
+namespace Northwind.Core.Models
 {
     public partial class Customer : IWithCode, IWithId
     {

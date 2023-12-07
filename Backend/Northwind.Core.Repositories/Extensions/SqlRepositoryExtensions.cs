@@ -1,5 +1,5 @@
-﻿using Northwind.Core.Exceptions;
-using Northwind.Core.Models;
+﻿using Northwind.Core.Contracts;
+using Northwind.Core.Exceptions;
 using Northwind.Core.Repositories.Repositories;
 
 namespace Northwind.Core.Repositories

@@ -1,4 +1,6 @@
-﻿namespace Northwind.Core.Models
+﻿using Northwind.Core.Contracts;
+
+namespace Northwind.Core.Models
 {
     public partial class Employee : IWithId
     {
@@ -10,6 +12,7 @@
         }
 
         public int Id { get; set; }
+
         public string LastName { get; set; } = null!;
         public string FirstName { get; set; } = null!;
         public string? Title { get; set; }

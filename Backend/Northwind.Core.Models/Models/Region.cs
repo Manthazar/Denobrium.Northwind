@@ -1,6 +1,8 @@
-﻿namespace Northwind.Core.Models
+﻿using Northwind.Core.Contracts;
+
+namespace Northwind.Core.Models
 {
-    public partial class Region : IWithId
+    public partial class Region : IWithId, IReferenceData
     {
         public Region()
         {
