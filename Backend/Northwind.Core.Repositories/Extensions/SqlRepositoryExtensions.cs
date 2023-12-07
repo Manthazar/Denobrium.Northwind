@@ -1,11 +1,31 @@
-﻿using Northwind.Core.Contracts;
+﻿using Northwind.Core;
+using Northwind.Core.Contracts;
 using Northwind.Core.Exceptions;
-using Northwind.Core.Repositories.Repositories;
 
-namespace Northwind.Core.Repositories
+namespace Northwind.Sql.Repositories
 {
     public static class SqlRepositoryExtensions
     {
+        /// <summary>
+        /// Returns all items of the collection. Be careful -esspecially with entity set which can become big over time. 
+        /// </summary>
+        /// <remarks>
+        /// In this sandbox, I make my live a easier, by allowing load-all functions for many entities. In case of time and motivation, these will be replaced with more dedicated services/ repository functions.
+        /// Usually, such kind of method only targets reference data where the number of records is quite limited/ low. 
+        /// </remarks>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="repository"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public static async Task<IEnumerable<T>> GetAllAsync<T>(this ISqlRepository<T> repository, CancellationToken cancellationToken)
+            where T : ICacheable
+        {
+            var set = repository.Queryable;
+            var result = await set.ToListAsync(cancellationToken);
+
+            return result;
+        }
+
         /// <summary>
         /// Returns the item by its code.
         /// </summary>
@@ -16,7 +36,7 @@ namespace Northwind.Core.Repositories
             Guard.IsNotNull(repository, nameof(repository));
             Guard.IsCode(code, nameof(code));
 
-            var item = repository.Items.Where(i => i.Code == code.Trim()).SingleOrDefault();
+            var item = repository.Queryable.Where(i => i.Code == code.Trim()).SingleOrDefault();
 
             if (item == null)
             {
@@ -38,7 +58,7 @@ namespace Northwind.Core.Repositories
             Guard.IsNotNull(repository, nameof(repository));
             Guard.IsCode(code, nameof(code));
 
-            var item = await repository.Items.Where(i => i.Code == code.Trim()).SingleOrDefaultAsync(cancellationToken);
+            var item = await repository.Queryable.Where(i => i.Code == code.Trim()).SingleOrDefaultAsync(cancellationToken);
 
             if (item == null)
             {
@@ -59,7 +79,7 @@ namespace Northwind.Core.Repositories
             Guard.IsNotNull(repository, nameof(repository));
             Guard.IsId(id, nameof(id));
 
-            var item = repository.Items.Where(i => i.Id == id).SingleOrDefault();
+            var item = repository.Queryable.Where(i => i.Id == id).SingleOrDefault();
 
             if (item == null)
             {
@@ -80,7 +100,7 @@ namespace Northwind.Core.Repositories
             Guard.IsNotNull(repository, nameof(repository));
             Guard.IsId(id, nameof(id));
 
-            var item = repository.Items.Where(i => i.Id == id).SingleOrDefaultAsync(cancellationToken);
+            var item = repository.Queryable.Where(i => i.Id == id).SingleOrDefaultAsync(cancellationToken);
 
             if (item == null)
             {

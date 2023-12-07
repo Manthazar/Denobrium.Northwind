@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Northwind.Core;
 using Northwind.Core.Models;
-using Northwind.Core.Repositories;
-using Northwind.Core.Repositories.Repositories;
 using Northwind.Sql.Repositories;
 
 namespace Northwind.Modules

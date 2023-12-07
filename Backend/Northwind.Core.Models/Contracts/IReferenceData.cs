@@ -10,7 +10,7 @@
     /// - are often, if not always loaded (participate in many 'Includes')
     /// - rarely changing
     /// </remarks>
-    public interface IReferenceData
+    public interface IReferenceData : ICacheable
     {
     }
 }

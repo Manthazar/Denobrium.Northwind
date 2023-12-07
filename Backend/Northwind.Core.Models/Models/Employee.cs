@@ -2,7 +2,7 @@
 
 namespace Northwind.Core.Models
 {
-    public partial class Employee : IWithId
+    public partial class Employee : IWithId, ICacheable
     {
         public Employee()
         {

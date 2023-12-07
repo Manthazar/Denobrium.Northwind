@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Northwind.Core.Models;
-using Northwind.Core.Repositories.Repositories;
+using Northwind.Sql.Repositories;
 
 namespace Northwind.WebApi.Controllers
 {

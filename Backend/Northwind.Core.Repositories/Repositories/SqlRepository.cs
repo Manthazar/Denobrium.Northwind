@@ -1,6 +1,6 @@
 ﻿using Northwind.Sql.Repositories;
 
-namespace Northwind.Core.Repositories.Repositories
+namespace Northwind.Sql.Repositories
 {
     internal class SqlRepository<T> : ISqlRepository<T> where T : class
     {
@@ -11,14 +11,6 @@ namespace Northwind.Core.Repositories.Repositories
             this.dbContext = dbContext;
         }
 
-        IQueryable<T> ISqlRepository<T>.Items => dbContext.Set<T>();
-
-        public async Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken)
-        {
-            var set = dbContext.Set<T>();
-            var result = await set.ToListAsync(cancellationToken);
-
-            return result;
-        }
+        IQueryable<T> ISqlRepository<T>.Queryable => dbContext.Set<T>();
     }
 }
