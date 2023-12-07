@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Northwind.WebApi.Controllers
+namespace Northwind.WebApi.SandboxControllers
 {
     [ApiController]
     [Route("[controller]")]

@@ -1,4 +1,4 @@
-﻿namespace Northwind.Api.Data.Data
+﻿namespace Northwind.Api.Data
 {
     /// <summary>
     /// The data object is primarily a (full) detail object of customer.

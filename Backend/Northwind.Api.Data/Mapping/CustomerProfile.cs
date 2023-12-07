@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Northwind.Api.Data.Data;
+using Northwind.Api.Data;
 using Northwind.Core.Models;
 
-namespace Northwind.Api.Data.Mapping
+namespace Northwind.Api.Mapping
 {
     internal class CustomerProfile : Profile
     {

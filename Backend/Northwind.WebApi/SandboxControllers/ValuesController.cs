@@ -2,11 +2,11 @@
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace Northwind.WebApi.Controllers
+namespace Northwind.WebApi.SandboxControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController 
+    public class ValuesController
     {
         // GET: api/<ValuesController>
         [HttpGet]
