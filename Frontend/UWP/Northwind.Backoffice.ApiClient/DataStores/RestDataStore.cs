@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Net.Http;
-using System.Net.Http.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,6 +11,13 @@ namespace Northwind.Backofficce.ApiClient.DataStores
     /// </summary>
     public abstract class RestDataStore
     {
+        private readonly JsonSerializerSettings settings;
+
+        public RestDataStore()
+        {
+            settings = SerializerOptions.NorthwindApiSerializerOptions;
+        }
+
         /// <summary>
         /// Performs a get request to the provided resource.
         /// </summary>
@@ -21,9 +28,11 @@ namespace Northwind.Backofficce.ApiClient.DataStores
             try
             {
                 var requestUri = $"{httpClient.BaseAddress}/{resource}";
-                var response = await httpClient.GetFromJsonAsync<T>(requestUri, cancellation);
 
-                return response;
+                var response = await httpClient.GetStringAsync(requestUri); // no support of cancellation in this .net version?
+                var result = JsonConvert.DeserializeObject<T>(response, settings);
+
+                return result;
             } 
             catch (HttpRequestException ex)
             {
