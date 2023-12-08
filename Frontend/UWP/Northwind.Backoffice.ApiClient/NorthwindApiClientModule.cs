@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Northwind.Backoffice.Configuration;
+using System;
 using System.Net.Http;
 using Windows.Web.Http.Filters;
 
@@ -17,6 +18,8 @@ namespace Northwind.Backofficce.ApiClient
         /// <returns></returns>
         internal static HttpClient GetApiClient()
         {
+            var configuration = new NorthwindBackofficeConfig(); // TODO: when some service location is implemented, use it here.
+
             if (apiClient == null)
             {
                 // Not supported in UWP/ .NET Standard version of the HttpClient, kept for later migration purposes
@@ -42,7 +45,7 @@ namespace Northwind.Backofficce.ApiClient
                 apiClient = new HttpClient(handler)
                 {
                     // TODO: make this configurable.
-                    BaseAddress = new Uri("https://localhost:7185/api"),
+                    BaseAddress = new Uri(configuration.NorthwindApiBaseUri),
                 };
             }
 
