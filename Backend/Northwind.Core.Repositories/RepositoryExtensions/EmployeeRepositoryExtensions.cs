@@ -13,27 +13,27 @@ namespace Northwind.Core.Repositories
     /// That way, we keep the standard method wide enough for many use cases, but the performance remains optimal for each.
     /// Please also note that this mechanism does not exclude (highly) specialized repostiory methods.
     /// </remarks>
-    public enum OrderRepositoryIncludeOptions
+    public enum EmployeeRepositoryIncludeOptions
     {
         None = 0,
-        WithCustomer = 1
+        WithManager = 1
     }
 
-    public static class OrderRepositoryExtensions
+    public static class EmployeeRepositoryExtensions
     {
         /// <summary>
-        /// Returns all orders.
+        /// Returns all products.
         /// </summary>
         /// <returns></returns>
-        public static async Task<IEnumerable<Order>> GetManyAsync(this IRepository<Order> repository, OrderRepositoryIncludeOptions includeOptions = OrderRepositoryIncludeOptions.None, CancellationToken cancellationToken = default)
+        public static async Task<IEnumerable<Employee>> GetManyAsync(this IRepository<Employee> repository, EmployeeRepositoryIncludeOptions includeOptions = EmployeeRepositoryIncludeOptions.None, CancellationToken cancellationToken = default)
         {
             Guard.IsNotNull(repository, nameof(repository));
 
             var query = repository.Queryable;
 
-            if (includeOptions.HasFlag(OrderRepositoryIncludeOptions.WithCustomer))
+            if (includeOptions.HasFlag(EmployeeRepositoryIncludeOptions.WithManager))
             {
-                query = query.Include(o => o.Customer);
+                query = query.Include(o => o.ReportsTo);
             }
 
             var items = await query.ToListAsync(cancellationToken);

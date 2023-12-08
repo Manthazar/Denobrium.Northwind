@@ -21,7 +21,7 @@ namespace Northwind.Api.Services
 
         public async Task<IEnumerable<OrderInfo>> GetManyAsync(CancellationToken cancellationToken = default)
         {
-            var orders = await repository.GetManyAsync(OrderRepositoryExtensions.OrderIncludeOptions.WithCustomer, cancellationToken);
+            var orders = await repository.GetManyAsync(OrderRepositoryIncludeOptions.WithCustomer, cancellationToken);
             var orderMap = orders.ToDictionary(k => k.Id);
             var orderInfos = orders.ToSetOf<OrderInfo>();
 

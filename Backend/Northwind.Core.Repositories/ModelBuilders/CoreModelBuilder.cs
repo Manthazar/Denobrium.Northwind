@@ -77,13 +77,14 @@ namespace Northwind.Sql.ModelBuilders
                 entity.Property(e => e.Region).HasMaxLength(15);
                 entity.Property(e => e.Title).HasMaxLength(30);
                 entity.Property(e => e.TitleOfCourtesy).HasMaxLength(25);
+                entity.Property(e => e.ReportsToId).HasColumnName("ReportsTo");  // TODO: rename table column to ReportsToID.
 
                 entity.HasIndex(e => e.LastName, "LastName");
                 entity.HasIndex(e => e.PostalCode, "PostalCode");
 
-                entity.HasOne(d => d.ReportsToNavigation)
+                entity.HasOne(d => d.ReportsTo)
                     .WithMany(p => p.InverseReportsToNavigation)
-                    .HasForeignKey(d => d.ReportsTo)
+                    .HasForeignKey(d => d.ReportsToId)
                     .HasConstraintName("FK_Employees_Employees");
 
                 // The below is demonstrating the direct loading of one to  many relations while skipping the link table (EmployeeTerritory)

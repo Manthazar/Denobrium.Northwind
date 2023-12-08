@@ -27,15 +27,18 @@ namespace Northwind.Core.Models
         public string? Country { get; set; }
         public string? HomePhone { get; set; }
         public string? Extension { get; set; }
-        public byte[]? Photo { get; set; }
         public string? Notes { get; set; }
-        public int? ReportsTo { get; set; }
+        public int? ReportsToId { get; set; }
+
+        public byte[]? Photo { get; set; }
         public string? PhotoPath { get; set; }
 
-        public virtual Employee? ReportsToNavigation { get; set; }
+        public virtual Employee? ReportsTo { get; set; }
         public virtual ICollection<Employee> InverseReportsToNavigation { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
 
         public virtual ICollection<Territory> Territories { get; set; }
+
+        public string GetFullName() => $"{LastName}, {FirstName}";
     }
 }

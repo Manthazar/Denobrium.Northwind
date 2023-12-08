@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Northwind.Api.Data;
 using Northwind.Core;
-using Northwind.Core.Contracts;
 using Northwind.Core.Models;
 using Northwind.Core.Repositories;
 
@@ -15,12 +15,14 @@ namespace Northwind.WebApi.Controllers
         }
 
         [HttpGet()]
-        public async Task<IEnumerable<Employee>> GetAll(CancellationToken cancellationToken)
+        public async Task<IEnumerable<EmployeeInfo>> GetAll(CancellationToken cancellationToken)
         {
-            var repository = Services.GetService<IRepository<Employee>>();
-            var items = await repository!.GetAllAsync(cancellationToken);
+            var repository = Services.GetRequiredService<IRepository<Employee>>();
+            var items = await repository.GetManyAsync(includeOptions: EmployeeRepositoryIncludeOptions.WithManager, cancellationToken);
 
-            return items;
+            var result = items.ToSetOf<EmployeeInfo>();
+
+            return result;
         }
 
         [HttpGet("{id}")]
@@ -28,8 +30,8 @@ namespace Northwind.WebApi.Controllers
         {
             Guard.IsId(id, nameof(id));
             
-            var repository = Services.GetService<IRepository<Employee>>();
-            var customer = await repository!.GetByIdAsync(id, cancellationToken);
+            var repository = Services.GetRequiredService<IRepository<Employee>>();
+            var customer = await repository.GetByIdAsync(id, cancellationToken);
 
             return customer;
         }
