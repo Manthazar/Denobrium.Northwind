@@ -9,9 +9,9 @@ namespace Northwind.Api.Services
     public sealed class OrderService
     {
         private readonly IRepository<Order> repository;
-        private readonly NorthwindStoreConfiguration configuration;
+        private readonly NorthwindApiConfiguration configuration;
 
-        public OrderService(IRepository<Order> repository, NorthwindStoreConfiguration configuration)
+        public OrderService(IRepository<Order> repository, NorthwindApiConfiguration configuration)
         {
             Guard.IsNotNull(repository, nameof(repository));
 

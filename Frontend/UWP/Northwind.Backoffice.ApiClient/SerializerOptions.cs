@@ -7,6 +7,12 @@ internal static class SerializerOptions
 {
     private static readonly JsonSerializerSettings northwindSerializerOptions = CreateSettings();
 
+    /// <summary>
+    /// Defines the json serializer settings as per _agreed_ specs.
+    /// <seealso cref="https://github.com/Manthazar/Denobrium.Northwind/issues/21"/>
+    /// <seealso cref="https://github.com/Manthazar/Denobrium.Northwind/issues/22"/>
+    /// </summary>
+    /// <returns></returns>
     private static JsonSerializerSettings CreateSettings()
     {
         var configuration = new NorthwindBackofficeConfig(); // TODO: when some service location is implemented, use it here.

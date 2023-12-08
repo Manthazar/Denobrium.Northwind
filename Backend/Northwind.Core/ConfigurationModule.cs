@@ -12,7 +12,7 @@ namespace Northwind.Core
         /// <returns></returns>
         public static IServiceCollection AddNorthwindStoreConfiguration(this IServiceCollection services)
         {
-            services.AddScoped<NorthwindStoreConfiguration, NorthwindStoreConfiguration>();
+            services.AddScoped<NorthwindApiConfiguration, NorthwindApiConfiguration>();
 
             return services;
         }

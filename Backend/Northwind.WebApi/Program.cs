@@ -1,19 +1,22 @@
 using Northwind.Api;
 using Northwind.Api.Data;
 using Northwind.Core;
+using Northwind.Core.Configuration;
 using Northwind.Modules;
+using Northwind.WebApi;
 using Northwind.WebApi.ExceptionFilters;
 
 var builder = WebApplication.CreateBuilder(args);
 var sqlConnectionString = builder.Configuration["Northwind:SqlConnectionString"];
+var configuration = new NorthwindApiConfiguration();
 
 var services = builder.Services;
 
 services.AddControllers(options =>
 {
     options.Filters.Add<ParameterExceptionFilter>();
-});
-
+}).ConfigureJsonHandler(configuration);
+    
 services.AddNorthwindStoreConfiguration();
 services.AddRepositories(sqlConnectionString);
 services.AddApiServices();
@@ -38,6 +41,7 @@ else
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
+
 app.MapControllers();
 app.Run();
 

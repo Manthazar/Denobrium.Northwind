@@ -30,6 +30,12 @@ namespace Northwind.Core.Models
         public string? Notes { get; set; }
         public int? ReportsToId { get; set; }
 
+        /// <summary>
+        /// A photo of the employee
+        /// </summary>
+        /// <remarks>
+        /// The photo is a nice feature of northwind, but unfortunately, doesn't specify the format of it.
+        /// </remarks>
         public byte[]? Photo { get; set; }
         public string? PhotoPath { get; set; }
 

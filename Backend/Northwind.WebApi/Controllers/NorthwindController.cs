@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Northwind.WebApi.Controllers
 {
+    [Produces("application/json")]
     public abstract class NorthwindController : Controller
     {
         public NorthwindController (IServiceProvider services)
