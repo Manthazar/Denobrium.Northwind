@@ -16,7 +16,18 @@ namespace Northwind.Modules
         public static void AddRepositories(this IServiceCollection services, string sqlConnectionString)
         {
             Guard.IsNotNull(services, nameof(services));
+#if DEBUG
             Guard.IsNotNullOrEmpty(sqlConnectionString, nameof(sqlConnectionString));
+#else 
+            if (string.IsNullOrWhiteSpace(sqlConnectionString))
+            {
+                // Allowing this in non-dev so that the configuration service is starting up and can be used 
+                // (otherwise the webapi collapses at this point)
+                // Would be worth to log a warning though (which we don't do here in absense of a proper logging middleware.
+                return;
+            }
+#endif
+
 
             services.AddRepository<Category>();
             services.AddRepository<Customer>();

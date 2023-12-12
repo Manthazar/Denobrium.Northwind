@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Northwind.Core.Configuration;
+using Northwind.Core.Extensions;
 
 namespace Northwind.Core.Services.Internal
 {
@@ -41,8 +42,13 @@ namespace Northwind.Core.Services.Internal
         {
             public DataStoreSettingsValidator()
             {
+                // since we are talking about connectivity here, avoid subsequent validation failures, if a rule has already faulted.
+                // i.e. when the connection string is empty, do not try to build it (would result in 2 errors instead of 1).
+                RuleLevelCascadeMode = CascadeMode.StopOnFirstFailure; 
 
-                RuleFor(c => c.SqlConnectionString).NotEmpty(); // TODO: we could test whether the connection string is actually valid.
+                RuleFor(c => c.SqlConnectionString)
+                    .NotEmpty()
+                    .IsValidSqlConnectionString(); 
             }
         }
     }
