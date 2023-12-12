@@ -21,15 +21,16 @@ namespace Northwind.WebApi
         /// <param name="services"></param>
         /// <param name="configuration"></param>
         /// <returns></returns>
-        internal static IMvcBuilder ConfigureJsonHandler(this IMvcBuilder services, NorthwindApiConfiguration configuration)
+        internal static IMvcBuilder ConfigureJsonHandler(this IMvcBuilder services, NorthwindBackendConfiguration configuration)
         {
             // note JSON.NET is case-insensitive by default.
 
             services.AddNewtonsoftJson(setup =>
              {
+                 var config = configuration.Serialization;
                  var settings = setup.SerializerSettings;
-                 settings.NullValueHandling = configuration.SendJsonNullvalues ? NullValueHandling.Include : NullValueHandling.Ignore;
-                 settings.Formatting = configuration.EnablePrettyJsonFormatting ? Formatting.Indented : Formatting.None;
+                 settings.NullValueHandling = config.SendJsonNullvalues ? NullValueHandling.Include : NullValueHandling.Ignore;
+                 settings.Formatting = config.EnablePrettyJsonFormatting ? Formatting.Indented : Formatting.None;
                  settings.DateFormatHandling = DateFormatHandling.IsoDateFormat; // The default format used by Json.NET is already the ISO 8601 standard: "2012-03-19T07:22Z" -so nothing to do here except for date only properties.
                  settings.FloatFormatHandling = FloatFormatHandling.DefaultValue;
                  settings.MissingMemberHandling = MissingMemberHandling.Ignore;

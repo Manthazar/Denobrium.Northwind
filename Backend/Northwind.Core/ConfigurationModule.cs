@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
 using Northwind.Core.Configuration;
+using Northwind.Core.Services;
 
 namespace Northwind.Core
 {
@@ -10,9 +12,10 @@ namespace Northwind.Core
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static IServiceCollection AddNorthwindStoreConfiguration(this IServiceCollection services)
+        public static IServiceCollection AddNorthwindConfiguration(this IServiceCollection services, INorthwindConfigurationProvider configurationProvider)
         {
-            services.AddScoped<NorthwindApiConfiguration, NorthwindApiConfiguration>();
+            services.AddSingleton<INorthwindConfigurationProvider>(configurationProvider);
+            services.AddSingleton<NorthwindBackendConfiguration>(configurationProvider.Configuration);
 
             return services;
         }
