@@ -1,8 +1,8 @@
 # Denobrium.Northwind
-Denobrium Northwind is a show-case, a sandbox, conversation opener and incubator for all technical aspects which are typical business use cases. It is based on Microsoft's Northwind data store [sql](https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/sql/linq/downloading-sample-databases).
-
 > [!IMPORTANT]
 > Northwind Trades and underlying data are pure fiction. Similarities to existing indiciduals and entities are not intended.
+
+Denobrium Northwind is a show-case, a sandbox, conversation opener and incubator for all technical aspects which are typical business use cases. It is based on Microsoft's Northwind data store [sql](https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/sql/linq/downloading-sample-databases).
 
 # Scope
 Denobrium Northwind aims to represent an entire business application around whatever Northind Trades is trading with. We will touch base on many technologies and demonstrate how they can be embeded into an existing or new application platform. It will have tooling for employees, analysts, operators and a frontend for suppliers to maintain their products.
@@ -30,7 +30,7 @@ _Needless to say that we are not aiming for minimal tech stack here. Remember th
 The Northwind API is the heart of the platform. It is represented by one or multiple instances of a REST based API. Whilest the core development is performed in .NET WEBAPI, the core code is done in such a way that it can also run as an Azure Function or Service Fabric service or whatever your .NET liking is. The list of available use cases is [here](/Docs/api-use-cases.md).
 The API will switch between data stores, such as Sql Server and Mongodb (respective CosmosDB) based on the need and fit for use.
 
-**Testing** will be done partially on unit level, but will focus on component level. We will also explore integration testing under the umbrella of ms-test. There will be a test-system will allows **short **triple AAA unit test -regardless of data requirements (this will be achieved by the builder pattern).
+**Testing** will be done partially on unit level, but will focus on component level. We will also explore integration testing under the umbrella of ms-test. There will be a test-system will allows **short ** triple AAA unit test -regardless of data requirements (this will be achieved by the builder pattern).
 
 ## Northwind Backoffice
 The Northwind Backoffice is the Swiss Army knife for employees to oversee and operate the companie's core business. It will materialize in a number of ways, starting as a desktop app then evolving to a web app (you may ask for the _why_ ;)).
