@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!--  Branding  -->
-    <Color x:Key="Brand-Color">#3750D1</Color>
+    <Color x:Key="Brand-Color">#006cbe</Color>
 
     <SolidColorBrush x:Key="Brush-Brand-Color"
                      Color="{StaticResource Brand-Color}" />
