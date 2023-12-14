@@ -5,10 +5,64 @@
     xmlns:local="using:Northwind.Backoffice.Pages.HomePage"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:winui="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    >
 
     <Grid>
-        <TextBlock Text="Home Page" />
+        <winui:ParallaxView x:Name="Parallax" VerticalShift="50">
+            <Image Source="/Assets/Backgrounds/pixabay-hex-813411_1280.jpg" Stretch="UniformToFill" />
+        </winui:ParallaxView>
+
+
+        <Grid Margin="0,50" x:Name="baseLayoutGrid">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Features" Foreground="White" FontSize="32" Grid.Row="0" Grid.Column="1"/>
+
+            <Grid Grid.Row="1" Grid.Column="1" x:Name="tilesGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="200"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition Width="400"/>
+                    
+                </Grid.ColumnDefinitions>
+                
+                <Button VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" Grid.RowSpan="2" Grid.Column="0">
+                    <Grid>
+                        <Image Source="/Assets/Backdrops/d40cfd24-96c5-4c1f-9ffc-5fe1c498d6b3.png" Stretch="UniformToFill" Height="400" Width="400"/>
+
+                        <Rectangle Fill="Black" Opacity="0.5 " VerticalAlignment="Bottom" Height="45"/>
+                        <TextBlock Text="HOT PRODUCTS" Foreground="White" FontSize="30" VerticalAlignment="Bottom" Margin="20,5"/>
+                    </Grid>
+                </Button>
+
+                <Button VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" Grid.Row="0" Grid.Column="1">
+                    <Grid>
+                        <Image Source="/Assets/Backdrops/30180f4c-c822-4ae3-b43f-563b62c2627b.png" Stretch="UniformToFill" Height="400" Width="400"/>
+
+                        <Rectangle Fill="Black" Opacity="0.5 " VerticalAlignment="Bottom" Height="45"/>
+                        <TextBlock Text="BROWSE PRODUCTS" Foreground="White"  FontSize="16" VerticalAlignment="Bottom" Margin="20,10"/>
+                    </Grid>
+                </Button>
+
+
+            </Grid>
+        </Grid>
+        
+
     </Grid>
 </Page>

@@ -19,7 +19,6 @@
     ui:TitleBarExtensions.ButtonForegroundColor="{StaticResource Titlebar-Foreground}"
     ui:TitleBarExtensions.ForegroundColor="{StaticResource Titlebar-Foreground}"
     
-    
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -93,11 +92,8 @@
             </winui:NavigationView.MenuItems>
 
             <Grid>
-                <winui:ParallaxView x:Name="Parallax"
-                                    VerticalShift="50">
-                    <Image Source="Assets/Backgrounds/conveyor-belt.png"
-                           Stretch="UniformToFill" />
-
+                <winui:ParallaxView x:Name="Parallax" VerticalShift="50">
+                    <Image Source="Assets/Backgrounds/conveyor-belt.png" Stretch="UniformToFill" />
                 </winui:ParallaxView>
                 <Frame x:Name="NavigationFrame" />
 
@@ -106,15 +102,19 @@
                             Background="{ThemeResource BackingTint}"
                             Visibility="{Binding Visibility, ElementName=contentFrame}">
                         <media:UIElementExtensions.VisualFactory>
+                            
                             <media:PipelineVisualFactory Source="{media:BackdropSource}">
                                 <media:BlurEffect Amount="8" />
                             </media:PipelineVisualFactory>
+                            
                         </media:UIElementExtensions.VisualFactory>
+                        
                         <animations:Implicit.ShowAnimations>
                             <animations:OpacityAnimation From="0"
                                                          To="1"
                                                          Duration="0:0:0.3" />
                         </animations:Implicit.ShowAnimations>
+                        
                         <animations:Implicit.HideAnimations>
                             <animations:OpacityAnimation From="1"
                                                          To="0"
