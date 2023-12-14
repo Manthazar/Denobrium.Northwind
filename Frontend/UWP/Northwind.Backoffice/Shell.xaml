@@ -19,19 +19,20 @@
     ui:TitleBarExtensions.ButtonForegroundColor="{StaticResource Titlebar-Foreground}"
     ui:TitleBarExtensions.ForegroundColor="{StaticResource Titlebar-Foreground}"
     
+    
     mc:Ignorable="d">
 
     <Page.Resources>
         <!--<DataTemplate x:Key="CategoryTemplate"
-                      x:DataType="local:SampleCategory">
-            <Grid>
-                <TextBlock VerticalAlignment="Center"
-                           FontFamily="Segoe UI"
-                           FontSize="15px"
-                           FontWeight="Normal"
-                           Text="{x:Bind Name}" />
-            </Grid>
-        </DataTemplate>-->
+                    x:DataType="local:SampleCategory">
+          <Grid>
+              <TextBlock VerticalAlignment="Center"
+                         FontFamily="Segoe UI"
+                         FontSize="15px"
+                         FontWeight="Normal"
+                         Text="{x:Bind Name}" />
+          </Grid>
+      </DataTemplate>-->
     </Page.Resources>
 
     <Grid>

@@ -1,6 +1,5 @@
 ﻿using Northwind.Backoffice.Theme;
 using System;
-using System.Net.Http;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;

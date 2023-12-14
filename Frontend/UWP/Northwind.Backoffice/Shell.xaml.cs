@@ -1,6 +1,5 @@
 ﻿using Northwind.Backoffice.Pages.CustomerList;
 using Northwind.Backoffice.Pages.HomePage;
-using System;
 using Windows.UI.Xaml.Controls;
 
 namespace Northwind.Backoffice
@@ -26,27 +25,6 @@ namespace Northwind.Backoffice
                 contentFrame.Navigate(typeof(HomePage));
             }
         }
-
-        //private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
-        //{
-        //    //if (args.InvokedItem is SampleCategory category)
-        //    //{
-        //    //    if (SamplePickerGrid.Visibility != Visibility.Collapsed && _selectedCategory == category)
-        //    //    {
-        //    //        // The NavView fires this event twice when the current selected item is clicked
-        //    //        // This makes sure the event get's processed correctly
-        //    //        var nop = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => HideSamplePicker());
-        //    //    }
-        //    //    else
-        //    //    {
-        //    //        _selectedCategory = category;
-        //    //        ShowSamplePicker(category.Samples, true);
-
-        //    //        // Then Focus on Picker
-        //    //        dispatcherQueue.EnqueueAsync(() => SamplePickerGridView.Focus(FocusState.Keyboard));
-        //    //    }
-        //    //}
-        //}
 
         #endregion
     }
