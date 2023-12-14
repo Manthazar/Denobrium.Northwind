@@ -149,16 +149,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Backdrops\053684d0-1ba8-4473-8e9e-4c9f36b6c6bb.png" />
+    <Content Include="Assets\Backdrops\16cbceb1-4a54-4526-872e-4967b17e9765.png" />
+    <Content Include="Assets\Backdrops\2125e442-d5bd-4d3e-b92c-784035af666a.png" />
     <Content Include="Assets\Backdrops\28ea0f90-e96a-4213-b380-ca554661afa7.png" />
     <Content Include="Assets\Backdrops\2dac515d-99de-4995-bb68-401bd99f537f.png" />
     <Content Include="Assets\Backdrops\30180f4c-c822-4ae3-b43f-563b62c2627b.png" />
     <Content Include="Assets\Backdrops\5304fe73-199e-48ca-9d0f-507de50d91f8.png" />
+    <Content Include="Assets\Backdrops\6142e95d-2b9a-4d14-bea6-a6a407a72064.png" />
+    <Content Include="Assets\Backdrops\6926fe9c-a560-42ab-9926-6fdb915ca5e1.png" />
     <Content Include="Assets\Backdrops\740293b1-e47e-40f2-bc91-43eaa6f0be29.png" />
     <Content Include="Assets\Backdrops\89b3b52a-59f1-498a-95fe-d74979f4dce0.png" />
+    <Content Include="Assets\Backdrops\9ac9632f-bd2a-4403-ac96-ef23898c1b2f.png" />
     <Content Include="Assets\Backdrops\d40cfd24-96c5-4c1f-9ffc-5fe1c498d6b3.png" />
+    <Content Include="Assets\Backdrops\dbad96b5-9f61-4ee7-97e4-9c231f8dd87c.png" />
     <Content Include="Assets\Backgrounds\aurora-trees.png" />
     <Content Include="Assets\Backgrounds\conveyor-belt.png" />
-    <Content Include="Assets\Backgrounds\pixabay-hex-813411_1280.jpg" />
+    <Content Include="Assets\Backgrounds\pixabay-background-3181283_1280.jpg" />
     <Content Include="Assets\Backgrounds\products-on-belt.png" />
     <Content Include="Assets\northwind-vision.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />

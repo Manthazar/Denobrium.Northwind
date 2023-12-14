@@ -6,16 +6,102 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:winui="using:Microsoft.UI.Xaml.Controls"
+    xmlns:tp="using:Telerik.UI.Xaml.Controls.Primitives"
     mc:Ignorable="d"
     >
 
     <Grid>
-        <winui:ParallaxView x:Name="Parallax" VerticalShift="50">
-            <Image Source="/Assets/Backgrounds/pixabay-hex-813411_1280.jpg" Stretch="UniformToFill" />
+        <winui:ParallaxView x:Name="Parallax" VerticalShift="50" Opacity="0.4">
+            <Image Source="/Assets/Backgrounds/pixabay-background-3181283_1280.jpg" Stretch="UniformToFill" />
         </winui:ParallaxView>
 
+        <Grid Margin="30,30,0,0">
+            
+            <Grid.Resources>
+                <Style x:Key="BigTileTitle" TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontSize" Value="30"/>
+                    <Setter Property="VerticalAlignment" Value="Bottom"/>
+                    <Setter Property="Margin" Value="10,5"/>
+                </Style>
 
-        <Grid Margin="0,50" x:Name="baseLayoutGrid">
+                <Style x:Key="MediumTileTitle" TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontSize" Value="16"/>
+                    <Setter Property="VerticalAlignment" Value="Bottom"/>
+                    <Setter Property="Margin" Value="10,15"/>
+                </Style>
+
+                <Style x:Key="SmallTileTitle" TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="VerticalAlignment" Value="Bottom"/>
+                    <Setter Property="Margin" Value="10,15"/>
+                </Style>
+            </Grid.Resources>
+            
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <VariableSizedWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="8" ItemHeight="75" ItemWidth="75" >
+                    
+                    <!--Hot Products Tile-->
+                    <tp:RadCustomHubTile Width="295" Height="295" tp:HubTileService.GroupTag="Products" x:Name="hotProductsTile"
+                                                    VariableSizedWrapGrid.ColumnSpan="4" VariableSizedWrapGrid.RowSpan="4">
+                        <tp:RadCustomHubTile.FrontContent>
+                            <Grid>
+                                <Image Source="/Assets/Backdrops/2125e442-d5bd-4d3e-b92c-784035af666a.png" Stretch="UniformToFill"/>
+
+                                <Rectangle Fill="Black" Opacity="0.7" VerticalAlignment="Bottom" Height="45"/>
+                                <TextBlock Text="Hot Products" Style="{StaticResource MediumTileTitle}"/>
+                            </Grid>
+                        </tp:RadCustomHubTile.FrontContent>
+                    </tp:RadCustomHubTile>
+                    
+                    <!--Browse Products Tile-->
+                    <tp:RadCustomHubTile Width="295" Height="145" tp:HubTileService.GroupTag="Products" x:Name="browseProductsTile"
+                                        VariableSizedWrapGrid.RowSpan="2" VariableSizedWrapGrid.ColumnSpan="4">
+                        <tp:RadCustomHubTile.FrontContent>
+                            <Grid>
+                                <Image Source="/Assets/Backdrops/16cbceb1-4a54-4526-872e-4967b17e9765.png" Stretch="UniformToFill"/>
+
+                                <Rectangle Fill="Black" Opacity="0.7" VerticalAlignment="Bottom" Height="45"/>
+                                <TextBlock Text="Browse Products" Style="{StaticResource MediumTileTitle}"/>
+                            </Grid>
+                        </tp:RadCustomHubTile.FrontContent>
+                    </tp:RadCustomHubTile>
+                    
+                    <!--Reporting Tile-->
+                    <tp:RadCustomHubTile Width="145" Height="145" tp:HubTileService.GroupTag="Products" x:Name="reportingTile"
+                                                       VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="2" UpdateInterval="0:0:2">
+                        <tp:RadCustomHubTile.FrontContent>
+                            <Grid>
+                                <Image Source="/Assets/Backdrops/d40cfd24-96c5-4c1f-9ffc-5fe1c498d6b3.png" Stretch="UniformToFill"/>
+
+                                <Rectangle Fill="Black" Opacity="0.7" VerticalAlignment="Bottom" Height="45"/>
+                                <TextBlock Text="Reports" Style="{StaticResource MediumTileTitle}"/>
+                            </Grid>
+                        </tp:RadCustomHubTile.FrontContent>
+                    </tp:RadCustomHubTile>
+
+                    <!--Reporting Tile-->
+                    <tp:RadCustomHubTile Width="145" Height="145" tp:HubTileService.GroupTag="Products" x:Name="lowOnStock"
+                                   VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="2" UpdateInterval="0:0:2">
+                        <tp:RadCustomHubTile.FrontContent>
+                            <Grid>
+                                <Image Source="/Assets/Backdrops/053684d0-1ba8-4473-8e9e-4c9f36b6c6bb.png" Stretch="UniformToFill"/>
+
+                                <Rectangle Fill="Black" Opacity="0.7" VerticalAlignment="Bottom" Height="45"/>
+                                <TextBlock Text="Low on Stock" Style="{StaticResource MediumTileTitle}"/>
+                            </Grid>
+                        </tp:RadCustomHubTile.FrontContent>
+                    </tp:RadCustomHubTile>
+
+                </VariableSizedWrapGrid>
+            </ScrollViewer>
+        </Grid>
+
+
+
+        <!--<Grid Margin="0,50" x:Name="baseLayoutGrid">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"/>
@@ -42,26 +128,16 @@
                 </Grid.ColumnDefinitions>
                 
                 <Button VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" Grid.RowSpan="2" Grid.Column="0">
-                    <Grid>
-                        <Image Source="/Assets/Backdrops/d40cfd24-96c5-4c1f-9ffc-5fe1c498d6b3.png" Stretch="UniformToFill" Height="400" Width="400"/>
-
-                        <Rectangle Fill="Black" Opacity="0.5 " VerticalAlignment="Bottom" Height="45"/>
-                        <TextBlock Text="HOT PRODUCTS" Foreground="White" FontSize="30" VerticalAlignment="Bottom" Margin="20,5"/>
-                    </Grid>
+                   
                 </Button>
 
                 <Button VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" Grid.Row="0" Grid.Column="1">
-                    <Grid>
-                        <Image Source="/Assets/Backdrops/30180f4c-c822-4ae3-b43f-563b62c2627b.png" Stretch="UniformToFill" Height="400" Width="400"/>
-
-                        <Rectangle Fill="Black" Opacity="0.5 " VerticalAlignment="Bottom" Height="45"/>
-                        <TextBlock Text="BROWSE PRODUCTS" Foreground="White"  FontSize="16" VerticalAlignment="Bottom" Margin="20,10"/>
-                    </Grid>
+                    
                 </Button>
 
 
             </Grid>
-        </Grid>
+        </Grid>-->
         
 
     </Grid>
