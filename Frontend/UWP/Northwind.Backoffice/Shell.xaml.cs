@@ -9,6 +9,12 @@ namespace Northwind.Backoffice
         public Shell()
         {
             this.InitializeComponent();
+            this.Loaded += Shell_Loaded;
+        }
+
+        private void Shell_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            contentFrame.Navigate(typeof(HomePage));
         }
 
         #region Event Handling
