@@ -21,7 +21,7 @@ namespace Northwind.Backofficce.ApiClient.DataStores
         /// <summary>
         /// Performs a get request to the provided resource.
         /// </summary>
-        protected async Task<T> GetAsync<T>(string resource, CancellationToken cancellation)
+        protected async Task<T> GetAsync<T>(string resource, CancellationToken cancellation = default)
         {
             var httpClient = NorthwindApiClientModule.GetApiClient();
 

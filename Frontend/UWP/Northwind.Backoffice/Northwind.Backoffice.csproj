@@ -122,8 +122,9 @@
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
     <Compile Include="Models\CustomerInfoModel.cs" />
-    <Compile Include="Pages\CustomerList\CustomerList.xaml.cs">
-      <DependentUpon>CustomerList.xaml</DependentUpon>
+    <Compile Include="Models\ProductInfoModel.cs" />
+    <Compile Include="Pages\CustomerList\CustomerGrid.xaml.cs">
+      <DependentUpon>CustomerGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\CustomerList\CustomerListPage.xaml.cs">
       <DependentUpon>CustomerListPage.xaml</DependentUpon>
@@ -132,6 +133,13 @@
     <Compile Include="Pages\HomePage\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ProductList\ProductsGrid.xaml.cs">
+      <DependentUpon>ProductsGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProductList\ProductsPage.xaml.cs">
+      <DependentUpon>ProductsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProductList\ProductListViewModel.cs" />
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
@@ -204,7 +212,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Pages\CustomerList\CustomerList.xaml">
+    <Page Include="Pages\CustomerList\CustomerGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -215,6 +223,14 @@
     <Page Include="Pages\HomePage\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ProductList\ProductsGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\ProductList\ProductsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Shell.xaml">
       <Generator>MSBuild:Compile</Generator>
