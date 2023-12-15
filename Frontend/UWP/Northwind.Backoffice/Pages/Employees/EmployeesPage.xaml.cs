@@ -21,5 +21,17 @@ namespace Northwind.Backoffice.Pages.Employees
         {
             viewModel.OnAppearing();
         }
+
+        private void SearchBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+        }
+
+        private void SearchBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            if (viewModel.RunQueryCommand.CanExecute(sender))
+            {
+                viewModel.RunQueryCommand.Execute(sender);
+            }
+        }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using Northwind.Backoffice.Commands;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,7 +11,7 @@ namespace Northwind.Backoffice.ViewModels
 {
     internal class ListViewModel<T> : ViewModel<T>
     {
-        private ObservableCollection<T> items;
+        private IEnumerable<T> items;
         private T selectedItem;
 
         public ListViewModel()
@@ -56,7 +58,7 @@ namespace Northwind.Backoffice.ViewModels
 
         protected CancellationTokenSource CancellationTokenSource {get;set;}
 
-        public ObservableCollection<T> Items
+        public IEnumerable<T> Items
         {
             get => items;
             protected set => SetProperty(ref items, value);

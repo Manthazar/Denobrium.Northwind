@@ -74,7 +74,11 @@ namespace Northwind.Backoffice.Models
             {
                 return null;
             }
-            
+        }
+
+        public override string ToString()
+        {
+            return FullName;
         }
     }
 }

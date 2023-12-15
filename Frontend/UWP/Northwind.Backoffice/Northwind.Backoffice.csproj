@@ -135,7 +135,7 @@
     <Compile Include="Pages\Employees\EmployeesPage.xaml.cs">
       <DependentUpon>EmployeesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Employees\EmployeeListViewModel.cs" />
+    <Compile Include="Pages\Employees\EmployeeQueryViewModel.cs" />
     <Compile Include="Pages\Employees\EmployeesGrid.xaml.cs">
       <DependentUpon>EmployeesGrid.xaml</DependentUpon>
     </Compile>

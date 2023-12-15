@@ -2,7 +2,6 @@
 using Northwind.Backoffice.DataStores;
 using Northwind.Backoffice.Models;
 using Northwind.Backoffice.ViewModels;
-using Northwind.BackOffice.Data;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -11,12 +10,11 @@ using System.Threading.Tasks;
 
 namespace Northwind.Backoffice.Pages.Employees
 {
-    internal class EmployeeListViewModel : ListViewModel<EmployeeInfoModel>
+    internal class EmployeeListViewModel : QueryViewModel<EmployeeInfoModel>
     {
         private async Task LoadItemsAsync()
         {
             CancellationTokenSource?.Cancel();
-
             CancellationTokenSource = new CancellationTokenSource();
 
             IsBusy = true;
@@ -25,10 +23,26 @@ namespace Northwind.Backoffice.Pages.Employees
             var data = await store.GetAllAsync(CancellationTokenSource.Token);
             var items = await AdaptAsync(data);
 
-            Items = items;
-            SelectedItem = items.FirstOrDefault();
+            ItemsSource = Items = items;
 
             IsBusy = false;
+        }
+
+        protected override Task OnRunQueryAsync()
+        {
+            if (Keyword != null && Keyword.Length > 2 && ItemsSource.Any())
+            {
+                // When the keyword is sufficient long, we want the items of the grid/ hex showing the same set as the search popup.
+                Items = KeywordItems = ItemsSource.Where(i => i.FullName.Contains(Keyword, System.StringComparison.OrdinalIgnoreCase));
+            }
+            else
+            {
+                // When the keyword is too short, we want to see all items in the grid/ hex, but nothing in the search popup.
+                Items = ItemsSource;
+                KeywordItems = null;
+            }
+
+            return Task.CompletedTask;
         }
 
         protected override Task OnAppearingAsync() => LoadItemsAsync();
