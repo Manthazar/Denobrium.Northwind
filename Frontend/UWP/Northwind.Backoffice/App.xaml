@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="using:Northwind.BackOffice.Converters"
-    
+    xmlns:toolkitConverters="using:Microsoft.Toolkit.Uwp.UI.Converters"
     RequestedTheme="Light">
 
     <Application.Resources>
@@ -16,6 +16,7 @@
 
                 <ResourceDictionary>
                     <converters:VisibilityConverter x:Key="visibilityConverter"/>
+                    <converters:ByteArrayImageSourceConverter x:Key="byteArrayToImageSourceConverter" />
                 </ResourceDictionary>
 
                 <!--  WinUI  -->

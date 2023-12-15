@@ -7,9 +7,19 @@ namespace Northwind.Backoffice.Pages.Employees
     /// </summary>
     public sealed partial class EmployeesPage : Page
     {
+        private readonly EmployeeListViewModel viewModel;
+
         public EmployeesPage()
         {
             this.InitializeComponent();
+            this.Loaded += ProductGrid_Loaded;
+
+            this.DataContext = this.viewModel = new EmployeeListViewModel();
+        }
+
+        private void ProductGrid_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            viewModel.OnAppearing();
         }
     }
 }

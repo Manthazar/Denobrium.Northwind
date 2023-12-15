@@ -30,6 +30,7 @@
             <Color x:Key="Grey-03">#FF555555</Color>
             <Color x:Key="Grey-04">#FFDDDDDD</Color>
             <Color x:Key="Grey-05">#FFF0F0F0</Color>
+            <Color x:Key="Grey-06">#FFFAFAFA</Color>
             <Color x:Key="SampleInfo-Background">#FFEEEEEE</Color>
 
             <!--  Branding Colors  -->
@@ -109,6 +110,7 @@
             <Color x:Key="Grey-03">#FF555555</Color>
             <Color x:Key="Grey-04">#FF444444</Color>
             <Color x:Key="Grey-05">#FF333333</Color>
+            <Color x:Key="Grey-06">#FF222222</Color>
             <Color x:Key="SampleInfo-Background">#FF222222</Color>
 
             <!--  Branding Colors  -->

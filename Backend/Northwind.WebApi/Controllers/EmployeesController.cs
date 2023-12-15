@@ -21,6 +21,13 @@ namespace Northwind.WebApi.Controllers
             var items = await repository.GetManyAsync(includeOptions: EmployeeRepositoryIncludeOptions.WithManager, cancellationToken);
 
             var result = items.ToSetOf<EmployeeInfo>();
+            
+            foreach (var item in result)
+            {
+                // As it turns out, UWP does not support BMP files(uncompressed bitmap file) which are used by this sample to store photos for employees.
+                // In order to unblock the (current) UI which stalls in the attempt to render this ancient thing, we kill the photo.
+                item.Photo = null;
+            }
 
             return result;
         }

@@ -26,6 +26,7 @@ namespace Northwind.Backoffice.Pages.Employees
             var items = await AdaptAsync(data);
 
             Items = items;
+            SelectedItem = items.FirstOrDefault();
 
             IsBusy = false;
         }
