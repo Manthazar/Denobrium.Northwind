@@ -9,7 +9,7 @@
     xmlns:tGrid="using:Telerik.UI.Xaml.Controls.Grid"
     xmlns:tGridPrimitives="using:Telerik.UI.Xaml.Controls.Grid.Primitives"
     mc:Ignorable="d"
-    d:DataContext="{d:DesignInstance local:CustomerListViewModel, IsDesignTimeCreatable=True}"
+    d:DataContext="{d:DesignInstance local:ProductListViewModel, IsDesignTimeCreatable=True}"
     d:DesignHeight="300"
     d:DesignWidth="400">
 

@@ -1,5 +1,6 @@
 ﻿using Northwind.Backoffice.Pages.CustomerList;
 using Northwind.Backoffice.Pages.HomePage;
+using Northwind.Backoffice.Pages.ProductList;
 using Windows.UI.Xaml.Controls;
 
 namespace Northwind.Backoffice
@@ -22,13 +23,19 @@ namespace Northwind.Backoffice
         private void NavView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
         {
             var navigationName = (string)args.InvokedItem;
-            if (navigationName == "Customers")
+            switch (navigationName)
             {
-                contentFrame.Navigate(typeof(CustomerListPage));
-            } 
-            else if (navigationName == "Home")
-            {
-                contentFrame.Navigate(typeof(HomePage));
+                case "Home":
+                    contentFrame.Navigate(typeof(HomePage));
+                    break;
+
+                case "Customers":
+                    contentFrame.Navigate(typeof(CustomerListPage));
+                    break;
+
+                case "Products":
+                    contentFrame.Navigate(typeof(ProductsPage));
+                    break;
             }
         }
 

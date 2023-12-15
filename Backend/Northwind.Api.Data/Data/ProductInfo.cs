@@ -28,6 +28,12 @@
         /// </summary>
         public short? UnitsOnOrder { get; set; }
 
+        /// <summary>
+        /// Indicates whether the product is discontinued or not.
+        /// </summary>
+        /// <remarks>
+        /// Note, that the supplier won't provide more units of discontinued products.
+        /// </remarks>
         public bool IsDiscontinued {  get; set; }
     }
 }

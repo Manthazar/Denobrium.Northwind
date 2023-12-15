@@ -136,6 +136,8 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataStores\ProductDataStore.cs" />
+    <Compile Include="Data\ProductInfo.cs" />
     <None Include="readme.md" />
     <Compile Include="SerializerOptions.cs" />
   </ItemGroup>

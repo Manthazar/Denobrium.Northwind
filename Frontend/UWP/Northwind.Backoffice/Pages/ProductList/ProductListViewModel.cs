@@ -8,20 +8,19 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Northwind.Backoffice.Pages.CustomerList
+namespace Northwind.Backoffice.Pages.ProductList
 {
-    internal class CustomerListViewModel : ListViewModel<CustomerInfoModel>
+    internal class ProductListViewModel : ListViewModel<ProductInfoModel>
     {
-        protected override Task OnAppearingAsync() => LoadItemsAsync();
-
         private async Task LoadItemsAsync()
         {
             CancellationTokenSource?.Cancel();
+
             CancellationTokenSource = new CancellationTokenSource();
 
             IsBusy = true;
 
-            var store = new CustomerDataStore();
+            var store = new ProductDataStore();
             var data = await store.GetAllAsync(CancellationTokenSource.Token);
             var items = await AdaptAsync(data);
 
@@ -30,9 +29,11 @@ namespace Northwind.Backoffice.Pages.CustomerList
             IsBusy = false;
         }
 
-        private Task<ObservableCollection<CustomerInfoModel>> AdaptAsync(IEnumerable<CustomerInfo> data)
+        protected override Task OnAppearingAsync() => LoadItemsAsync();
+
+        private Task<ObservableCollection<ProductInfoModel>> AdaptAsync(IEnumerable<ProductInfo> data)
         {
-            var collection = new ObservableCollection<CustomerInfoModel>(data.Select(d => new CustomerInfoModel(d)));
+            var collection = new ObservableCollection<ProductInfoModel>(data.Select(d => new ProductInfoModel(d)));
             return Task.FromResult(collection);
         }
     }

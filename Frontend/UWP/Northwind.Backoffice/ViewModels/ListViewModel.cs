@@ -20,13 +20,19 @@ namespace Northwind.Backoffice.ViewModels
             ItemTappedCommand = new RelayCommand<T>(async (i) => await OnItemTapped(i), (i) => OnItemTapped_CanExecute(i));
         }
 
-        #region Command Overloads
-
-        public virtual void OnAppearing()
+        internal override void OnAppearing()
         {
+            base.OnAppearing();
+
             IsBusy = true;
             SelectedItem = default;
+
+            OnAppearingAsync();
         }
+
+        protected virtual Task OnAppearingAsync() => Task.CompletedTask;
+
+        #region Command Overloads
 
         protected virtual void OnItemSelected(T item)
         {
