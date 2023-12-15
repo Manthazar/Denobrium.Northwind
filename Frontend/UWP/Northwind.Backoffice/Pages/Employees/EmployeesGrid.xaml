@@ -1,15 +1,15 @@
 ﻿<UserControl
-    x:Class="Northwind.Backoffice.Pages.ProductList.ProductGrid"
+    x:Class="Northwind.Backoffice.Pages.Employees.EmployeesGrid"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Northwind.Backoffice.Pages.ProductList"
+    xmlns:local="using:Northwind.Backoffice.Pages.Employees"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:tp="using:Telerik.UI.Xaml.Controls.Primitives"
     xmlns:tGrid="using:Telerik.UI.Xaml.Controls.Grid"
     xmlns:tGridPrimitives="using:Telerik.UI.Xaml.Controls.Grid.Primitives"
     mc:Ignorable="d"
-    d:DataContext="{d:DesignInstance local:ProductListViewModel, IsDesignTimeCreatable=True}"
+    d:DataContext="{d:DesignInstance local:EmployeeListViewModel, IsDesignTimeCreatable=True}"
     d:DesignHeight="300"
     d:DesignWidth="400">
 
@@ -42,12 +42,8 @@
             </tGrid:RadDataGrid.Resources>
 
             <tGrid:RadDataGrid.Columns>
-                <tGrid:DataGridTextColumn PropertyName="CategoryName"  Header="Category" CanUserReorder="False" CanUserSort="True" CanUserEdit="False" SizeMode="Fixed"/>
-                <tGrid:DataGridTextColumn PropertyName="Name" Header="Name"  CanUserEdit="False" CanUserSort="True" />
-                <tGrid:DataGridTextColumn PropertyName="QuanityPerUnit" Header="Quantity per Unit"  CanUserEdit="False" CanUserSort="True" />
-                <tGrid:DataGridTextColumn PropertyName="UnitsInStock" Header="In Stock"  CanUserEdit="False" CanUserSort="True" />
-                <tGrid:DataGridTextColumn PropertyName="UnitsOnOrder" Header="On Order"  CanUserEdit="False" CanUserSort="True" />
-                <tGrid:DataGridTextColumn PropertyName="SupplierCompanyName" Header="Supplier"  CanUserEdit="False" CanUserSort="True" />
+                <tGrid:DataGridTextColumn PropertyName="FirstName" Header="First Name"  CanUserEdit="False" CanUserSort="True" />
+                <tGrid:DataGridTextColumn PropertyName="LastName" Header="Last Name"  CanUserEdit="False" CanUserSort="True" />
             </tGrid:RadDataGrid.Columns>
         </tGrid:RadDataGrid>
     </Grid>

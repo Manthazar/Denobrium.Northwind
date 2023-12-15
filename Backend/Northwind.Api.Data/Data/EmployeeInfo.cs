@@ -13,6 +13,9 @@
         public string ReportsToName { get; set; } = null!;
 
         public byte[]? Photo { get; set; }
+
+        //public string PhotoFormat { get; set; } = "jpg";
+
         public string? PhotoPath { get; set; }
     }
 }

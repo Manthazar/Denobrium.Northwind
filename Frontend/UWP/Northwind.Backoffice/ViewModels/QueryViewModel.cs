@@ -1,109 +1,59 @@
-﻿using CommunityToolkit.Mvvm.Input;
-using Northwind.Backoffice.Commands;
+﻿using Northwind.Backoffice.Commands;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Northwind.Backoffice.ViewModels
 {
-    internal class QueryViewModel<T> : ViewModel<T>
+    internal class QueryViewModel<T> : ListViewModel<T>
     {
-        private IEnumerable<T> items;
-        private T selectedItem;
-        private bool hasItems;
+        private string keyword;
+        private IEnumerable<T> itemsSource;
+        private IEnumerable<T> keywordItems;
 
         public QueryViewModel()
         {
-            items = null;
-
-            LoadItemsCommand = new Command(async () => await OnLoadItemsAsync(), () => LoadItems_CanExecute());
-            ItemTappedCommand = new RelayCommand<T>(async (i) => await OnItemTapped(i), (i) => OnItemTapped_CanExecute(i));
+            RunQueryCommand = new Command(async () => await OnRunQueryAsync(), () => RunQuery_CanExecute());
         }
 
-        #region Command Overloads
-
-        public virtual void OnAppearing()
+        protected virtual bool RunQuery_CanExecute()
         {
-            IsBusy = true;
-            SelectedItem = default;
+            return true;
         }
 
-        protected virtual void OnItemSelected(T item)
+        protected virtual Task OnRunQueryAsync()
         {
-        }
-
-        protected virtual bool LoadItems_CanExecute() => true;
-
-        protected virtual Task OnLoadItemsAsync()
-        {
-            return Task.CompletedTask;
-        }
-
-        protected virtual Task OnItemTapped(T item)
-        {
-            return Task.CompletedTask;
-        }
-
-        protected virtual bool OnItemTapped_CanExecute(T item) => true;
-
-        #endregion
-
-        /// <summary>
-        /// Gets the items of the viewmodel.
-        /// </summary>
-        public IEnumerable<T> Items
-        {
-            get => items;
-            protected set
-            {
-                SetProperty(ref items, value);
-                if (items.Count() > 0)
-                {
-                    HasItems = true;
-                }
-                else
-                {
-                    HasItems = false;
-                }
-            }
+            return Task.FromResult(0);
         }
 
         /// <summary>
-        /// Determines whether the view model has noteable items (to show).
+        /// The keyword for which an (in-memory) search should be attempted.
         /// </summary>
-        public bool HasItems
+        public string Keyword
         {
-            get => hasItems;
-            protected set
-            {
-                SetProperty(ref hasItems, value);
-                OnPropertyChanged(nameof(HasNoItems));
-            }
+            get => keyword;
+            set => SetProperty(ref keyword, value);
         }
 
         /// <summary>
-        /// Determines whether the view model has no noteable items (to show).
+        /// The source of the items, that is typically the loaded collection without any in memory filtering.
         /// </summary>
-        public bool HasNoItems
+        public IEnumerable<T> ItemsSource
         {
-            get => !hasItems;
+            get => itemsSource;
+            protected set => SetProperty(ref itemsSource, value);
         }
 
-        public T SelectedItem
+        // <summary>
+        /// The source of the items, that is typically the loaded collection without any in memory filtering.
+        /// </summary>
+        public IEnumerable<T> KeywordItems
         {
-            get => selectedItem;
-            set
-            {
-                SetProperty(ref selectedItem, value);
-                OnItemSelected(value);
-            }
+            get => keywordItems;
+            protected set => SetProperty(ref keywordItems, value);
         }
 
-        public ICommand LoadItemsCommand { get; }
 
-        public ICommand AddItemCommand { get; }
-
-        public ICommand ItemTappedCommand { get; }
+        public ICommand RunQueryCommand { get; }
     }
 }
