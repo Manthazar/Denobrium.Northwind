@@ -120,9 +120,11 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DataStores\EmployeeDataStore.cs" />
     <Compile Include="DataStores\CustomerDataStore.cs" />
     <Compile Include="DataStores\RestDataStore.cs" />
     <Compile Include="Data\CustomerInfo.cs" />
+    <Compile Include="Data\EmployeeInfo.cs" />
     <Compile Include="NorthwindApiClientModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Northwind.Backofficce.ApiClient.rd.xml" />

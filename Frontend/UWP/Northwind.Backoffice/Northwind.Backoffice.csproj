@@ -122,6 +122,7 @@
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
     <Compile Include="Models\CustomerInfoModel.cs" />
+    <Compile Include="Models\EmployeeInfoModel.cs" />
     <Compile Include="Models\ProductInfoModel.cs" />
     <Compile Include="Pages\CustomerList\CustomerGrid.xaml.cs">
       <DependentUpon>CustomerGrid.xaml</DependentUpon>
@@ -130,6 +131,13 @@
       <DependentUpon>CustomerListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\CustomerList\CustomerListViewModel.cs" />
+    <Compile Include="Pages\Employees\EmployeesPage.xaml.cs">
+      <DependentUpon>EmployeesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Employees\EmployeeListViewModel.cs" />
+    <Compile Include="Pages\Employees\EmployeesGrid.xaml.cs">
+      <DependentUpon>EmployeesGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\HomePage\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -219,6 +227,14 @@
     <Page Include="Pages\CustomerList\CustomerListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Employees\EmployeesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Employees\EmployeesGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\HomePage\HomePage.xaml">
       <SubType>Designer</SubType>

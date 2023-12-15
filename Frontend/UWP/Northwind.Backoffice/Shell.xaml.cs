@@ -1,4 +1,5 @@
 ﻿using Northwind.Backoffice.Pages.CustomerList;
+using Northwind.Backoffice.Pages.Employees;
 using Northwind.Backoffice.Pages.HomePage;
 using Northwind.Backoffice.Pages.ProductList;
 using Windows.UI.Xaml.Controls;
@@ -35,6 +36,10 @@ namespace Northwind.Backoffice
 
                 case "Products":
                     contentFrame.Navigate(typeof(ProductsPage));
+                    break;
+
+                case "Employees":
+                    contentFrame.Navigate(typeof(EmployeesPage));
                     break;
             }
         }
