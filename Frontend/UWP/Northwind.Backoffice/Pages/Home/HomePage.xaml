@@ -1,8 +1,8 @@
 ﻿<Page
-    x:Class="Northwind.Backoffice.Pages.HomePage.HomePage"
+    x:Class="Northwind.Backoffice.Pages.Home.HomePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Northwind.Backoffice.Pages.HomePage"
+    xmlns:local="using:Northwind.Backoffice.Pages.Home"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:winui="using:Microsoft.UI.Xaml.Controls"
@@ -48,7 +48,8 @@
 
                         <!--Hot Products Tile-->
                         <tp:RadCustomHubTile Width="295" Height="295" tp:HubTileService.GroupTag="Products" x:Name="hotProductsTile"
-                                                    VariableSizedWrapGrid.ColumnSpan="4" VariableSizedWrapGrid.RowSpan="4">
+                                             VariableSizedWrapGrid.ColumnSpan="4" VariableSizedWrapGrid.RowSpan="4"
+                                             Tag="hotProducts" Tapped="Tile_Tapped">
                             <tp:RadCustomHubTile.FrontContent>
                                 <Grid>
                                     <Image Source="/Assets/Backdrops/2125e442-d5bd-4d3e-b92c-784035af666a.png" Stretch="UniformToFill"/>
@@ -61,7 +62,8 @@
 
                         <!--Browse Products Tile-->
                         <tp:RadCustomHubTile Width="295" Height="145" tp:HubTileService.GroupTag="Products" x:Name="browseProductsTile"
-                                        VariableSizedWrapGrid.RowSpan="2" VariableSizedWrapGrid.ColumnSpan="4">
+                                             Tag="Products" Tapped="Tile_Tapped"
+                                             VariableSizedWrapGrid.RowSpan="2" VariableSizedWrapGrid.ColumnSpan="4">
                             <tp:RadCustomHubTile.FrontContent>
                                 <Grid>
                                     <Image Source="/Assets/Backdrops/16cbceb1-4a54-4526-872e-4967b17e9765.png" Stretch="UniformToFill"/>
@@ -74,7 +76,8 @@
 
                         <!--Reporting Tile-->
                         <tp:RadCustomHubTile Width="145" Height="145" tp:HubTileService.GroupTag="Products" x:Name="reportingTile"
-                                                       VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="2" UpdateInterval="0:0:2">
+                                             Tag="Reporting" Tapped="Tile_Tapped"
+                                             VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="2" UpdateInterval="0:0:2">
                             <tp:RadCustomHubTile.FrontContent>
                                 <Grid>
                                     <Image Source="/Assets/Backdrops/d40cfd24-96c5-4c1f-9ffc-5fe1c498d6b3.png" Stretch="UniformToFill"/>
@@ -85,9 +88,10 @@
                             </tp:RadCustomHubTile.FrontContent>
                         </tp:RadCustomHubTile>
 
-                        <!--Reporting Tile-->
+                        <!--Low on stock Tile-->
                         <tp:RadCustomHubTile Width="145" Height="145" tp:HubTileService.GroupTag="Products" x:Name="lowOnStock"
-                                   VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="2" UpdateInterval="0:0:2">
+                                             Tag="hotProducts" Tapped="Tile_Tapped"
+                                             VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="2" UpdateInterval="0:0:2">
                             <tp:RadCustomHubTile.FrontContent>
                                 <Grid>
                                     <Image Source="/Assets/Backdrops/053684d0-1ba8-4473-8e9e-4c9f36b6c6bb.png" Stretch="UniformToFill"/>
@@ -103,9 +107,13 @@
                     <!--Browse-->
                     <TextBlock Text="Browse" Margin="5,30,0,0" Style="{StaticResource BigTileTitle}" x:Name="browseHeader"/>
 
+                    
                     <VariableSizedWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="8" ItemHeight="75" ItemWidth="75" >
+
+                        <!--Suppliers-->
                         <tp:RadCustomHubTile Width="145" Height="145" tp:HubTileService.GroupTag="Products" x:Name="suppliersTile"
-                                 VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="2" UpdateInterval="0:0:2">
+                                             Tag="Suppliers" Tapped="Tile_Tapped"
+                                             VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="2" UpdateInterval="0:0:2">
                             <tp:RadCustomHubTile.FrontContent>
                                 <Grid>
                                     <Image Source="/Assets/Backdrops/6142e95d-2b9a-4d14-bea6-a6a407a72064.png" Stretch="UniformToFill"/>
@@ -116,8 +124,10 @@
                             </tp:RadCustomHubTile.FrontContent>
                         </tp:RadCustomHubTile>
 
+                        <!--Customers-->
                         <tp:RadCustomHubTile Width="145" Height="145" tp:HubTileService.GroupTag="Products" x:Name="customersTile"
-          VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="2" UpdateInterval="0:0:2">
+                                             Tag="Customers" Tapped="Tile_Tapped"
+                                             VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="2" UpdateInterval="0:0:2">
                             <tp:RadCustomHubTile.FrontContent>
                                 <Grid>
                                     <Image Source="/Assets/Backdrops/6926fe9c-a560-42ab-9926-6fdb915ca5e1.png" Stretch="UniformToFill"/>
@@ -128,7 +138,9 @@
                             </tp:RadCustomHubTile.FrontContent>
                         </tp:RadCustomHubTile>
 
+                        <!--Employees-->
                         <tp:RadCustomHubTile Width="145" Height="145" tp:HubTileService.GroupTag="Products" x:Name="emloyeesTile"
+                                             Tag="Employees" Tapped="Tile_Tapped"
                                              VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="2" UpdateInterval="0:0:2">
                             <tp:RadCustomHubTile.FrontContent>
                                 <Grid>
@@ -144,47 +156,6 @@
                 </StackPanel>
             </ScrollViewer>
         </Grid>
-
-
-
-        <!--<Grid Margin="0,50" x:Name="baseLayoutGrid">
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <TextBlock Text="Features" Foreground="White" FontSize="32" Grid.Row="0" Grid.Column="1"/>
-
-            <Grid Grid.Row="1" Grid.Column="1" x:Name="tilesGrid">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="200"/>
-                    <RowDefinition Height="200"/>
-                </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="400"/>
-                    <ColumnDefinition Width="400"/>
-                    
-                </Grid.ColumnDefinitions>
-                
-                <Button VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" Grid.RowSpan="2" Grid.Column="0">
-                   
-                </Button>
-
-                <Button VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" Grid.Row="0" Grid.Column="1">
-                    
-                </Button>
-
-
-            </Grid>
-        </Grid>-->
-
 
     </Grid>
 </Page>

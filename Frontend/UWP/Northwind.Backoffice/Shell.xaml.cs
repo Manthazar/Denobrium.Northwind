@@ -1,6 +1,8 @@
-﻿using Northwind.Backoffice.Pages.Customers;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using Northwind.Backoffice.Messages;
+using Northwind.Backoffice.Pages.Customers;
 using Northwind.Backoffice.Pages.Employees;
-using Northwind.Backoffice.Pages.HomePage;
+using Northwind.Backoffice.Pages.Home;
 using Northwind.Backoffice.Pages.Orders;
 using Northwind.Backoffice.Pages.ProductList;
 using Northwind.Backoffice.Pages.Suppliers;
@@ -14,18 +16,17 @@ namespace Northwind.Backoffice
         {
             this.InitializeComponent();
             this.Loaded += Shell_Loaded;
+
+            WeakReferenceMessenger.Default.Register<NavigationRequestedMessage>(this, (r, m) =>
+            {
+                OnNavigationRequested((Shell) r, m.NavigationPath);
+            });
         }
 
-        private void Shell_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private static void OnNavigationRequested(Shell shell, string navigationName) 
         {
-            contentFrame.Navigate(typeof(HomePage));
-        }
+            var contentFrame = shell.contentFrame;
 
-        #region Event Handling
-
-        private void NavView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
-        {
-            var navigationName = (string)args.InvokedItem;
             switch (navigationName)
             {
                 case "Home":
@@ -52,6 +53,19 @@ namespace Northwind.Backoffice
                     contentFrame.Navigate(typeof(OrdersPage));
                     break;
             }
+        }
+
+        #region Event Handling
+
+        private void Shell_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            contentFrame.Navigate(typeof(HomePage));
+        }
+
+
+        private void NavView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
+        {
+            OnNavigationRequested(this, (string)args.InvokedItem);
         }
 
         #endregion
