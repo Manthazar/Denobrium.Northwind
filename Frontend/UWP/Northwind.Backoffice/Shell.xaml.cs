@@ -1,4 +1,4 @@
-﻿using Northwind.Backoffice.Pages.CustomerList;
+﻿using Northwind.Backoffice.Pages.Customers;
 using Northwind.Backoffice.Pages.Employees;
 using Northwind.Backoffice.Pages.HomePage;
 using Northwind.Backoffice.Pages.Orders;
@@ -33,7 +33,7 @@ namespace Northwind.Backoffice
                     break;
 
                 case "Customers":
-                    contentFrame.Navigate(typeof(CustomerListPage));
+                    contentFrame.Navigate(typeof(CustomersPage));
                     break;
 
                 case "Products":

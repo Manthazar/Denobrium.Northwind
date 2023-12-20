@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Northwind.Backoffice.Pages.CustomerList
+namespace Northwind.Backoffice.Pages.Customers
 {
     internal class CustomerListViewModel : ListViewModel<CustomerInfoModel>
     {
