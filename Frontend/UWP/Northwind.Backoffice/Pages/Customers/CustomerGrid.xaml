@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="Northwind.Backoffice.Pages.Customers.CustomerList"
+    x:Class="Northwind.Backoffice.Pages.Customers.CustomerGrid"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Northwind.Backoffice.Pages.Customers"
@@ -9,7 +9,7 @@
     xmlns:tGrid="using:Telerik.UI.Xaml.Controls.Grid"
     xmlns:tGridPrimitives="using:Telerik.UI.Xaml.Controls.Grid.Primitives"
     mc:Ignorable="d"
-    d:DataContext="{d:DesignInstance local:ProductListViewModel, IsDesignTimeCreatable=True}"
+    d:DataContext="{d:DesignInstance local:CustomerListViewModel, IsDesignTimeCreatable=True}"
     d:DesignHeight="300"
     d:DesignWidth="400">
 
