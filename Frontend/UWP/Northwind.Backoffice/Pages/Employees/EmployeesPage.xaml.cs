@@ -12,12 +12,12 @@ namespace Northwind.Backoffice.Pages.Employees
         public EmployeesPage()
         {
             this.InitializeComponent();
-            this.Loaded += ProductGrid_Loaded;
+            this.Loaded += Page_Loaded;
 
             this.DataContext = this.viewModel = new EmployeeListViewModel();
         }
 
-        private void ProductGrid_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void Page_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             viewModel.OnAppearing();
         }

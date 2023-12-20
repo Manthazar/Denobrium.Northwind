@@ -15,8 +15,15 @@ namespace Northwind.Core.Models
         public string? Country { get; set; }
         public string? Phone { get; set; }
         public string? Fax { get; set; }
+
+        /// <summary>
+        /// An encoded string of the homepage with dash (#) as separator
+        /// </summary>
+        /// <example>
+        /// Name of link#http#
+        /// </example>
         public string? HomePage { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Product>? Products { get; set; }
     }
 }

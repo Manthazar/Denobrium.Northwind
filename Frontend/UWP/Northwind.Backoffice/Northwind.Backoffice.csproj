@@ -125,6 +125,7 @@
     <Compile Include="Models\CustomerInfoModel.cs" />
     <Compile Include="Models\EmployeeInfoModel.cs" />
     <Compile Include="Models\ProductInfoModel.cs" />
+    <Compile Include="Models\SupplierInfoModel.cs" />
     <Compile Include="Pages\CustomerList\CustomerGrid.xaml.cs">
       <DependentUpon>CustomerGrid.xaml</DependentUpon>
     </Compile>
@@ -149,6 +150,13 @@
       <DependentUpon>ProductsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ProductList\ProductListViewModel.cs" />
+    <Compile Include="Pages\Suppliers\SuppliersGrid.xaml.cs">
+      <DependentUpon>SuppliersGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Suppliers\SuppliersPage.xaml.cs">
+      <DependentUpon>SuppliersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Suppliers\SupplierListViewModel.cs" />
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
@@ -246,6 +254,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\ProductList\ProductsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Suppliers\SuppliersGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Suppliers\SuppliersPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
