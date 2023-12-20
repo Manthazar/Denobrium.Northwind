@@ -122,6 +122,7 @@
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Converters\ByteArrayImageSourceConverter.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
+    <Compile Include="Messages\NavigationRequestedMessage.cs" />
     <Compile Include="Models\CustomerInfoModel.cs" />
     <Compile Include="Models\EmployeeInfoModel.cs" />
     <Compile Include="Models\ProductInfoModel.cs" />
@@ -141,7 +142,7 @@
     <Compile Include="Pages\Employees\EmployeesGrid.xaml.cs">
       <DependentUpon>EmployeesGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\HomePage\HomePage.xaml.cs">
+    <Compile Include="Pages\Home\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Orders\OrderListViewModel.cs" />
@@ -255,7 +256,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\HomePage\HomePage.xaml">
+    <Page Include="Pages\Home\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
