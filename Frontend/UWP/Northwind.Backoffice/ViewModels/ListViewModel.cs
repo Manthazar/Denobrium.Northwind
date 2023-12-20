@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using Northwind.Backoffice.Commands;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading;
@@ -20,7 +19,13 @@ namespace Northwind.Backoffice.ViewModels
 
             LoadItemsCommand = new Command(async () => await OnLoadItems(), () => LoadItems_CanExecute());
             ItemTappedCommand = new RelayCommand<T>(async (i) => await OnItemTapped(i), (i) => OnItemTapped_CanExecute(i));
+
+            AddItemCommand = Command.UnavailableCommand;
+            EditItemCommand = new RelayCommand<T>(async (i) => await OnEdit(i), (i) => OnEdit_CanExecute(i));
+            RemoveItemCommand = Command.UnavailableCommand;
         }
+
+        #region View Events
 
         internal override void OnAppearing()
         {
@@ -34,7 +39,20 @@ namespace Northwind.Backoffice.ViewModels
 
         protected virtual Task OnAppearingAsync() => Task.CompletedTask;
 
+        #endregion
+
         #region Command Overloads
+
+        private Task OnEdit(T item)
+        {
+            return Task.CompletedTask;
+        }
+
+        private bool OnEdit_CanExecute(T item)
+        {
+            return false;
+        }
+
 
         protected virtual void OnItemSelected(T item)
         {
@@ -55,6 +73,8 @@ namespace Northwind.Backoffice.ViewModels
         protected virtual bool OnItemTapped_CanExecute(T item) => true;
 
         #endregion
+
+        #region Properties
 
         protected CancellationTokenSource CancellationTokenSource {get;set;}
 
@@ -78,6 +98,12 @@ namespace Northwind.Backoffice.ViewModels
 
         public ICommand AddItemCommand { get; }
 
+        public ICommand RemoveItemCommand { get; }
+
+        public ICommand EditItemCommand { get; }
+
         public ICommand ItemTappedCommand { get; }
+
+        #endregion
     }
 }
