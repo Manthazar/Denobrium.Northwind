@@ -27,7 +27,7 @@
                 <Image Source="/Assets/Backgrounds/pixabay-background-3181283_1280.jpg" Stretch="UniformToFill" Opacity="0.5"/>
             </winui:ParallaxView>
 
-            <!--Button Bar--><!--
+            <!--Button Bar-->
             <controls:WrapPanel Margin="30,100,0,0" HorizontalSpacing="10" x:Name="buttonBar">
                 <Button Command="{Binding AddItemCommand}">
                     <StackPanel Orientation="Horizontal">
@@ -42,7 +42,14 @@
                         <TextBlock Text="Edit" Margin="10,0,0,0"/>
                     </StackPanel>
                 </Button>
-            </controls:WrapPanel>-->
+
+                <Button Command="{Binding EditItemCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <SymbolIcon Symbol="Find"/>
+                        <TextBlock Text="Find..." Margin="10,0,0,0"/>
+                    </StackPanel>
+                </Button>
+            </controls:WrapPanel>
 
             <!--Header-->
             <Grid Margin="30,20,30,0" x:Name="header">

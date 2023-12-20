@@ -1,7 +1,7 @@
 ﻿using Windows.UI.Xaml.Controls;
 
 
-namespace Northwind.Backoffice.Pages.ProductList
+namespace Northwind.Backoffice.Pages.Products
 {
     public sealed partial class ProductGrid : UserControl
     {

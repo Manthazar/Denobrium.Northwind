@@ -1,14 +1,13 @@
 ﻿using Northwind.Backoffice.DataStores;
 using Northwind.Backoffice.Models;
 using Northwind.Backoffice.ViewModels;
-using Northwind.BackOffice.Data;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Northwind.Backoffice.Pages.ProductList
+namespace Northwind.Backoffice.Pages.Products
 {
     internal class ProductListViewModel : ListViewModel<ProductInfoModel>
     {

@@ -4,7 +4,7 @@ using Northwind.Backoffice.Pages.Customers;
 using Northwind.Backoffice.Pages.Employees;
 using Northwind.Backoffice.Pages.Home;
 using Northwind.Backoffice.Pages.Orders;
-using Northwind.Backoffice.Pages.ProductList;
+using Northwind.Backoffice.Pages.Products;
 using Northwind.Backoffice.Pages.Suppliers;
 using Windows.UI.Xaml.Controls;
 
