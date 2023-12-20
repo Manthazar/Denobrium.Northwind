@@ -7,14 +7,14 @@ namespace Northwind.Backoffice.Pages.Employees
     /// </summary>
     public sealed partial class EmployeesPage : Page
     {
-        private readonly EmployeeListViewModel viewModel;
+        private readonly EmployeeQueryViewModel viewModel;
 
         public EmployeesPage()
         {
             this.InitializeComponent();
             this.Loaded += Page_Loaded;
 
-            this.DataContext = this.viewModel = new EmployeeListViewModel();
+            this.DataContext = this.viewModel = new EmployeeQueryViewModel();
         }
 
         private void Page_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)

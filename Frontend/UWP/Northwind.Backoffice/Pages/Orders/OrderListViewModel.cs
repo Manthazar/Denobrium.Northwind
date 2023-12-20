@@ -1,20 +1,17 @@
 ﻿using Northwind.Backofficce.ApiClient.Data;
-using Northwind.Backoffice.DataStores;
-using Northwind.Backoffice.Models;
+using Northwind.Backofficce.ApiClient.DataStores;
 using Northwind.Backoffice.ViewModels;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Northwind.Backoffice.Pages.Suppliers
+namespace Northwind.Backoffice.Pages.Orders
 {
-    internal class SupplierListViewModel : ListViewModel<SupplierInfoModel>
+    internal class OrderListViewModel : ListViewModel<OrderInfo>
     {
-        public SupplierListViewModel()
+        public OrderListViewModel()
         {
-            SuggestionsHandler = new SupplierSuggestionsHandler<SupplierInfoModel>(this);
         }
 
         private async Task LoadItemsAsync()
@@ -24,24 +21,20 @@ namespace Northwind.Backoffice.Pages.Suppliers
 
             IsBusy = true;
 
-            var store = new SupplierDataStore();
+            var store = new OrderDataStore();
             var data = await store.GetAllAsync(CancellationTokenSource.Token);
             var items = await AdaptAsync(data);
 
             Items = items;
 
-            SuggestionsHandler.Refresh();
-
             IsBusy = false;
         }
 
-        private Task<ObservableCollection<SupplierInfoModel>> AdaptAsync(IEnumerable<SupplierInfo> data)
+        private Task<ObservableCollection<OrderInfo>> AdaptAsync(IEnumerable<OrderInfo> data)
         {
-            var collection = new ObservableCollection<SupplierInfoModel>(data.Select(d => new SupplierInfoModel(d)));
+            var collection = new ObservableCollection<OrderInfo>(data);
             return Task.FromResult(collection);
         }
-
-        public SupplierSuggestionsHandler<SupplierInfoModel> SuggestionsHandler { get; }
 
         protected override Task OnAppearingAsync() => LoadItemsAsync();
     }

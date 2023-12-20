@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Northwind.Backoffice.Pages.Employees
 {
-    internal class EmployeeListViewModel : QueryViewModel<EmployeeInfoModel>
+    internal class EmployeeQueryViewModel : QueryViewModel<EmployeeInfoModel>
     {
         private async Task LoadItemsAsync()
         {

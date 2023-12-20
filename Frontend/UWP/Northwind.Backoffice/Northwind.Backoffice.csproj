@@ -144,6 +144,13 @@
     <Compile Include="Pages\HomePage\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Orders\OrderListViewModel.cs" />
+    <Compile Include="Pages\Orders\OrdersPage.xaml.cs">
+      <DependentUpon>OrdersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Orders\OrdersGrid.xaml.cs">
+      <DependentUpon>OrdersGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ProductList\ProductsGrid.xaml.cs">
       <DependentUpon>ProductsGrid.xaml</DependentUpon>
     </Compile>
@@ -251,6 +258,14 @@
     <Page Include="Pages\HomePage\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Orders\OrdersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Orders\OrdersGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\ProductList\ProductsGrid.xaml">
       <Generator>MSBuild:Compile</Generator>

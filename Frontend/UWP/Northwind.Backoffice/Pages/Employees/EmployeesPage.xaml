@@ -11,7 +11,7 @@
     xmlns:tHex="using:Telerik.UI.Xaml.Controls.Data.HexView"
     xmlns:tp="using:Telerik.UI.Xaml.Controls.Primitives"
 
-    d:DataContext="{d:DesignInstance local:EmployeeListViewModel, IsDesignTimeCreatable=True}"
+    d:DataContext="{d:DesignInstance local:EmployeeQueryViewModel, IsDesignTimeCreatable=True}"
     
     mc:Ignorable="d"
     >

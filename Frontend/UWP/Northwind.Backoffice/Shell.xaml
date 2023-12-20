@@ -87,8 +87,10 @@
                 <winui:NavigationViewItem Icon="Library" Content="Products" Tag="Northwind.Backoffice.Products"/>
                 <winui:NavigationViewItem Icon="GoToToday" Content="Suppliers" Tag="Northwind.Backoffice.Suppliers"/>
                 <winui:NavigationViewItem Icon="People" Content="Customers" Tag="Northwind.Backoffice.Customers"/>
-                <winui:NavigationViewItem Icon="Shop" Content="Shipments" Tag="Northwind.Backoffice.Shipments"/>
+                <winui:NavigationViewItem Icon="Shop" Content="Orders" Tag="Northwind.Backoffice.Orders"/>
+                <winui:NavigationViewItem Icon="Globe" Content="Shipments" Tag="Northwind.Backoffice.Shipments"/>
                 <winui:NavigationViewItem Icon="ContactInfo" Content="Employees" Tag="Northwind.Backoffice.Employees"/>
+                
             </winui:NavigationView.MenuItems>
 
             <Grid>
