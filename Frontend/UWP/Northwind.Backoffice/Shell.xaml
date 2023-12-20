@@ -42,7 +42,6 @@
                               PaneDisplayMode="Left"
                               SelectionFollowsFocus="Disabled"
                               PaneTitle="Northwind Traders Backoffice"
-                              
                               >
 
             <!--MenuItemTemplate="{StaticResource CategoryTemplate}"-->
@@ -51,24 +50,11 @@
                 <CornerRadius x:Key="NavigationViewContentGridCornerRadius">0,0,0,0</CornerRadius>
             </winui:NavigationView.Resources>
 
-            <winui:NavigationView.AutoSuggestBox>
-                <AutoSuggestBox x:Name="SearchBox"
-                                MinWidth="150"
-                                VerticalAlignment="Center"
-                                QueryIcon="Find" 
-                                />
-                <!--
-                KeyDown="SearchBox_KeyDown"
-                QuerySubmitted="SearchBox_QuerySubmitted"
-                TextChanged="SearchBox_TextChanged"-->
-            </winui:NavigationView.AutoSuggestBox>
-
-            <winui:NavigationView.PaneFooter>
-                <!--  Not sure why we can't get to display properly with FooterMenuItems  -->
+            <!--<winui:NavigationView.PaneFooter>
                 <winui:NavigationViewItem x:Name="SettingsTopNavPaneItem"
                                           Icon="Home"
                                           Style="{ThemeResource MUX_NavigationViewSettingsItemStyleWhenOnTopPane}" />
-            </winui:NavigationView.PaneFooter>
+            </winui:NavigationView.PaneFooter>-->
 
             <winui:NavigationView.MenuItems>
                 <winui:NavigationViewItem Icon="Home" Content="Home" Tag="Northwind.Backoffice.Home">
