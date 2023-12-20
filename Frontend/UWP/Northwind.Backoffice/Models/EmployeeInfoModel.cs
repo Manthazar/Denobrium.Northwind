@@ -66,7 +66,9 @@ namespace Northwind.Backoffice.Models
 
                 var bitMap = new BitmapImage();
                 stream.Seek(0);
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                 bitMap.SetSourceAsync(stream);
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 
                 return bitMap;
             }

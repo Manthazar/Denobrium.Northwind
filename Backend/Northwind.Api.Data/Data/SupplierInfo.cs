@@ -10,10 +10,15 @@
 
         public string? ContactTitle { get; set; } = null!;
 
-        public string? City { get; set; }
-        public string? Country { get; set; }
         public string? Phone { get; set; }
         public string? Fax { get; set; }
+
+        /// <summary>
+        /// An encoded string of the homepage with dash (#) as separator
+        /// </summary>
+        /// <example>
+        /// Name of link#http#
+        /// </example>
         public string? HomePage { get; set; }
     }
 }
