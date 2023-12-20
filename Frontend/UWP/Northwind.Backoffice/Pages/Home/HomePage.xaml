@@ -66,7 +66,7 @@
                                              VariableSizedWrapGrid.RowSpan="2" VariableSizedWrapGrid.ColumnSpan="4">
                             <tp:RadCustomHubTile.FrontContent>
                                 <Grid>
-                                    <Image Source="/Assets/Backdrops/16cbceb1-4a54-4526-872e-4967b17e9765.png" Stretch="UniformToFill"/>
+                                    <Image Source="/Assets/Backdrops/053684d0-1ba8-4473-8e9e-4c9f36b6c6bb.png" Stretch="UniformToFill"/>
 
                                     <Rectangle Fill="Black" Opacity="0.7" VerticalAlignment="Bottom" Height="45"/>
                                     <TextBlock Text="Browse Products" Style="{StaticResource MediumTileTitle}"/>
@@ -94,7 +94,7 @@
                                              VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="2" UpdateInterval="0:0:2">
                             <tp:RadCustomHubTile.FrontContent>
                                 <Grid>
-                                    <Image Source="/Assets/Backdrops/053684d0-1ba8-4473-8e9e-4c9f36b6c6bb.png" Stretch="UniformToFill"/>
+                                    <Image Source="/Assets/Backdrops/5304fe73-199e-48ca-9d0f-507de50d91f8.png" Stretch="UniformToFill"/>
 
                                     <Rectangle Fill="Black" Opacity="0.7" VerticalAlignment="Bottom" Height="45"/>
                                     <TextBlock Text="Low on Stock" Style="{StaticResource MediumTileTitle}"/>
@@ -112,12 +112,12 @@
 
 
                         <!--Orders-->
-                        <tp:RadCustomHubTile Width="145" Height="145" tp:HubTileService.GroupTag="Products" x:Name="ordersTile"
+                        <tp:RadCustomHubTile Width="145" Height="145" tp:HubTileService.GroupTag="Browse" x:Name="ordersTile"
                                              Tag="Orders" Tapped="Tile_Tapped"
                                              VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="2" UpdateInterval="0:0:2">
                             <tp:RadCustomHubTile.FrontContent>
                                 <Grid>
-                                    <Image Source="/Assets/Backdrops/5304fe73-199e-48ca-9d0f-507de50d91f8.png" Stretch="UniformToFill"/>
+                                    <Image Source="/Assets/Backdrops/16cbceb1-4a54-4526-872e-4967b17e9765.png" Stretch="UniformToFill"/>
 
                                     <Rectangle Fill="Black" Opacity="0.7" VerticalAlignment="Bottom" Height="45"/>
                                     <TextBlock Text="Orders" Style="{StaticResource MediumTileTitle}"/>
@@ -126,7 +126,7 @@
                         </tp:RadCustomHubTile>
 
                         <!--Suppliers-->
-                        <tp:RadCustomHubTile Width="145" Height="145" tp:HubTileService.GroupTag="Products" x:Name="suppliersTile"
+                        <tp:RadCustomHubTile Width="145" Height="145" tp:HubTileService.GroupTag="Browse" x:Name="suppliersTile"
                                              Tag="Suppliers" Tapped="Tile_Tapped"
                                              VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="2" UpdateInterval="0:0:2">
                             <tp:RadCustomHubTile.FrontContent>
@@ -140,7 +140,7 @@
                         </tp:RadCustomHubTile>
 
                         <!--Customers-->
-                        <tp:RadCustomHubTile Width="145" Height="145" tp:HubTileService.GroupTag="Products" x:Name="customersTile"
+                        <tp:RadCustomHubTile Width="145" Height="145" tp:HubTileService.GroupTag="Browse" x:Name="customersTile"
                                              Tag="Customers" Tapped="Tile_Tapped"
                                              VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="2" UpdateInterval="0:0:2">
                             <tp:RadCustomHubTile.FrontContent>
@@ -154,7 +154,7 @@
                         </tp:RadCustomHubTile>
 
                         <!--Employees-->
-                        <tp:RadCustomHubTile Width="145" Height="145" tp:HubTileService.GroupTag="Products" x:Name="emloyeesTile"
+                        <tp:RadCustomHubTile Width="145" Height="145" tp:HubTileService.GroupTag="Browse" x:Name="emloyeesTile"
                                              Tag="Employees" Tapped="Tile_Tapped"
                                              VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="2" UpdateInterval="0:0:2">
                             <tp:RadCustomHubTile.FrontContent>
