@@ -1,6 +1,6 @@
 ﻿using Windows.UI.Xaml.Controls;
 
-namespace Northwind.Backoffice.Pages.ProductList
+namespace Northwind.Backoffice.Pages.Products
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

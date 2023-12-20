@@ -152,13 +152,13 @@
     <Compile Include="Pages\Orders\OrdersGrid.xaml.cs">
       <DependentUpon>OrdersGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ProductList\ProductsGrid.xaml.cs">
+    <Compile Include="Pages\Products\ProductsGrid.xaml.cs">
       <DependentUpon>ProductsGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ProductList\ProductsPage.xaml.cs">
+    <Compile Include="Pages\Products\ProductsPage.xaml.cs">
       <DependentUpon>ProductsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ProductList\ProductListViewModel.cs" />
+    <Compile Include="Pages\Products\ProductListViewModel.cs" />
     <Compile Include="Pages\Suppliers\SuppliersGrid.xaml.cs">
       <DependentUpon>SuppliersGrid.xaml</DependentUpon>
     </Compile>
@@ -268,11 +268,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\ProductList\ProductsGrid.xaml">
+    <Page Include="Pages\Products\ProductsGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\ProductList\ProductsPage.xaml">
+    <Page Include="Pages\Products\ProductsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

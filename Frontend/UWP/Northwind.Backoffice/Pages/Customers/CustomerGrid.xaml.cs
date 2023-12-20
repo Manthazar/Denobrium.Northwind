@@ -3,11 +3,11 @@
 
 namespace Northwind.Backoffice.Pages.Customers
 {
-    public sealed partial class CustomerList : UserControl
+    public sealed partial class CustomerGrid : UserControl
     {
         private readonly CustomerListViewModel viewModel;
 
-        public CustomerList()
+        public CustomerGrid()
         {
             this.InitializeComponent();
             this.Loaded += CustomerList_Loaded;
