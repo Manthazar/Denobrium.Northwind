@@ -12,10 +12,14 @@ namespace Northwind.Backoffice.Pages.Suppliers
 {
     internal class SupplierListViewModel : ListViewModel<SupplierInfoModel>
     {
+        public SupplierListViewModel()
+        {
+            SuggestionsHandler = new SupplierSuggestionsHandler<SupplierInfoModel>(this);
+        }
+
         private async Task LoadItemsAsync()
         {
             CancellationTokenSource?.Cancel();
-
             CancellationTokenSource = new CancellationTokenSource();
 
             IsBusy = true;
@@ -26,15 +30,20 @@ namespace Northwind.Backoffice.Pages.Suppliers
 
             Items = items;
 
+            Items.ToDictionary((k) => k.Id);
+            SuggestionsHandler.Refresh();
+
             IsBusy = false;
         }
-
-        protected override Task OnAppearingAsync() => LoadItemsAsync();
 
         private Task<ObservableCollection<SupplierInfoModel>> AdaptAsync(IEnumerable<SupplierInfo> data)
         {
             var collection = new ObservableCollection<SupplierInfoModel>(data.Select(d => new SupplierInfoModel(d)));
             return Task.FromResult(collection);
         }
+
+        public SupplierSuggestionsHandler<SupplierInfoModel> SuggestionsHandler { get; }
+
+        protected override Task OnAppearingAsync() => LoadItemsAsync();
     }
 }

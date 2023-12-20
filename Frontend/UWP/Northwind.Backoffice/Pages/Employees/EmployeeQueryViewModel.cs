@@ -28,6 +28,12 @@ namespace Northwind.Backoffice.Pages.Employees
             IsBusy = false;
         }
 
+        private Task<ObservableCollection<EmployeeInfoModel>> AdaptAsync(IEnumerable<EmployeeInfo> data)
+        {
+            var collection = new ObservableCollection<EmployeeInfoModel>(data.Select(d => new EmployeeInfoModel(d)));
+            return Task.FromResult(collection);
+        }
+
         protected override Task OnRunQueryAsync()
         {
             if (Keyword != null && Keyword.Length > 2 && ItemsSource.Any())
@@ -47,10 +53,6 @@ namespace Northwind.Backoffice.Pages.Employees
 
         protected override Task OnAppearingAsync() => LoadItemsAsync();
 
-        private Task<ObservableCollection<EmployeeInfoModel>> AdaptAsync(IEnumerable<EmployeeInfo> data)
-        {
-            var collection = new ObservableCollection<EmployeeInfoModel>(data.Select(d => new EmployeeInfoModel(d)));
-            return Task.FromResult(collection);
-        }
+       
     }
 }

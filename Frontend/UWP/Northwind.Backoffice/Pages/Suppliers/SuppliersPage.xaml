@@ -24,10 +24,9 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid  Height="200" Grid.Row="0">
+        <Grid  Height="160" Grid.Row="0">
             <winui:ParallaxView x:Name="Parallax" VerticalShift="50">
                 <Image Source="/Assets/Backgrounds/pixabay-background-3181283_1280.jpg" Stretch="UniformToFill" Opacity="0.5"/>
-                <!--<Image Source="/Assets/Backdrops/dbad96b5-9f61-4ee7-97e4-9c231f8dd87c.png" Stretch="UniformToFill" />-->
             </winui:ParallaxView>
 
             <controls:WrapPanel Margin="30,100,0,0" HorizontalSpacing="10">
@@ -46,19 +45,32 @@
                 </Button>
             </controls:WrapPanel>
 
-            <TextBlock Text="Suppliers" HorizontalAlignment="Left" FontSize="44" Margin="30,20,0,0"/>
+            <!--Header-->
+            <Grid Margin="30,20,30,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <!--<AutoSuggestBox x:Name="SearchBox" MinWidth="400" HorizontalAlignment="Right" QueryIcon="Find" Margin="0,0,30,70" Height="50" VerticalContentAlignment="Center"
-                            Text="{Binding Keyword, Mode=TwoWay}" PlaceholderText="Search by name..." 
-                            ItemsSource="{Binding KeywordItems}"
-                            TextChanged="SearchBox_TextChanged"
-                            QuerySubmitted="SearchBox_QuerySubmitted">
-                <AutoSuggestBox.ItemTemplate>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Text="Suppliers" HorizontalAlignment="Left" FontSize="44" Grid.Column="0"/>
+
+                <AutoSuggestBox x:Name="SearchBox" MinWidth="400" HorizontalAlignment="Right" QueryIcon="Find" Height="50" VerticalContentAlignment="Center" KeyTipPlacementMode="Center" PlaceholderText="Search by name..."
+                                Grid.Column="1"
+                                ItemsSource="{Binding SuggestionsHandler.Suggestions}"
+                                QuerySubmitted="SearchBox_QuerySubmitted"
+                                TextChanged="SearchBox_TextChanged">
+                    <AutoSuggestBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding FullName}"/>
+                        <TextBlock Text="{Binding Text}"/>
                     </DataTemplate>
                 </AutoSuggestBox.ItemTemplate>
-            </AutoSuggestBox>-->
+            </AutoSuggestBox>
+
+            </Grid>
         </Grid>
 
         <local:SuppliersGrid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Grid.Row="1"/>

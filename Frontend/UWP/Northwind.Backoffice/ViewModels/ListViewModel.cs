@@ -17,11 +17,11 @@ namespace Northwind.Backoffice.ViewModels
         {
             items = new ObservableCollection<T>();
 
-            LoadItemsCommand = new Command(async () => await OnLoadItems(), () => LoadItems_CanExecute());
-            ItemTappedCommand = new RelayCommand<T>(async (i) => await OnItemTapped(i), (i) => OnItemTapped_CanExecute(i));
+            LoadItemsCommand = new Command(async () => await LoadItems(), () => LoadItems_CanExecute());
+            ItemTappedCommand = new RelayCommand<T>(async (i) => await ItemTapped(i), (i) => ItemTapped_CanExecute(i));
 
             AddItemCommand = Command.UnavailableCommand;
-            EditItemCommand = new RelayCommand<T>(async (i) => await OnEdit(i), (i) => OnEdit_CanExecute(i));
+            EditItemCommand = new RelayCommand<T>(async (i) => await Edit(i), (i) => Edit_CanExecute(i));
             RemoveItemCommand = Command.UnavailableCommand;
         }
 
@@ -43,16 +43,15 @@ namespace Northwind.Backoffice.ViewModels
 
         #region Command Overloads
 
-        private Task OnEdit(T item)
+        private Task Edit(T item)
         {
             return Task.CompletedTask;
         }
 
-        private bool OnEdit_CanExecute(T item)
+        private bool Edit_CanExecute(T item)
         {
             return false;
         }
-
 
         protected virtual void OnItemSelected(T item)
         {
@@ -60,17 +59,17 @@ namespace Northwind.Backoffice.ViewModels
 
         protected virtual bool LoadItems_CanExecute() => true;
 
-        protected virtual Task OnLoadItems()
+        protected virtual Task LoadItems()
         {
             return Task.CompletedTask;
         }
 
-        protected virtual Task OnItemTapped(T item)
+        protected virtual Task ItemTapped(T item)
         {
             return Task.CompletedTask;
         }
 
-        protected virtual bool OnItemTapped_CanExecute(T item) => true;
+        protected virtual bool ItemTapped_CanExecute(T item) => true;
 
         #endregion
 

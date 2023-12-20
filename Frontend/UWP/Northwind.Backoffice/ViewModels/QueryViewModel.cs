@@ -1,10 +1,12 @@
 ﻿using Northwind.Backoffice.Commands;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Northwind.Backoffice.ViewModels
 {
+    [Obsolete("Replaced by SuggestionsViewModel which is embedded into others because this adds a lot of confusion into code.")]
     internal class QueryViewModel<T> : ListViewModel<T>
     {
         private string keyword;
