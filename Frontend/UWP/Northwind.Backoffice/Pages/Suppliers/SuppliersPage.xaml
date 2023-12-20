@@ -24,12 +24,14 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid  Height="160" Grid.Row="0">
+        <!--Header Container-->
+        <Grid Height="160" Grid.Row="0" x:Name="headerContainer">
             <winui:ParallaxView x:Name="Parallax" VerticalShift="50">
                 <Image Source="/Assets/Backgrounds/pixabay-background-3181283_1280.jpg" Stretch="UniformToFill" Opacity="0.5"/>
             </winui:ParallaxView>
 
-            <controls:WrapPanel Margin="30,100,0,0" HorizontalSpacing="10">
+            <!--Button Bar-->
+            <controls:WrapPanel Margin="30,100,0,0" HorizontalSpacing="10" x:Name="buttonBar">
                 <Button Command="{Binding AddItemCommand}">
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Add"/>
@@ -46,7 +48,7 @@
             </controls:WrapPanel>
 
             <!--Header-->
-            <Grid Margin="30,20,30,0">
+            <Grid Margin="30,20,30,0" x:Name="header">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
