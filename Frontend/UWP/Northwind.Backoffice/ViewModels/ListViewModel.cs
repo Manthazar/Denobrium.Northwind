@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using Northwind.Backoffice.Commands;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading;
@@ -18,9 +17,15 @@ namespace Northwind.Backoffice.ViewModels
         {
             items = new ObservableCollection<T>();
 
-            LoadItemsCommand = new Command(async () => await OnLoadItems(), () => LoadItems_CanExecute());
-            ItemTappedCommand = new RelayCommand<T>(async (i) => await OnItemTapped(i), (i) => OnItemTapped_CanExecute(i));
+            LoadItemsCommand = new Command(async () => await LoadItems(), () => LoadItems_CanExecute());
+            ItemTappedCommand = new RelayCommand<T>(async (i) => await ItemTapped(i), (i) => ItemTapped_CanExecute(i));
+
+            AddItemCommand = Command.UnavailableCommand;
+            EditItemCommand = new RelayCommand<T>(async (i) => await Edit(i), (i) => Edit_CanExecute(i));
+            RemoveItemCommand = Command.UnavailableCommand;
         }
+
+        #region View Events
 
         internal override void OnAppearing()
         {
@@ -34,7 +39,19 @@ namespace Northwind.Backoffice.ViewModels
 
         protected virtual Task OnAppearingAsync() => Task.CompletedTask;
 
+        #endregion
+
         #region Command Overloads
+
+        private Task Edit(T item)
+        {
+            return Task.CompletedTask;
+        }
+
+        private bool Edit_CanExecute(T item)
+        {
+            return false;
+        }
 
         protected virtual void OnItemSelected(T item)
         {
@@ -42,19 +59,21 @@ namespace Northwind.Backoffice.ViewModels
 
         protected virtual bool LoadItems_CanExecute() => true;
 
-        protected virtual Task OnLoadItems()
+        protected virtual Task LoadItems()
         {
             return Task.CompletedTask;
         }
 
-        protected virtual Task OnItemTapped(T item)
+        protected virtual Task ItemTapped(T item)
         {
             return Task.CompletedTask;
         }
 
-        protected virtual bool OnItemTapped_CanExecute(T item) => true;
+        protected virtual bool ItemTapped_CanExecute(T item) => true;
 
         #endregion
+
+        #region Properties
 
         protected CancellationTokenSource CancellationTokenSource {get;set;}
 
@@ -78,6 +97,12 @@ namespace Northwind.Backoffice.ViewModels
 
         public ICommand AddItemCommand { get; }
 
+        public ICommand RemoveItemCommand { get; }
+
+        public ICommand EditItemCommand { get; }
+
         public ICommand ItemTappedCommand { get; }
+
+        #endregion
     }
 }

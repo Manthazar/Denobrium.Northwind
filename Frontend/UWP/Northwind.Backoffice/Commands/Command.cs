@@ -44,5 +44,11 @@ namespace Northwind.Backoffice.Commands
             CanExecuteChanged?.Invoke(this, EventArgs.Empty);
         }
 
+        #region Static
+
+        public static ICommand UnavailableCommand { get; } = new Command(() => { }, () => false);
+
+        #endregion
+
     }
 }
