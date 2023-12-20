@@ -1,7 +1,7 @@
 ﻿using Windows.UI.Xaml.Controls;
 
 
-namespace Northwind.Backoffice.Pages.CustomerList
+namespace Northwind.Backoffice.Pages.Customers
 {
     public sealed partial class CustomerList : UserControl
     {

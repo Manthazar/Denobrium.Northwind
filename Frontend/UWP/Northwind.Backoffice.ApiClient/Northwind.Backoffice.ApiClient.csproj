@@ -120,11 +120,13 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DataStores\OrderDataStore.cs" />
     <Compile Include="DataStores\SupplierDataStore.cs" />
     <Compile Include="DataStores\EmployeeDataStore.cs" />
     <Compile Include="DataStores\CustomerDataStore.cs" />
     <Compile Include="DataStores\RestDataStore.cs" />
     <Compile Include="Data\CustomerInfo.cs" />
+    <Compile Include="Data\OrderInfo.cs" />
     <Compile Include="Data\SupplierInfo.cs" />
     <Compile Include="Data\EmployeeInfo.cs" />
     <Compile Include="NorthwindApiClientModule.cs" />

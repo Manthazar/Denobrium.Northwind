@@ -1,18 +1,18 @@
-﻿using Northwind.Backoffice.DataStores;
-using Northwind.Backoffice.Models;
+﻿using Northwind.Backofficce.ApiClient.Data;
+using Northwind.Backofficce.ApiClient.DataStores;
 using Northwind.Backoffice.ViewModels;
-using Northwind.BackOffice.Data;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Northwind.Backoffice.Pages.CustomerList
+namespace Northwind.Backoffice.Pages.Orders
 {
-    internal class CustomerListViewModel : ListViewModel<CustomerInfoModel>
+    internal class OrderListViewModel : ListViewModel<OrderInfo>
     {
-        protected override Task OnAppearingAsync() => LoadItemsAsync();
+        public OrderListViewModel()
+        {
+        }
 
         private async Task LoadItemsAsync()
         {
@@ -21,7 +21,7 @@ namespace Northwind.Backoffice.Pages.CustomerList
 
             IsBusy = true;
 
-            var store = new CustomerDataStore();
+            var store = new OrderDataStore();
             var data = await store.GetAllAsync(CancellationTokenSource.Token);
             var items = await AdaptAsync(data);
 
@@ -30,10 +30,12 @@ namespace Northwind.Backoffice.Pages.CustomerList
             IsBusy = false;
         }
 
-        private Task<ObservableCollection<CustomerInfoModel>> AdaptAsync(IEnumerable<CustomerInfo> data)
+        private Task<ObservableCollection<OrderInfo>> AdaptAsync(IEnumerable<OrderInfo> data)
         {
-            var collection = new ObservableCollection<CustomerInfoModel>(data.Select(d => new CustomerInfoModel(d)));
+            var collection = new ObservableCollection<OrderInfo>(data);
             return Task.FromResult(collection);
         }
+
+        protected override Task OnAppearingAsync() => LoadItemsAsync();
     }
 }

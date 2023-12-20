@@ -5,14 +5,14 @@ namespace Northwind.Backoffice.Pages.Employees
 {
     public sealed partial class EmployeesGrid : UserControl
     {
-        private readonly EmployeeListViewModel viewModel;
+        private readonly EmployeeQueryViewModel viewModel;
 
         public EmployeesGrid()
         {
             this.InitializeComponent();
             this.Loaded += ProductGrid_Loaded;
 
-            this.DataContext = this.viewModel = new EmployeeListViewModel();
+            this.DataContext = this.viewModel = new EmployeeQueryViewModel();
         }
 
         private void ProductGrid_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)

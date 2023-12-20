@@ -1,0 +1,56 @@
+﻿<UserControl
+    x:Class="Northwind.Backoffice.Pages.Orders.OrdersGrid"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Northwind.Backoffice.Pages.Orders"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tp="using:Telerik.UI.Xaml.Controls.Primitives"
+    xmlns:tGrid="using:Telerik.UI.Xaml.Controls.Grid"
+    xmlns:tGridPrimitives="using:Telerik.UI.Xaml.Controls.Grid.Primitives"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance local:OrderListViewModel, IsDesignTimeCreatable=True}"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.Resources>
+        </Grid.Resources>
+
+        <tp:RadBusyIndicator AnimationStyle="AnimationStyle7" Height="100" Width="100" IsActive="{Binding IsBusy}" Content="{x:Null}"/>
+
+        <tGrid:RadDataGrid UserGroupMode="Disabled" AutoGenerateColumns="False" ItemsSource="{Binding Items}" Visibility="{Binding Items, Converter={StaticResource visibilityConverter}}"
+                                 GridLinesVisibility="None" AlternateRowBackground="#FFF0F0F0" RowBackground="White" AlternationStep="2"
+                                 >
+
+            <tGrid:RadDataGrid.Resources>
+                <Style TargetType="tGridPrimitives:DataGridHoverControl">
+                    <Setter Property="Background" Value="Orange"/>
+                    <Setter Property="Opacity" Value="0.5"/>
+                </Style>
+
+                <Style TargetType="tGridPrimitives:SelectionRegionBackgroundControl">
+                    <Setter Property="Background" Value="Yellow"/>
+                    <Setter Property="BorderBrush" Value="Green"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                </Style>
+
+                <Style TargetType="tGridPrimitives:SelectionRegionBorderControl">
+                    <Setter Property="BorderBrush" Value="Orange"/>
+                </Style>
+            </tGrid:RadDataGrid.Resources>
+
+            <tGrid:RadDataGrid.Columns>
+                <tGrid:DataGridTextColumn PropertyName="Id" Header="Order No"  CanUserEdit="False" CanUserSort="True"  SizeMode="Auto"/>
+                <tGrid:DataGridDateColumn PropertyName="OrderDate" Header="Order Date"  CanUserEdit="False" CanUserSort="True" CellContentFormat="{}{0: yyyy-MM-dd}" SizeMode="Auto"/>
+                <tGrid:DataGridDateColumn PropertyName="RequiredDate" Header="Required Date"  CanUserEdit="False" CanUserSort="True" CellContentFormat="{}{0: yyyy-MM-dd}"  SizeMode="Auto"/>
+                <tGrid:DataGridDateColumn PropertyName="ShippedDate" Header="Shipped Date"  CanUserEdit="False" CanUserSort="True" CellContentFormat="{}{0: yyyy-MM-dd}" SizeMode="Auto"/>
+                <tGrid:DataGridBooleanColumn PropertyName="IsInternationalShipment" Header="International?"  CanUserEdit="False" CanUserSort="True" SizeMode="Auto"/>
+                <tGrid:DataGridTextColumn PropertyName="ShipCountry" Header="Country"  CanUserEdit="False" CanUserSort="True" />
+                <!--<tGrid:DataGridTextColumn PropertyName="Customer" Header="Fax"  CanUserEdit="False" CanUserSort="True" />-->
+                <!--<tGrid:DataGridTextColumn PropertyName="Employee" Header="Fax"  CanUserEdit="False" CanUserSort="True" />-->
+            </tGrid:RadDataGrid.Columns>
+        </tGrid:RadDataGrid>
+    </Grid>
+</UserControl>

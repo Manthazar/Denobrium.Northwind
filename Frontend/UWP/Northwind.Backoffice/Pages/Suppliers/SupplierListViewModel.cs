@@ -30,7 +30,6 @@ namespace Northwind.Backoffice.Pages.Suppliers
 
             Items = items;
 
-            Items.ToDictionary((k) => k.Id);
             SuggestionsHandler.Refresh();
 
             IsBusy = false;
