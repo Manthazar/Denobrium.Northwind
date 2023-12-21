@@ -31,7 +31,7 @@ jobs:
       run: dotnet restore ./Backend/Northwind.WebApi.sln
     
     - name: Build
-      run: dotnet build --no-restore ./Backend/Northwind.WebApi.sln
+      run: dotnet build ./Backend/Northwind.WebApi.sln --no-restore 
     
     # - name: Test
      # run: dotnet test --no-build --verbosity normal
