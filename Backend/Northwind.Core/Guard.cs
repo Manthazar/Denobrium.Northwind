@@ -78,7 +78,7 @@ namespace Northwind.Core
 
             if (!File.Exists(fileName))
             {
-                throw new ArgumentException("File not found: " + fileName, "fileName");
+                throw new ArgumentException($"File not found: '{fileName}'.");
             }
         }
 
@@ -109,8 +109,7 @@ namespace Northwind.Core
         public static void IsNotEmpty(ref Guid argumentValue,
                                             string argumentName)
         {
-            if (argumentValue == null) throw new ArgumentNullException(argumentName);
-            if (argumentValue == Guid.Empty) throw new ArgumentException("Argument must not me empty", argumentName);
+            if (argumentValue == Guid.Empty) throw new ArgumentException("Argument must not be empty", argumentName);
         }
 
         /// <summary>
@@ -127,7 +126,7 @@ namespace Northwind.Core
                                                   string argumentName)
         {
             if (argumentValue == null) throw new ArgumentNullException(argumentName);
-            if (argumentValue.Length == 0) throw new ArgumentException("Argument must not me empty", argumentName);
+            if (argumentValue.Length == 0) throw new ArgumentException("Argument must not be empty", argumentName);
         }
 
         /// <summary>
@@ -203,8 +202,8 @@ namespace Northwind.Core
         [DebuggerStepThrough]
         public static void IsTypeAssignable(Type assignmentTargetType, Type assignmentValueType, string argumentName, string detailedMessage)
         {
-            if (assignmentTargetType == null) throw new ArgumentNullException("assignmentTargetType");
-            if (assignmentValueType == null) throw new ArgumentNullException("assignmentValueType");
+            if (assignmentTargetType == null) throw new ArgumentNullException(nameof(assignmentTargetType));
+            if (assignmentValueType == null) throw new ArgumentNullException(nameof(assignmentValueType));
 
             if (!assignmentTargetType.IsAssignableFrom(assignmentValueType))
             {
@@ -224,8 +223,8 @@ namespace Northwind.Core
         [DebuggerStepThrough]
         public static void IsTypeEqual(Type assignmentTargetType, Type assignmentValueType, string argumentName, string detailedMessage)
         {
-            if (assignmentTargetType == null) throw new ArgumentNullException("assignmentTargetType");
-            if (assignmentValueType == null) throw new ArgumentNullException("argumentName");
+            if (assignmentTargetType == null) throw new ArgumentNullException(nameof(assignmentTargetType));
+            if (assignmentValueType == null) throw new ArgumentNullException(nameof(argumentName));
 
             if (assignmentTargetType != assignmentValueType)
             {
@@ -240,10 +239,10 @@ namespace Northwind.Core
         /// <param name="assignementValue"></param>
         /// <param name="argumentName"></param>
         /// <exception cref="ArgumentException">Arguments are equal.</exception>
-        public static void IsNotEqual(object assignementTarget, object assignementValue, string argumentName)
+        public static void IsNotEqual(object assignementTarget, object assignementValue)
         {
-            if (assignementTarget == null && assignementValue == null) { throw new ArgumentException("Arguments cannot be equal"); }
-            if (Object.Equals(assignementTarget, assignementValue)) { throw new ArgumentException("Arguments cannot be equal"); }
+            if (assignementTarget == null && assignementValue == null) { throw new ArgumentException("Arguments cannot be equal."); }
+            if (Object.Equals(assignementTarget, assignementValue)) { throw new ArgumentException("Arguments cannot be equal."); }
         }
     }
 }
