@@ -17,7 +17,8 @@ services.AddControllers(options =>
 }).ConfigureJsonHandler(configurationProvider.Configuration);
 
 services.AddNorthwindConfiguration(configurationProvider);
-services.AddRepositories(configurationProvider.Configuration.DataStores.SqlConnectionString);
+services.AddRepositories();
+services.AddDbContext(configurationProvider.Configuration.DataStores.SqlConnectionString);
 services.AddApiServices();
 services.AddDataModuleComponents();
 services.AddSingletonMapper();

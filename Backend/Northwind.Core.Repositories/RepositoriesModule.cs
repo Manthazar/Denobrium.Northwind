@@ -13,9 +13,25 @@ namespace Northwind.Modules
         /// </summary>
         /// <param name="services"></param>
         /// <param name="sqlConnectionString"></param>
-        public static void AddRepositories(this IServiceCollection services, string sqlConnectionString)
+        public static void AddRepositories(this IServiceCollection services)
+        {
+            services.AddRepository<Category>();
+            services.AddRepository<Customer>();
+            services.AddRepository<Employee>();
+            services.AddRepository<Product>();
+            services.AddRepository<Supplier>();
+            services.AddRepository<Order>();
+        }
+
+        /// <summary>
+        /// Adds the entity repositories in their default configurations.
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="sqlConnectionString"></param>
+        public static void AddDbContext(this IServiceCollection services, string sqlConnectionString)
         {
             Guard.IsNotNull(services, nameof(services));
+
 #if DEBUG
             Guard.IsNotNullOrEmpty(sqlConnectionString, nameof(sqlConnectionString));
 #else 
@@ -28,14 +44,6 @@ namespace Northwind.Modules
             }
 #endif
 
-
-            services.AddRepository<Category>();
-            services.AddRepository<Customer>();
-            services.AddRepository<Employee>();
-            services.AddRepository<Product>();
-            services.AddRepository<Supplier>();
-            services.AddRepository<Order>();
-
             services.AddDbContext<NorthwindDbContext>(options =>
             {
                 options.UseSqlServer(sqlConnectionString);
@@ -43,7 +51,7 @@ namespace Northwind.Modules
             }, contextLifetime: ServiceLifetime.Scoped, optionsLifetime: ServiceLifetime.Singleton);
         }
 
-        private static void AddRepository<T> (this IServiceCollection services) where T : class
+        private static void AddRepository<T>(this IServiceCollection services) where T : class
         {
             services.AddScoped<IRepository<T>, SqlRepository<T>>();
             services.AddScoped<ISqlRepository<T>, SqlRepository<T>>();
