@@ -63,6 +63,9 @@ namespace Northwind.Sql.ModelBuilders
 
             if (ConfigurationModule.IsInTestContext == false)
             {
+                // Did not get to the bottom of this; if run within test context, we receive the error that the table is already existing.
+                // The generated sql script does not show any duplicated.
+                // As if the table would be implicitly created by something else.
                 modelBuilder.Entity<Region>(entity =>
                 {
                     entity.ToTable("Region");

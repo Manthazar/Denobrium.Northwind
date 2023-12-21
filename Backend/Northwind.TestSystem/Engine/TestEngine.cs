@@ -10,7 +10,7 @@ namespace Northwind.TestSystem.Engine
 {
     public class TestEngine : IDisposable
     {
-        private static TestEngine current = new ();
+        private static TestEngine current = new();
 
         private IServiceScope scope = null!;
         private IServiceProvider serviceProvider = null!;
@@ -43,7 +43,24 @@ namespace Northwind.TestSystem.Engine
 
         void IDisposable.Dispose() => InnerDispose();
 
-        public IServiceProvider Services => serviceProvider;
+        public IServiceProvider Services
+        {
+            get
+            {
+                return serviceProvider ?? throw new InvalidOperationException("The test system is not initialized. Did you use TestBase?");
+            }
+        }
+
+        /// <summary>
+        /// The good clean up function which is called on health test exit.
+        /// </summary>
+        /// <remarks>
+        /// Skipped by mstest on unhealth test exit.
+        /// </remarks>
+        internal static void CleanUp()
+        {
+            current?.InnerDispose();
+        }
 
         /// <summary>
         /// Resets the test engine and makes it ready for the next test
