@@ -1,11 +1,14 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Northwind.Core;
 using Northwind.Modules;
+using Northwind.Sql.Repositories;
 using Northwind.TestSystem.Extensions;
 using System.Data.Common;
 
 namespace Northwind.TestSystem.Engine
 {
-    internal class TestEngine : IDisposable
+    public class TestEngine : IDisposable
     {
         private static TestEngine current = new ();
 
@@ -22,29 +25,38 @@ namespace Northwind.TestSystem.Engine
 
             this.scope = services.BuildServiceProvider().CreateScope();
             this.serviceProvider = scope.ServiceProvider;
+
+            ConfigurationModule.ActivateTestContext();
+
+            EnsureDatabaseCreated();
         }
 
-        public void Dispose()
+        private void EnsureDatabaseCreated()
         {
-            scope?.Dispose();
+            var dbContext = serviceProvider.GetRequiredService<NorthwindDbContext>();
+            var createScript = dbContext.Database.GenerateCreateScript();
+
+            dbContext.Database.EnsureCreated();
         }
+
+        private void InnerDispose() => scope?.Dispose();
+
+        void IDisposable.Dispose() => InnerDispose();
+
+        public IServiceProvider Services => serviceProvider;
 
         /// <summary>
         /// Resets the test engine and makes it ready for the next test
         /// </summary>
         internal static void Reset()
         {
-            current?.Dispose();
+            current?.InnerDispose();
 
             current = new TestEngine();
             current.Run();
         }
 
-     
-
-        internal IServiceProvider Services => serviceProvider;
-
-        internal static TestEngine Current => current;
+        public static TestEngine Current => current;
 
         internal DbConnection? Connection { get; set; }
     }

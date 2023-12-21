@@ -1,4 +1,5 @@
-﻿using Northwind.Core.Models;
+﻿using Northwind.Core;
+using Northwind.Core.Models;
 
 namespace Northwind.Sql.ModelBuilders
 {
@@ -41,16 +42,6 @@ namespace Northwind.Sql.ModelBuilders
                 entity.Property(e => e.Description).HasColumnType("ntext");
             });
 
-            modelBuilder.Entity<Region>(entity =>
-            {
-                entity.ToTable("Region");
-
-                entity.HasKey(e => e.Id).IsClustered(false);
-                
-                entity.Property(e => e.Id).ValueGeneratedNever().HasColumnName("RegionID");
-                entity.Property(e => e.Description).HasMaxLength(50).IsFixedLength();
-            });
-
             modelBuilder.Entity<Territory>(entity =>
             {
                 entity.ToTable("Territories");
@@ -69,6 +60,19 @@ namespace Northwind.Sql.ModelBuilders
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Territories_Region");
             });
+
+            if (ConfigurationModule.IsInTestContext == false)
+            {
+                modelBuilder.Entity<Region>(entity =>
+                {
+                    entity.ToTable("Region");
+
+                    entity.HasKey(e => e.Id).IsClustered(false);
+
+                    entity.Property(e => e.Id).ValueGeneratedNever().HasColumnName("RegionID");
+                    entity.Property(e => e.Description).HasMaxLength(50).IsFixedLength();
+                });
+            }
         }
     }
 }

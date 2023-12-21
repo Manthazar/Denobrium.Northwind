@@ -8,6 +8,11 @@ namespace Northwind.Core
     public static class ConfigurationModule
     {
         /// <summary>
+        /// Determines whether the app is running in test context.
+        /// </summary>
+        public static bool IsInTestContext { get; private set; }
+
+        /// <summary>
         /// Adds the Northwind instance configuration into the service collection.
         /// </summary>
         /// <param name="services"></param>
@@ -19,5 +24,10 @@ namespace Northwind.Core
 
             return services;
         }
+
+        /// <summary>
+        /// Used by our framework to indicate that the
+        /// </summary>
+        internal static void ActivateTestContext() => IsInTestContext = true;
     }
 }

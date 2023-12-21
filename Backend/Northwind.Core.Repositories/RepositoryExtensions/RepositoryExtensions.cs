@@ -16,7 +16,7 @@ namespace Northwind.Core.Repositories
         /// <param name="repository"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public static async Task<IEnumerable<T>> GetAllAsync<T>(this IRepository<T> repository, CancellationToken cancellationToken)
+        public static async Task<IEnumerable<T>> GetAllAsync<T>(this IRepository<T> repository, CancellationToken cancellationToken = default)
             where T : class, ICacheable
         {
             var set = repository.Queryable;
@@ -94,12 +94,12 @@ namespace Northwind.Core.Repositories
         /// Returns the item by its id.
         /// </summary>
         /// <exception cref="DataNotFoundException"/>
-        public static Task<T> GetByIdAsync<T>(this IRepository<T> repository, int id, CancellationToken cancellationToken) where T : class, IWithId
+        public static async Task<T> GetByIdAsync<T>(this IRepository<T> repository, int id, CancellationToken cancellationToken = default) where T : class, IWithId
         {
             Check.IsNotNull(repository, nameof(repository));
             Check.IsId(id, nameof(id));
 
-            var item = repository.Queryable.Where(i => i.Id == id).SingleOrDefaultAsync(cancellationToken);
+            var item = await repository.Queryable.Where(i => i.Id == id).SingleOrDefaultAsync(cancellationToken);
 
             if (item == null)
             {
