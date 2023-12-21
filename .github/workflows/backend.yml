@@ -1,15 +1,14 @@
-# This workflow will builds the backend
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+# This workflow will builds the WEBAPI backend
 
 name: Backend WebApi (.NET)
 
 on:
   push:
-    paths:
-    - 'Backend/**'
     branches: 
     - main
   pull_request:
+    paths:
+    - 'Backend/**'
     branches: 
     - main
   workflow_dispatch:
@@ -18,6 +17,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      Solution_Name: ./Backend/Northwind.WebApi.sln
 
     steps:
     - uses: actions/checkout@v3
@@ -28,10 +29,10 @@ jobs:
         dotnet-version: 6.0.x
     
     - name: Restore dependencies
-      run: dotnet restore ./Backend/Northwind.WebApi.sln
+      run: dotnet restore $env:Solution_Name 
     
     - name: Build
-      run: dotnet build ./Backend/Northwind.WebApi.sln --no-restore 
+      run: dotnet build $env:Solution_Name --no-restore 
     
     # - name: Test
      # run: dotnet test --no-build --verbosity normal
