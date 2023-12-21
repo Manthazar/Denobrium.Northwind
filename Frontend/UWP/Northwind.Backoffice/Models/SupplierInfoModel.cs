@@ -1,5 +1,5 @@
 using CommunityToolkit.Mvvm.ComponentModel;
-using Northwind.Backofficce.ApiClient.Data;
+using Northwind.Backoffice.Data;
 using System.Windows.Input;
 
 namespace Northwind.Backoffice.Models

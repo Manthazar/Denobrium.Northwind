@@ -1,13 +1,20 @@
-﻿using Northwind.Backoffice.Configuration;
+﻿using Autofac;
+using Northwind.Backoffice.Services;
 using System;
 using System.Net.Http;
-using Windows.Web.Http.Filters;
 
-namespace Northwind.Backofficce.ApiClient
+namespace Northwind.Backoffice
 {
-    internal class NorthwindApiClientModule
+    public static class NorthwindApiClientModule
     {
         private static HttpClient apiClient;
+
+        public static ContainerBuilder AddDataStores(this ContainerBuilder builder)
+        {
+            Guard.IsNotNull(builder, nameof(builder));
+
+            return builder;
+        }
 
         /// <summary>
         /// The HttpClient is recommended to be a single (by server). 
@@ -18,7 +25,8 @@ namespace Northwind.Backofficce.ApiClient
         /// <returns></returns>
         internal static HttpClient GetApiClient()
         {
-            var configuration = new NorthwindBackofficeConfig(); // TODO: when some service location is implemented, use it here.
+            var provider =CoreModule.Container.Resolve<IConfigurationProvider>();
+            var configuration = provider.Config;
 
             if (apiClient == null)
             {

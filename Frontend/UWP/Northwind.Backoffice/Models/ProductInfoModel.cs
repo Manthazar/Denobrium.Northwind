@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Northwind.Backoffice.Data;
 
 namespace Northwind.Backoffice.Models
 {

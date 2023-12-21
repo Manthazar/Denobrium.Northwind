@@ -1,6 +1,6 @@
-﻿using Northwind.Backofficce.ApiClient.Data;
-using Northwind.Backofficce.ApiClient.DataStores;
+﻿using Northwind.Backoffice.DataStores;
 using Northwind.Backoffice.ViewModels;
+using Northwind.Backoffice.Data;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading;
