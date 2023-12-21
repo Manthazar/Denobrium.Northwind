@@ -1,4 +1,4 @@
-﻿namespace Northwind.BackOffice.Data
+﻿namespace Northwind.Backoffice.Data
 {
     /// <summary>
     /// The info data object is a blended data object for a particular use cases having the root Customer (there may be several info type objects for several use cases).

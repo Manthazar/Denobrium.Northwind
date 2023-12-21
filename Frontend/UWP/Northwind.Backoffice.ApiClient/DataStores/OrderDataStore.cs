@@ -1,9 +1,9 @@
-﻿using Northwind.Backofficce.ApiClient.Data;
+﻿using Northwind.Backoffice.Data;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Northwind.Backofficce.ApiClient.DataStores
+namespace Northwind.Backoffice.DataStores
 {
     public class OrderDataStore : RestDataStore
     {

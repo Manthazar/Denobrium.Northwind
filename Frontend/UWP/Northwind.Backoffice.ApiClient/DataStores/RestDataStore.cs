@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Northwind.Backofficce.ApiClient.DataStores
+namespace Northwind.Backoffice.DataStores
 {
     /// <summary>
     /// Base class for REST based web requests within this app. Also serves as a circuit breaker on transient errors.

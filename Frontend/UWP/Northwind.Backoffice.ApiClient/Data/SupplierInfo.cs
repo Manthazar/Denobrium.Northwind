@@ -1,4 +1,4 @@
-﻿namespace Northwind.Backofficce.ApiClient.Data
+﻿namespace Northwind.Backoffice.Data
 {
     public class SupplierInfo
 
