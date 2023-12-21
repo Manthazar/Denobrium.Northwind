@@ -50,11 +50,23 @@
                 <tGrid:DataGridTemplateColumn>
                     <tGrid:DataGridTemplateColumn.CellContentTemplate>
                         <DataTemplate>
-                            <HyperlinkButton Command="{Binding OpenWebpageCommand}" CommandParameter="{Binding HomePageUri}" Content="{Binding HomePageName}"/> 
+                            <Grid ToolTipService.ToolTip="{Binding HomePageUri}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <HyperlinkButton Command="{Binding OpenWebpageCommand}" CommandParameter="{Binding HomePageUri}" Content="{Binding HomePageName}" Grid.Column="0"/>
+
+                                <Button Grid.Column="1" Background="Transparent" BorderBrush="{x:Null}" Visibility="{Binding HomePageUri, Converter={StaticResource visibilityConverter}}"
+                                        Command="{Binding CopyToClipboardCommand}" CommandParameter="{Binding HomePageUri}">
+                                    <SymbolIcon  Symbol="Copy" />
+                                </Button>
+                            </Grid>
                         </DataTemplate>
                     </tGrid:DataGridTemplateColumn.CellContentTemplate>
                 </tGrid:DataGridTemplateColumn>
-                
+
                 <tGrid:DataGridTextColumn PropertyName="HomePage" Header="Web"  CanUserEdit="False" CanUserSort="True" />
                 <tGrid:DataGridTextColumn PropertyName="Country" Header="Country"  CanUserEdit="False" CanUserSort="True" />
                 <tGrid:DataGridTextColumn PropertyName="Phone" Header="Phone"  CanUserEdit="False" CanUserSort="True" />

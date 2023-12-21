@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using Northwind.Backofficce.ApiClient.Data;
+using Northwind.Backoffice.Commands;
 using Northwind.Backoffice.DataStores;
 using Northwind.Backoffice.Models;
 using Northwind.Backoffice.ViewModels;
@@ -50,7 +51,9 @@ namespace Northwind.Backoffice.Pages.Suppliers
 
         private Task<ObservableCollection<SupplierInfoModel>> AdaptAsync(IEnumerable<SupplierInfo> data)
         {
-            var collection = new ObservableCollection<SupplierInfoModel>(data.Select(d => new SupplierInfoModel(d) { OpenWebpageCommand = OpenWebpageCommand}));
+            var collection = new ObservableCollection<SupplierInfoModel>(data.Select(d => 
+                                    new SupplierInfoModel(d, OpenWebpageCommand, CopyClipboardCommand.Singleton)));
+
             return Task.FromResult(collection);
         }
 
