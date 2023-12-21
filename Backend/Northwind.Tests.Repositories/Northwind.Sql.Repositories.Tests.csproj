@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Northwind.Core.Models\Northwind.Core.Models.csproj" />
     <ProjectReference Include="..\Northwind.Core.Repositories\Northwind.Sql.Repositories.csproj" />
     <ProjectReference Include="..\Northwind.TestSystem.Builders\Northwind.TestSystem.Builders.csproj" />
     <ProjectReference Include="..\Northwind.TestSystem\Northwind.TestSystem.csproj" />

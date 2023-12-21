@@ -3,9 +3,9 @@ using Northwind.Core.Services;
 
 namespace Northwind.TestSystem.Mocks
 {
-    internal class NorthwindConfigurationProviderMock : INorthwindConfigurationProvider
+    internal class TestConfigurationProvider : INorthwindConfigurationProvider
     {
-        public NorthwindConfigurationProviderMock()
+        public TestConfigurationProvider()
         {
             Configuration = new NorthwindBackendConfiguration();
         }

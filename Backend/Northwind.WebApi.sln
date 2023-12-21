@@ -25,11 +25,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0CA97567
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.TestSystem", "Northwind.TestSystem\Northwind.TestSystem.csproj", "{F9ED0359-1B11-4FDC-BC49-64F34A8A2B8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Tests.Domain", "Northwind.Tests.Domain\Northwind.Tests.Domain.csproj", "{D5B55DC8-639B-433F-9E13-C6FDF30B2AD2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Core.Domain.Tests", "Northwind.Tests.Domain\Northwind.Core.Domain.Tests.csproj", "{D5B55DC8-639B-433F-9E13-C6FDF30B2AD2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.TestSystem.Builders", "Northwind.TestSystem.Builders\Northwind.TestSystem.Builders.csproj", "{E96EC324-EA38-4ED0-8F28-2077CE8105D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Tests.Repositories", "Northwind.Tests.Repositories\Northwind.Tests.Repositories.csproj", "{C2C882A0-FFFB-4F51-A122-5D75CA182AC1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Sql.Repositories.Tests", "Northwind.Tests.Repositories\Northwind.Sql.Repositories.Tests.csproj", "{C2C882A0-FFFB-4F51-A122-5D75CA182AC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

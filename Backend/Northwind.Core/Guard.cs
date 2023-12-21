@@ -78,7 +78,7 @@ namespace Northwind.Core
 
             if (!File.Exists(fileName))
             {
-                throw new ArgumentException($"File not found: '{fileName}'.");
+                throw new ArgumentException($"The file of {argumentName} was not found: filename='{fileName}'.");
             }
         }
 
@@ -182,11 +182,7 @@ namespace Northwind.Core
         public static void IsTypeAssignable(Type assignmentTargetType, Type assignmentValueType, string argumentName)
         {
             IsTypeAssignable(assignmentTargetType, assignmentValueType, argumentName,
-                string.Format(
-                    CultureInfo.CurrentCulture,
-                    "Types are not assignable",
-                    assignmentTargetType,
-                    assignmentValueType));
+                $"Types are not assignable: target={assignmentValueType}, value={assignmentValueType}");
         }
 
         /// <summary>
@@ -202,8 +198,8 @@ namespace Northwind.Core
         [DebuggerStepThrough]
         public static void IsTypeAssignable(Type assignmentTargetType, Type assignmentValueType, string argumentName, string detailedMessage)
         {
-            if (assignmentTargetType == null) throw new ArgumentNullException(nameof(assignmentTargetType));
-            if (assignmentValueType == null) throw new ArgumentNullException(nameof(assignmentValueType));
+            if (assignmentTargetType == null) throw new ArgumentNullException(argumentName);
+            if (assignmentValueType == null) throw new ArgumentNullException(argumentName);
 
             if (!assignmentTargetType.IsAssignableFrom(assignmentValueType))
             {
