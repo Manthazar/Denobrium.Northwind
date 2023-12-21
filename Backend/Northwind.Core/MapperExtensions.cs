@@ -8,7 +8,7 @@
         /// <returns></returns>
         public static T To<T> (this object source)
         {
-            Guard.IsNotNull (source, nameof(source));
+            Check.IsNotNull (source, nameof(source));
 
             var target = MapperModule.Mapper.Map<T>(source);
 
@@ -21,7 +21,7 @@
         /// <returns></returns>
         public static IEnumerable<TTarget> ToSetOf<TTarget>(this System.Collections.IEnumerable source)
         {
-            Guard.IsNotNull(source, nameof(source));
+            Check.IsNotNull(source, nameof(source));
 
             var list = new List<TTarget>();
             var mapper = MapperModule.Mapper;

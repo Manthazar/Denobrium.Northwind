@@ -13,7 +13,7 @@ namespace Northwind.Api.Services
 
         public OrderService(IRepository<Order> repository, NorthwindBackendConfiguration configuration)
         {
-            Guard.IsNotNull(repository, nameof(repository));
+            Check.IsNotNull(repository, nameof(repository));
 
             this.repository = repository;
             this.configuration = configuration;

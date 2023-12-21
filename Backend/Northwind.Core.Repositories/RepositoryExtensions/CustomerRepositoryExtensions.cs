@@ -12,7 +12,7 @@ namespace Northwind.Core.Repositories
         /// <returns></returns>
         public static async Task<IEnumerable<Customer>> GetAllAsync(this IRepository<Customer> repository, CancellationToken cancellationToken)
         {
-            Guard.IsNotNull(repository, nameof(repository));
+            Check.IsNotNull(repository, nameof(repository));
 
             var set = repository.Queryable;
             var result = await set.ToListAsync(cancellationToken);

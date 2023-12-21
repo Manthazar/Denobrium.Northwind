@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Globalization;
 
 namespace Northwind.Core
 {
@@ -9,7 +8,7 @@ namespace Northwind.Core
     /// <remarks>
     /// This class is a phenomenon itself. Used almost since 15 years, there seems to be no other easy and fast way to verify input arguments.
     /// </remarks>
-    public class Guard
+    public class Check
     {
         /// <summary>
         /// Throws <see cref="ArgumentNullException"/> if the given argument is null.

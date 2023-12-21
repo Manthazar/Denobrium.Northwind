@@ -12,7 +12,7 @@ namespace Northwind.Api.Data
         /// <returns></returns>
         public static IServiceCollection AddDataModuleComponents(this IServiceCollection collection)
         {
-            Guard.IsNotNull(collection, nameof(collection));
+            Check.IsNotNull(collection, nameof(collection));
 
             collection.AddAutoMapper(typeof(DataModule).Assembly);
 

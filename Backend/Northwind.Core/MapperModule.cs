@@ -14,7 +14,7 @@ namespace Northwind.Core
         /// <returns></returns>
         public static IServiceCollection AddSingletonMapper(this IServiceCollection services)
         {
-            Guard.IsNotNull(services, nameof(services));
+            Check.IsNotNull(services, nameof(services));
 
             var provider = services.BuildServiceProvider();
             var mappingConfig = provider.GetRequiredService<IConfigurationProvider>();

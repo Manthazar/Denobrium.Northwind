@@ -28,7 +28,7 @@ namespace Northwind.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<SupplierInfo> GetByIdAsync(int id, CancellationToken cancellationToken)
         {
-            Guard.IsBigger(0, id, nameof(id));
+            Check.IsBigger(0, id, nameof(id));
 
             var repository = Services.GetRequiredService<IRepository<Supplier>>();
             var customer = await repository.GetByIdAsync(id, cancellationToken);

@@ -27,7 +27,7 @@ namespace Northwind.Core.Repositories
         /// <returns></returns>
         public static async Task<IEnumerable<Employee>> GetManyAsync(this IRepository<Employee> repository, EmployeeRepositoryIncludeOptions includeOptions = EmployeeRepositoryIncludeOptions.None, CancellationToken cancellationToken = default)
         {
-            Guard.IsNotNull(repository, nameof(repository));
+            Check.IsNotNull(repository, nameof(repository));
 
             var query = repository.Queryable;
 

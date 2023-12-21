@@ -32,8 +32,8 @@ namespace Northwind.Core.Repositories
         /// <exception cref="DataNotFoundException"/>
         public static T GetByCode<T>(this IRepository<T> repository, string code) where T : class, IWithCode
         {
-            Guard.IsNotNull(repository, nameof(repository));
-            Guard.IsCode(code, nameof(code));
+            Check.IsNotNull(repository, nameof(repository));
+            Check.IsCode(code, nameof(code));
 
             var item = repository.Queryable.Where(i => i.Code == code.Trim()).SingleOrDefault();
 
@@ -54,8 +54,8 @@ namespace Northwind.Core.Repositories
         /// <exception cref="DataNotFoundException"/>
         public static async Task<T> GetByCodeAsync<T>(this IRepository<T> repository, string code, CancellationToken cancellationToken) where T : class, IWithCode
         {
-            Guard.IsNotNull(repository, nameof(repository));
-            Guard.IsCode(code, nameof(code));
+            Check.IsNotNull(repository, nameof(repository));
+            Check.IsCode(code, nameof(code));
 
             var item = await repository.Queryable.Where(i => i.Code == code.Trim()).SingleOrDefaultAsync(cancellationToken);
 
@@ -75,8 +75,8 @@ namespace Northwind.Core.Repositories
         /// <exception cref="DataNotFoundException"/>
         public static T GetById<T> (this IRepository<T> repository, int id) where T : class, IWithId
         {
-            Guard.IsNotNull(repository, nameof(repository));
-            Guard.IsId(id, nameof(id));
+            Check.IsNotNull(repository, nameof(repository));
+            Check.IsId(id, nameof(id));
 
             var item = repository.Queryable.Where(i => i.Id == id).SingleOrDefault();
 
@@ -96,8 +96,8 @@ namespace Northwind.Core.Repositories
         /// <exception cref="DataNotFoundException"/>
         public static Task<T> GetByIdAsync<T>(this IRepository<T> repository, int id, CancellationToken cancellationToken) where T : class, IWithId
         {
-            Guard.IsNotNull(repository, nameof(repository));
-            Guard.IsId(id, nameof(id));
+            Check.IsNotNull(repository, nameof(repository));
+            Check.IsId(id, nameof(id));
 
             var item = repository.Queryable.Where(i => i.Id == id).SingleOrDefaultAsync(cancellationToken);
 

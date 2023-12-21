@@ -8,7 +8,7 @@ namespace Northwind.Sql.Repositories
 
         public SqlRepository (NorthwindDbContext dbContext)
         {
-            Guard.IsNotNull(dbContext, nameof (dbContext));
+            Check.IsNotNull(dbContext, nameof (dbContext));
 
             this.dbContext = dbContext;
         }

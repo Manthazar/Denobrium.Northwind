@@ -30,10 +30,10 @@ namespace Northwind.Modules
         /// <param name="sqlConnectionString"></param>
         public static void AddDbContext(this IServiceCollection services, string sqlConnectionString)
         {
-            Guard.IsNotNull(services, nameof(services));
+            Check.IsNotNull(services, nameof(services));
 
 #if DEBUG
-            Guard.IsNotNullOrEmpty(sqlConnectionString, nameof(sqlConnectionString));
+            Check.IsNotNullOrEmpty(sqlConnectionString, nameof(sqlConnectionString));
 #else 
             if (string.IsNullOrWhiteSpace(sqlConnectionString))
             {

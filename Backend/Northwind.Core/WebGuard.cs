@@ -3,7 +3,7 @@
 namespace Northwind.Core
 {
     /// <summary>
-    /// Paramter verification guard, similar to <see cref="Guard"/>, but raises exclusively <see cref="ExternalArgumentException"/> so that it can be handled and reflected in proper external request response codes (such as http 404).
+    /// Paramter verification guard, similar to <see cref="Check"/>, but raises exclusively <see cref="ExternalArgumentException"/> so that it can be handled and reflected in proper external request response codes (such as http 404).
     /// </summary>
     public static class WebGuard
     {

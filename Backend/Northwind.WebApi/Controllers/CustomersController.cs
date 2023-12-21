@@ -27,7 +27,7 @@ namespace Northwind.WebApi.Controllers
         [HttpGet("{code}")]
         public async Task<CustomerDetail> GetByCode(string code, CancellationToken cancellationToken)
         {
-            Guard.IsCode(code, nameof(code));
+            Check.IsCode(code, nameof(code));
 
             var repository = Services.GetRequiredService<IRepository<Customer>>();
             var customer = await repository.GetByCodeAsync(code, cancellationToken);

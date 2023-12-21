@@ -35,7 +35,7 @@ namespace Northwind.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<Employee> GetById(int id, CancellationToken cancellationToken)
         {
-            Guard.IsId(id, nameof(id));
+            Check.IsId(id, nameof(id));
             
             var repository = Services.GetRequiredService<IRepository<Employee>>();
             var customer = await repository.GetByIdAsync(id, cancellationToken);

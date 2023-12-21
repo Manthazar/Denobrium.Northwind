@@ -10,7 +10,7 @@ namespace Northwind.Core.Services.Internal
 
         public DefaultNorthwindConfigurationProvider(IConfigurationRoot root)
         {
-            Guard.IsNotNull(root, nameof(root));
+            Check.IsNotNull(root, nameof(root));
 
             this.root = root;
         }

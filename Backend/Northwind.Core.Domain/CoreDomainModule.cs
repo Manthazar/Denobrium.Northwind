@@ -6,7 +6,7 @@ namespace Northwind.Core.Domain
     {
         public static IServiceCollection AddCoreDomainServices(this IServiceCollection services)
         {
-            Guard.IsNotNull(services, nameof(services));
+            Check.IsNotNull(services, nameof(services));
 
             return services;
         }
