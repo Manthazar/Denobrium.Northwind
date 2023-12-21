@@ -8,10 +8,10 @@
         /// <summary>
         /// The base url of the Northwind Api, i.e. "https://hereiam/api"
         /// </summary>
-        public string NorthwindApiBaseUri => "https://localhost:7185/api";
+        public string NorthwindApiBaseUri { get; set; } = "https://localhost:7185/api";
 
-        public bool EnablePrettyJsonFormatting => false;
+        public bool EnablePrettyJsonFormatting { get; set; } = false;
 
-        public bool SendJsonNullvalues => false;
+        public bool SendJsonNullvalues { get; set; } = false;
     }
 }

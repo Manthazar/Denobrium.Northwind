@@ -1,4 +1,5 @@
-﻿using Northwind.Backoffice.Theme;
+﻿using Autofac;
+using Northwind.Backoffice.Theme;
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -22,8 +23,22 @@ namespace Northwind.Backoffice
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
+            CoreModule.Container = AppContainer = CreateContainer();
+
             //SyncfusionLicenseProvider.RegisterLicense(Common.DemoCommon.FindLicenseKey("Syncfusion.SampleBrowser.UWP.Navigation.SyncfusionLicense.txt"));
         }
+
+        private IContainer CreateContainer()
+        {
+            var containerBuilder = new ContainerBuilder();
+
+            containerBuilder.AddConfigurationServices();
+            containerBuilder.AddDataStores();
+
+            return containerBuilder.Build();
+        }
+
+        #region Event Handlers
 
         protected override void OnActivated(IActivatedEventArgs args)
         {
@@ -78,7 +93,9 @@ namespace Northwind.Backoffice
             }
         }
 
+#pragma warning disable IDE0060 // Remove unused parameter: parameter may be provided and required later (command line arguments).
         private void OnAppInitialize(string arguments = null)
+#pragma warning restore IDE0060 // Remove unused parameter
         {
             ThemeInjector.InjectThemeResources(Application.Current.Resources);
         }
@@ -106,5 +123,9 @@ namespace Northwind.Backoffice
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
+        #endregion
+
+        internal static IContainer AppContainer { get; private set; }
     }
 }
