@@ -18,6 +18,10 @@ namespace Northwind.BackOffice.Converters
             {
                 result = list.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
             }
+            else if (value is string text)
+            {
+                result = string.IsNullOrWhiteSpace(text) == false ? Visibility.Visible : Visibility.Collapsed;
+            }
             else
             {
                 result = value != null ? Visibility.Visible : Visibility.Collapsed;

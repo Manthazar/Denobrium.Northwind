@@ -15,6 +15,14 @@
         public string Phone { get; set; }
         public string Fax { get; set; }
 
+
+        /// <summary>
+        /// An encoded string of the homepage with dash (#) as separator
+        /// </summary>
+        /// <example>
+        /// Name of link#http#
+        /// </example>
+        /// <seealso cref="https://github.com/Manthazar/Denobrium.Northwind/issues/42"/>
         public string HomePage { get; set; }
     }
 }

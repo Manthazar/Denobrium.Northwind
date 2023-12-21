@@ -1,12 +1,16 @@
-﻿using Northwind.Backofficce.ApiClient.Data;
+﻿using CommunityToolkit.Mvvm.Input;
+using Northwind.Backofficce.ApiClient.Data;
+using Northwind.Backoffice.Commands;
 using Northwind.Backoffice.DataStores;
 using Northwind.Backoffice.Models;
 using Northwind.Backoffice.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Northwind.Backoffice.Pages.Suppliers
 {
@@ -15,7 +19,17 @@ namespace Northwind.Backoffice.Pages.Suppliers
         public SupplierListViewModel()
         {
             SuggestionsHandler = new SupplierSuggestionsHandler<SupplierInfoModel>(this);
+            OpenWebpageCommand = new AsyncRelayCommand<string>(OpenWebpage_Execute, OpenWebpageCommand_CanExecute);
         }
+
+        private async Task OpenWebpage_Execute(string uriString)
+        {
+            // Create a Uri object from a URI string 
+            var uri = new Uri(uriString);
+            var success = await Windows.System.Launcher.LaunchUriAsync(uri);
+        }
+
+        private bool OpenWebpageCommand_CanExecute(string uriString) => Uri.IsWellFormedUriString(uriString, UriKind.Absolute);
 
         private async Task LoadItemsAsync()
         {
@@ -37,12 +51,16 @@ namespace Northwind.Backoffice.Pages.Suppliers
 
         private Task<ObservableCollection<SupplierInfoModel>> AdaptAsync(IEnumerable<SupplierInfo> data)
         {
-            var collection = new ObservableCollection<SupplierInfoModel>(data.Select(d => new SupplierInfoModel(d)));
+            var collection = new ObservableCollection<SupplierInfoModel>(data.Select(d => 
+                                    new SupplierInfoModel(d, OpenWebpageCommand, CopyClipboardCommand.Singleton)));
+
             return Task.FromResult(collection);
         }
 
+        protected override Task OnAppearingAsync() => LoadItemsAsync();
+
         public SupplierSuggestionsHandler<SupplierInfoModel> SuggestionsHandler { get; }
 
-        protected override Task OnAppearingAsync() => LoadItemsAsync();
+        public ICommand OpenWebpageCommand { get; }
     }
 }

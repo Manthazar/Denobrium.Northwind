@@ -120,6 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\CopyClipboardCommand.cs" />
     <Compile Include="Converters\ByteArrayImageSourceConverter.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
     <Compile Include="Messages\NavigationRequestedMessage.cs" />
