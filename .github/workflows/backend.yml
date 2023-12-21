@@ -33,7 +33,7 @@ jobs:
       run: dotnet restore $Solution_Name 
     
     - name: Build
-      run: dotnet build $env:Solution_Name --no-restore 
+      run: dotnet build $Solution_Name --no-restore 
     
     # - name: Test
      # run: dotnet test --no-build --verbosity normal
