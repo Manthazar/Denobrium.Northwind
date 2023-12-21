@@ -38,11 +38,11 @@ name: Northwind Backoffice (UWP)
 
 on:
   push:
-    paths:
-    - 'Frontend/UWP/**'
     branches: 
     - "main"
   pull_request:
+    paths:
+    - 'Frontend/UWP/**'
     branches: 
     - "main"
   workflow_dispatch:
